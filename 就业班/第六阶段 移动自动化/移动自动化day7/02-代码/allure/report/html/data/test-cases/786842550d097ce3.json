@@ -1,0 +1,60 @@
+{
+  "uid" : "786842550d097ce3",
+  "name" : "TestContact.test_login",
+  "fullName" : "test_contact.TestContact.test_login",
+  "historyId" : "8798d55fa5489e91a12283bfe3d52216",
+  "time" : {
+    "start" : 1528275419333,
+    "stop" : 1528275419342,
+    "duration" : 9
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "host",
+    "value" : "HaoYosondeMacBook-Pro.local"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "12869-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "test_contact"
+  }, {
+    "name" : "testClass",
+    "value" : "test_contact"
+  }, {
+    "name" : "testMethod",
+    "value" : "TestContact.test_login"
+  }, {
+    "name" : "package",
+    "value" : "test_contact"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "786842550d097ce3.json",
+  "parameterValues" : [ ]
+}

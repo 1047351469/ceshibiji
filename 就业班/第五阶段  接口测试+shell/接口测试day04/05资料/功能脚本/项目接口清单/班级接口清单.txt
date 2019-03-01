@@ -1,0 +1,84 @@
+一、班级资源-查询
+	1.1 班级查询-所有
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/
+		(T01:为学院ID)
+	1.2 班级查询-指定
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{T01C01}
+		(T01：为学院ID；T01C01：为班级ID)
+	1.3 班级查询-$cls_id_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/?$cls_id_list={clsid1},{clsid2}
+		(T01:为学院ID：clsid1,clsid2：为班级id;$cls_id_list:为id_list参数名称)
+	1.4 班级查询-$cls_name_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/?$cls_name_list={clsname1},{clsname2}
+		(T01:为学院ID：clsname1,clsname2：为班级cls_name;$cls_name_list:为name_list参数名称)
+	1.5 班级查询-$master_name_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/?$master_name_list={clsmaster1},{clsmaster2}
+		(T01:为学院ID：clsmaster1,clsmaster2：为班级master_name;$master_name_list:为master_list参数名称)
+	1.6 班级查询-$slogan_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/?$slogan_list={slogan1},{slogan2}
+		(T01:为学院ID：slogan1,slogan2：为班级slogan;$slogan_list:为slogan参数名称)
+	1.7 班级查询-组合
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/?cls_name={calname}&master_name={mastername}&slogan={slogan}
+		(T01:为学院ID；clsname:班级名称；mastername:班主任名称；slogan:口号)（以上条件支持随意组合和单个使用）
+		1.以上方法是否有遗漏？
+		答：
+		2.以上方法请求地址是否正确？
+		答：
+二、班级资源-新增
+	2.1 班级-新增
+		请求方法：POST
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/
+		(T01:为学院ID)（新增多条之间使用逗号隔开）
+		新增JSON报文：
+		{
+			"data": [
+					   {
+						"cls_id": "2017T01C01",
+						"cls_name": "2017级Test学院T01班",
+						"master_name": "Master",
+						"slogan": "slogan"
+					   }
+					]
+		}
+		1.以上方法是否有遗漏？
+		答：
+		2.以上方法请求地址是否正确？
+		答：
+三、班级资源-更新
+	3.1 班级-更新
+		请求方法：PUT
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{T01C01}
+		(T01：为学院ID；T01C01：为班级ID)
+		更新JSON报文：
+		{
+			"data": [
+					   {
+						"dep_id":"T01"
+						"cls_id": "2017T01C01",
+						"cls_name": "2017级Test学院T01班",
+						"master_name": "Master",
+						"slogan": "slogan"
+					   }
+					]
+		}
+		1.以上方法是否有遗漏？
+		答：
+		2.以上方法请求地址是否正确？
+		答：
+四、班级资源-删除
+	4.1 班级-删除
+		请求方法：DELETE
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{T01C01}
+		(T01：为学院ID；T01C01：为班级ID)
+		
+		1.以上方法是否有遗漏？
+		答：
+		2.以上方法请求地址是否正确？
+		答：

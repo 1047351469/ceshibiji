@@ -1,0 +1,52 @@
+Virtual User Script started at : 2018-06-22 16:10:39
+Starting action vuser_init.
+Web Turbo Replay of LoadRunner 11.0.0 for Windows 7; build 8859 (Aug 18 2010 20:14:31)  	[MsgId: MMSG-27143]
+Run Mode: HTML  	[MsgId: MMSG-26000]
+Run-Time Settings file: "E:\课堂\上海一期\性能测试\Day04\04_代码\Script\订票\\default.cfg"  	[MsgId: MMSG-27141]
+Ending action vuser_init.
+Running Vuser...
+Starting iteration 1.
+Starting action Action.
+Action.c(4): Notify: Transaction "订票-订票总" started.
+Action.c(7): Registering web_reg_save_param was successful  	[MsgId: MMSG-26390]
+Action.c(13): Detected non-resource "http://127.0.0.1:1080/WebTours/header.html" in "http://127.0.0.1:1080/WebTours/"  	[MsgId: MMSG-26574]
+Action.c(13): Detected non-resource "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true" in "http://127.0.0.1:1080/WebTours/"  	[MsgId: MMSG-26574]
+Action.c(13): Found resource "http://127.0.0.1:1080/WebTours/images/hp_logo.png" in HTML "http://127.0.0.1:1080/WebTours/header.html"  	[MsgId: MMSG-26659]
+Action.c(13): Found resource "http://127.0.0.1:1080/WebTours/images/webtours.png" in HTML "http://127.0.0.1:1080/WebTours/header.html"  	[MsgId: MMSG-26659]
+Action.c(13): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?in=home" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true"  	[MsgId: MMSG-26574]
+Action.c(13): Detected non-resource "http://127.0.0.1:1080/WebTours/home.html" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true"  	[MsgId: MMSG-26574]
+Action.c(13): Found resource "http://127.0.0.1:1080/WebTours/JSFormSubmit.js" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?in=home"  	[MsgId: MMSG-26659]
+Action.c(13): Found resource "http://127.0.0.1:1080/WebTours/images/mer_login.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?in=home"  	[MsgId: MMSG-26659]
+Action.c(13): web_url("打开首页") was successful, 6874 body bytes, 1808 header bytes  	[MsgId: MMSG-26386]
+Action.c(16): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?username=test2001&password=123456" in "http://127.0.0.1:1080/WebTours/login.pl"  	[MsgId: MMSG-26574]
+Action.c(16): Detected non-resource "http://127.0.0.1:1080/WebTours/error.pl?error=badPassword" in "http://127.0.0.1:1080/WebTours/login.pl"  	[MsgId: MMSG-26574]
+Action.c(16): Resource "http://127.0.0.1:1080/WebTours/JSFormSubmit.js" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(16): Resource "http://127.0.0.1:1080/WebTours/images/mer_login.gif" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(16): web_submit_data("登录") was successful, 2987 body bytes, 654 header bytes  	[MsgId: MMSG-26386]
+Action.c(28): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=flights" in "http://127.0.0.1:1080/WebTours/welcome.pl?page=search"  	[MsgId: MMSG-26574]
+Action.c(28): Detected non-resource "http://127.0.0.1:1080/WebTours/reservations.pl?page=welcome" in "http://127.0.0.1:1080/WebTours/welcome.pl?page=search"  	[MsgId: MMSG-26574]
+Action.c(28): Found resource "http://127.0.0.1:1080/WebTours/images/in_flights.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=flights"  	[MsgId: MMSG-26659]
+Action.c(28): Found resource "http://127.0.0.1:1080/WebTours/images/itinerary.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=flights"  	[MsgId: MMSG-26659]
+Action.c(28): Found resource "http://127.0.0.1:1080/WebTours/images/home.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=flights"  	[MsgId: MMSG-26659]
+Action.c(28): Found resource "http://127.0.0.1:1080/WebTours/images/signoff.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=flights"  	[MsgId: MMSG-26659]
+Action.c(28): Found resource "http://127.0.0.1:1080/WebTours/images/button_next.gif" in HTML "http://127.0.0.1:1080/WebTours/reservations.pl?page=welcome"  	[MsgId: MMSG-26659]
+Action.c(28): web_url("订票-打开航班首页") was successful, 9844 body bytes, 1501 header bytes  	[MsgId: MMSG-26386]
+Action.c(31): Resource "http://127.0.0.1:1080/WebTours/images/button_next.gif" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(31): web_submit_data("从那到那") was successful, 2336 body bytes, 253 header bytes  	[MsgId: MMSG-26386]
+Action.c(53): Resource "http://127.0.0.1:1080/WebTours/images/button_next.gif" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(53): web_submit_data("航班公司") was successful, 2594 body bytes, 253 header bytes  	[MsgId: MMSG-26386]
+Action.c(70): Found resource "http://127.0.0.1:1080/WebTours/images/bookanother.gif" in HTML "http://127.0.0.1:1080/WebTours/reservations.pl"  	[MsgId: MMSG-26659]
+Action.c(70): web_submit_data("web_submit_data") was successful, 3212 body bytes, 450 header bytes  	[MsgId: MMSG-26386]
+Action.c(98): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?in=home" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=1"  	[MsgId: MMSG-26574]
+Action.c(98): Detected non-resource "http://127.0.0.1:1080/WebTours/home.html" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=1"  	[MsgId: MMSG-26574]
+Action.c(98): Retrieving data from cache for "http://127.0.0.1:1080/WebTours/home.html"  	[MsgId: MMSG-26558]
+Action.c(98): Resource "http://127.0.0.1:1080/WebTours/JSFormSubmit.js" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(98): Resource "http://127.0.0.1:1080/WebTours/images/mer_login.gif" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(98): web_url("退出登录") was successful, 2156 body bytes, 644 header bytes  	[MsgId: MMSG-26386]
+Action.c(105): Notify: Transaction "订票-订票总" ended with "Pass" status (Duration: 3.6307 Wasted Time: 0.9630).
+Ending action Action.
+Ending iteration 1.
+Ending Vuser...
+Starting action vuser_end.
+Ending action vuser_end.
+Vuser Terminated.

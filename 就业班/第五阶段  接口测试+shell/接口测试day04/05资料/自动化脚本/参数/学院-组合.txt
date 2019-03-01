@@ -1,0 +1,13 @@
+Test学院,Test-Master,Here is Slogan,----为正常数据
+Test学院,Test-Master,,----1个为空两个组合
+,Test-Master,Here is Slogan,----1个为空两个组合
+Test学院,,,----一个为正常其他为空
+,Test-Master,,----一个为正常其他为空
+,,Here is Slogan,----一个为正常其他为空
+,,,----全部为空
+Test学院,Test-Master2322 ,Here is Slogan,----一个为不存在
+Test学院,Test-Master,Here is Slogan2334,----一个为不存在
+Test学院2222,Test-Master,Here is Slogan,----一个为不存在
+ Test学院 ,Test-Master,Here is Slogan,----前后含空格
+Test学院, Test-Master ,Here is Slogan,----前后含空格
+Test学院,Test-Master, Here is Slogan ,----前后含空格

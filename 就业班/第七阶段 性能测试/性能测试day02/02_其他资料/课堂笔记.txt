@@ -1,0 +1,24 @@
+注意事项：
+	1). 浏览器只能选择32位(IE)
+	
+1.2 HTML Advanced选项
+	1. web_submit_form: 依赖上下文才能提交。
+	2. web_submit_data:  不依赖上下文，每个函数都指定了具体的url地址，可以直接提交成功;【推荐】
+二、函数：
+	1. lr_output_message()  // 输入到日志函数 类似 Python print
+	2. lr_think_time()	// 思考时间函数 	类似 python  sleep;
+	提示：
+		1. C语言语法:必须以分号(;)作为行结束标记
+		2. return 0:结束本次迭代，进入下一迭代；
+三、编译
+	1. shift+F5
+
+四、注释
+	1. //：单行注释  如：//登录
+	2. /**/：多行注释  如：/*多行    注释*/
+五、手动编写脚本
+	1. web_url：GET请求使用
+    2. web_submit_data：POST请求
+    3. web_custom_request：定制请求（GET\POST\PUT\DELETE）等，接口请求使用此函数
+六、参数化
+	概念：根据需求动态的获取数据的过程；

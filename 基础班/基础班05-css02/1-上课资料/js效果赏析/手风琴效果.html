@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>手风琴效果1</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+		list-style-type: none;
+	}
+	.box{
+		width: 1200px;
+		height: 300px;
+		border:1px solid #000;
+		margin:100px auto;
+		overflow: hidden;
+	}
+	.box ul{
+		width: 1300px;
+	}
+	.box li{
+		float: left;
+		width: 200px;
+		height: 300px;
+	}
+	</style>
+	<script src="jquery-1.7.2.min.js"></script>
+	<script>
+	$(function() {
+		$('.box li').hover(function() {
+			//当前的宽度变为500，其它兄弟变为140
+			$(this).stop().animate({width:500},500).siblings().stop().animate({width:140},500);
+		}, function() {
+			$('.box li').stop().animate({width:200},500);
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li><img src="images/pic/01.jpg" height="300" width="500" alt="" /></li>
+			<li><img src="images/pic/02.jpg" height="300" width="500" alt="" /></li>
+			<li><img src="images/pic/03.jpg" height="300" width="500" alt="" /></li>
+			<li><img src="images/pic/04.jpg" height="300" width="500" alt="" /></li>
+			<li><img src="images/pic/05.jpg" height="300" width="500" alt="" /></li>
+			<li><img src="images/pic/06.jpg" height="300" width="500" alt="" /></li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!-- action传递给哪一个后台程序解决   method：get明文传送 post密文传送 -->
+		<form action="" method="">
+			<!--昵称：<input type="text" name="" id="" value="请输入你的昵称" />-->
+			<!-- 渐进增强 优雅降级 -->
+			昵称：<input type="text" name="" id="" placeholder="请输入你的昵称" /><br />
+			<!--<input type="submit" value=""/>-->
+			密码：<input type="password" name="" id="" value="" /><br />
+			性别 :
+			<input type="radio" name="xb" id="nan" value="" checked="checked" />
+			<label for="nan">男</label> 
+			
+			
+			<input type="radio" name="xb" id="nv" value="" />
+			<label for="nv">女</label> 
+			
+			<input type="radio" name="xb" id="bm" value="" />
+			<label for="bm">保密</label>
+			
+			<br />
+			地址  ：
+			<select name="">
+				<option value="">嘿嘿</option>
+				<option value="">呵呵</option>
+				<option value="">哈哈</option>
+				<option value="">嘎嘎</option>
+				
+			</select>
+			
+			<select name="">
+				<optgroup label="北京">
+					<option value="">东城区、西城区</option>
+					<option value="">朝阳区</option>
+					<option value="">海淀区</option>
+					<option value="">昌平区</option>
+					<option value="">顺义</option>
+					<option value="">怀柔区</option>
+					<option value="">平谷区</option>
+				</optgroup>
+				<optgroup label="上海">
+					<option value="" selected="selected">浦东新区</option>					
+					<option value="">静安区</option>					
+					<option value="">宝山区</option>					
+					<option value="">黄埔区</option>
+				</optgroup>
+			</select><br />
+			
+			<!-- rows="10" cols="20" 不要设置 因为浏览器之间有兼容性问题 大小不一致  -->
+			地址：<textarea name="" rows="10" cols="20" placeholder="提示文字"></textarea><br />
+			爱好：
+			<input type="checkbox" name="" id="cff" value="" />
+			<label for="cff">吃饭</label>  
+			
+			
+			
+			<input type="checkbox" name="" id="sjj" value="" checked="checked" />
+			<label for="sjj">睡觉</label>
+			
+			 
+			<input type="checkbox" name="" id="ddd" value="" />
+			<label for="ddd">打豆豆</label><br />
+			<!-- 按钮 必须设置value的值  否则浏览器之间有兼容性问题 文字显示都不一样 -->
+			<input type="submit" name="" id="" value="提交" />
+			
+			<input type="reset" name="" id="" value="重置" />
+			<input type="button" name="" id="" value="我是普通按钮" />
+		</form>
+	</body>
+</html>

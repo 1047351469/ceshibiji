@@ -1,0 +1,108 @@
+一、学院资源-查询
+	1.1 学院-查询所有
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/
+	1.2 学院-查询指定
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}
+		(T01：为学院id)
+	1.3 学院-查询-$dep_id_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/?$dep_id_list={T01},{T02}
+		(T01,T02:为学院ID)
+	1.4 学院-查询-$dep_name_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/?$dep_name_list={depname1},{depname2}
+		(depname1,depname2:为学院dep_name)	
+	1.5 学院-查询-$master_name_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/?$master_name_list={mastername1},{mastername2}
+		(mastername1,mastername2:为学院master_name)	
+	1.6 学院-查询-$slogan_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/?$slogan_list={slogan1},{slogan2}
+		(slogan1,slogan2:为学院slogan)	
+	1.7 学院-查询-组合条件
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/?dep_name={depname}&master_name={mastername}&slogan={slogan}
+		(depname:为学院dep_name;mastername:为学院master_name;slogan:为学院slogan;以上三个条件可随意组合或单个使用)
+	1.8 学院-查询-模糊查询
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/?dep_name={depname}&master_name={mastername}&slogan={slogan}&Blur=1
+		(depname:为学院dep_name;mastername:为学院master_name;slogan:为学院slogan;Blur：为开启模糊查询条件，1为开启)
+		
+1.以上方法是否有遗漏？
+
+2.以上方法请求地址是否正确？
+
+
+二、 学院资源-新增
+	2.1 学院-新增
+		请求方法：POST
+		请求地址：http://127.0.0.1:8000/api/departments/
+		(新增支持多条，如果是多条之间请用逗号隔开)
+		请求JSON报文：
+		{
+			"data": [
+					  {
+						"dep_id": "T01",
+						"dep_name": "Test学院",
+						"master_name": "Test-Master",
+						"slogan": "Here is Slogan"
+					  },
+					  {
+						"dep_id": "T02",
+						"dep_name": "Test学院2",
+						"master_name": "Test-Master2",
+						"slogan": "Here is Slogan2"
+					  }
+					]
+		}
+1.以上新增请求方法是否正确？
+
+2.以上新增请求地址是否正确？
+
+3.以上新增请求报文是否正确？
+
+4.请求多条新增报文是否正确？
+
+
+三、 学院资源-更新
+	3.1 学院-更新
+		请求方法：PUT
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}
+		(T01：为学院id)
+		请求JSON报文：
+		{
+			"data": [
+					  {
+						"dep_id": "T01",
+						"dep_name": "Test学院",
+						"master_name": "Test-Master",
+						"slogan": "Here is Slogan"
+					  }
+					]
+		}
+		
+		1.以上更新请求方法是否正确？
+
+		2.以上更新请求地址是否正确？
+
+		3.以上更新报文格式及属性是否正确？
+
+
+四、学院资源-删除
+	4.1 学院-删除
+		请求方法：DELETE
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}
+		(T01：为学院id)
+	4.2 学院-删除list
+		请求方法：DELETE
+		请求地址：http://127.0.0.1:8000/api/departments/?$dep_id_list={T02,T03}
+		(T02,T03:为学院ID)
+		
+	1.以上删除方法是否正确？
+
+	2.以上请求地址是否正确？
+
+	3.是否支持批量删除？如果支持，请求参数名称是否为$dep_id_list

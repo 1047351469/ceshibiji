@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	* { margin: 0; padding: 0; list-style: none; }
+	.mySelect a { color: #000; text-decoration: none; }
+	.mySelect { width: 102px; margin: 100px auto; position:relative; }
+	.msTop { display: block; width: 90px; height: 25px; line-height: 25px; border:1px solid #ccc; background: url(images/IconBg.png) no-repeat -407px -458px; padding: 0 0 0 10px; }
+	.msTop:hover { border:1px solid #f40; }
+	.mySelect ul { position:absolute; left: 0; top: 26px; width: 100px; border:1px solid #ccc; display: none; }
+	.mySelect ul li { height: 25px; line-height: 25px; padding: 0 0 0 10px; cursor:pointer; }
+	.mySelect ul .hover { background: pink; }
+	.mySelect ul .clicked { background: #FF9E48; }
+</style>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.mySelect ul li').hover(function(e) {
+            $(this).addClass('hover').siblings().removeClass('hover');
+        },function(){
+				
+		}).click(function(e) {
+            $(this).addClass('clicked').siblings().removeClass('clicked');
+			//模拟select的赋值操作
+			var aHtml = $(this).children('a').html();
+			$(this).parent().prev().html(aHtml);//通过this去寻找 才是最准确的 prev() 代表的是寻找上一个元素
+			//$('.msTop').html(aHtml);
+			//点击之后 我们还要让ul隐藏
+			$(this).parent().hide();
+        });
+		$('.msTop').click(function(e) {
+            $(this).next().show();
+        });
+		//鼠标离开大盒子 也让ul消失
+		$('.mySelect').mouseleave(function(e) {
+            $(this).children('ul').hide();
+        });
+	})
+</script>
+</head>
+
+<body>
+	<select name="" id="">
+    	<option value="">zsdas111d</option>
+    	<option value="">zsdasd222</option>
+    </select>
+
+	<div class="mySelect">
+    	<a href="javascript:;" class="msTop">年付</a>
+        <ul>
+        	<li class="clicked"><a href="javascript:;">年付</a></li>
+        	<li class="hover"><a href="javascript:;">半年付</a></li>
+        	<li><a href="javascript:;">月付</a></li>
+        	<li><a href="javascript:;">季付</a></li>
+        </ul>
+    </div><br>
+<br>
+<br>
+<br>
+
+	<div class="mySelect">
+    	<a href="javascript:;" class="msTop">年付</a>
+        <ul >
+        	<li class="clicked"><a href="javascript:;">年付</a></li>
+        	<li class="hover"><a href="javascript:;">半年付</a></li>
+        	<li><a href="javascript:;">月付</a></li>
+        	<li><a href="javascript:;">季付</a></li>
+        </ul>
+    </div>
+</body>
+</html>

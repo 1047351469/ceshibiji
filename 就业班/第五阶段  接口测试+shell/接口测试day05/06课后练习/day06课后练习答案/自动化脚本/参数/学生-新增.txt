@@ -1,0 +1,3 @@
+T01,2017T01C01,2020test1001,stuname2001,true,2020-10-10,北京
+
+depid,clsid,stuid,stuname,gender,birthday,native

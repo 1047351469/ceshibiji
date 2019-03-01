@@ -1,0 +1,49 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "HaoYosondeMacBook-Pro.local",
+    "children" : [ {
+      "name" : "12869-MainThread",
+      "children" : [ {
+        "name" : "TestContact.test_login1",
+        "uid" : "c3c2f8f531264da0",
+        "parentUid" : "80b523c0dba49802418bf4cbf9565a95",
+        "status" : "passed",
+        "time" : {
+          "start" : 1528275419345,
+          "stop" : 1528275419349,
+          "duration" : 4
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "TestContact.test_login",
+        "uid" : "786842550d097ce3",
+        "parentUid" : "80b523c0dba49802418bf4cbf9565a95",
+        "status" : "passed",
+        "time" : {
+          "start" : 1528275419333,
+          "stop" : 1528275419342,
+          "duration" : 9
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "TestContact.test_login2",
+        "uid" : "da7fb7190491aa5a",
+        "parentUid" : "80b523c0dba49802418bf4cbf9565a95",
+        "status" : "failed",
+        "time" : {
+          "start" : 1528275419351,
+          "stop" : 1528275419577,
+          "duration" : 226
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "80b523c0dba49802418bf4cbf9565a95"
+    } ],
+    "uid" : "727c39b21be2fd37981698cfe522ed15"
+  } ]
+}

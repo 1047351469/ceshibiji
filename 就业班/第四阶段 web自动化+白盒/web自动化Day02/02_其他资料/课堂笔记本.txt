@@ -1,0 +1,57 @@
+一、案例实施步骤思路分析
+	1.导包
+	2.指定浏览器(实例化浏览器对象)
+	3.打开项目
+	4.找到元素(定位元素)
+	5.操作元素
+	6.暂停
+	7.关闭
+二、元素定位【重点】
+	1.id 
+		说明：通过元素的id属性来定位
+		前提：元素必须有id属性
+		方法：driver.find_element_by_id(id值)
+	2.name
+		说明：通过元素的name属性来定位
+		前提：元素必须有name属性
+		方法：driver.find_element_by_name(name值)
+	3.class_name
+		说明：通过元素的class属性来定位
+		前提：元素必须有class属性
+	4.tag_name
+		说明：通过元素的标签名称,如：<input><a>...
+		前提：元素标签名在当前页面必须为唯一元素，或定位符合条件第一个元素；
+		返回：符合条件的第一个元素
+		方法: find_element_by_tag_name(标签名称)
+	5.link_text
+		说明：只定位超链接<a>标签
+		注意：必须为全部匹配本
+		方法：find_element_by_link_text(全部问本值)
+	6. partial_link_text
+		说明：它为link_text定位的补充说明
+		注意：为模糊匹配
+		方法：find_element_by_partial_link_text(局部文本)
+
+三、Xpath
+	1.绝对路径 
+		注意：以单斜杠/开头，中间不能跳跃元素
+	2.相对路径
+		注意：以双斜杠开头；后边必须跟标签名称或*
+	3.Xpath路径内使用属性时，必须要使用@修饰
+	
+四、 CSS定位常用策略 (方式)
+	1. id选择器
+		注意：id选择器必须以#修饰
+		方法：find_element_by_css_selector()
+	2. class选择器
+		注意：以.修饰；元素必须有class属性
+	3. 元素选择器
+		格式：element  如：input
+	4. 属性选择器
+		格式：[id="userA"]
+	5. 层级选择器
+		格式：element>element;element element
+	 CSS延伸
+		1. input[type^='p'] 说明：type属性以p字母开头的元素
+		2. input[type$='d'] 说明：type属性以d字母结束的元素
+		3. input[type*='w'] 说明：type属性包含w字母的元素

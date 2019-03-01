@@ -1,0 +1,38 @@
+#test_login:
+#  - "1"
+#  - "2"
+#  - "3"
+## [("1", "pass"), ("1", "pass"), ("1", "pass")]
+## [ {user:xxx1, pass:xxx1},{user:xxx2, pass:xxx2}, {user:xxx3, pass:xxx3} ]
+#test_login1:
+#  -
+#    username: "username1"
+#    password: "password1"
+#  -
+#    username: "username2"
+#    password: "password2"
+#  -
+#    username: "username3"
+#    password: "password3"
+
+test_login1:
+  test_login1_102:
+    username: "18503080305 "
+  test_login1_101:
+    username: "18503080305"
+  test_login1_003:
+    username: " 18503080305"
+
+test_login2:
+  test_login2_002:
+    username: "18503080305 "
+    password: "123000"
+  test_login2_001:
+    username: "18503080305"
+    password: "123000"
+  test_login2_003:
+    username: " 18503080305"
+    password: "123000"
+  test_login_004:
+    username: " 1850308030xxx"
+    password: "123000xxx"

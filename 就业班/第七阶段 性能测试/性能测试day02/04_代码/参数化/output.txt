@@ -1,0 +1,13 @@
+Action.c(34): RandomNumber值为：1660
+Action.c(35): RandomNumber值为：1923
+Action.c(36): RandomNumber值为：1586
+Action.c(34): RandomNumber值为：5789
+Action.c(35): RandomNumber值为：8774
+Action.c(36): RandomNumber值为：1927
+Action.c(34): RandomNumber值为：6596
+Action.c(35): RandomNumber值为：5866
+Action.c(36): RandomNumber值为：7751
+Action.c(34): RandomNumber值为：7580
+Action.c(35): RandomNumber值为：7450
+Action.c(36): RandomNumber值为：1176
+Vuser Terminated.

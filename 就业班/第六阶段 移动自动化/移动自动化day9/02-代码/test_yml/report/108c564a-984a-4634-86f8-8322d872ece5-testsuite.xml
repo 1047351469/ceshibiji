@@ -1,0 +1,78 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1528535766230" stop="1528535766261">
+  <name>test_display</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1528535766230" status="passed" stop="1528535766236">
+      <name>TestDisplay.test_display_color[args0]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528535766238" status="passed" stop="1528535766241">
+      <name>TestDisplay.test_display_color[args1]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528535766242" status="passed" stop="1528535766244">
+      <name>TestDisplay.test_display_color[args2]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528535766247" status="passed" stop="1528535766250">
+      <name>TestDisplay.test_display_text_size[args0]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528535766252" status="passed" stop="1528535766255">
+      <name>TestDisplay.test_display_text_size[args1]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528535766257" status="passed" stop="1528535766261">
+      <name>TestDisplay.test_display_text_size[args2]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

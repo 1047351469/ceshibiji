@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IE:\课堂\上海一期\性能测试\Day03\04_代码\事务
+-IC:\lr11.0\include
+-ee:\课堂\上海一期\性能测试\day03\04_代码\事务\\logfile.log
+e:\课堂\上海一期\性能测试\day03\04_代码\事务\\combined_事务.c
+e:\课堂\上海一期\性能测试\day03\04_代码\事务\\pre_cci.c

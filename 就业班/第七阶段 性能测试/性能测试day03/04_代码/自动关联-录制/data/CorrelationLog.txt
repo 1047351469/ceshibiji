@@ -1,0 +1,58 @@
+Debug Message:
+	Correlation engine instance created; using configuration Default
+
+Debug Message:
+	Rules could not be applied to http://127.0.0.1:1080/WebTours/
+
+Debug Message:
+	TaskID=4  URL=http://127.0.0.1:1080/WebTours/
+
+Debug Message:
+	TaskID=5  URL=http://127.0.0.1:1080/WebTours/header.html
+
+Debug Message:
+	TaskID=8  URL=http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true
+
+Debug Message:
+	TaskID=22  URL=http://127.0.0.1:1080/WebTours/home.html
+
+Debug Message:
+	TaskID=23  URL=http://127.0.0.1:1080/WebTours/nav.pl?in=home
+
+Debug Message:
+	Rules could not be applied to http://127.0.0.1:1080/WebTours/login.pl
+
+Creating parameter {WCSParam2}:
+	SourceTaskID   = "23"
+	TargetTaskID   = "32"
+	Rule type      = "2"
+	Rule name      = "Rule_5"
+	TargetType     = "1"
+	TargetTypeInfo = ""
+	ReplacedValue  = "123892.931875253zDHcHtcpziDDDDDDDicDzptfzV"
+	ReplacePos     = "0"
+
+Debug Message:
+	Rules could not be applied to http://127.0.0.1:1080/WebTours/nav.pl?in=home
+
+Debug Message:
+	TaskID=32  URL=http://127.0.0.1:1080/WebTours/login.pl
+
+Debug Message:
+	TaskID=35  URL=http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home
+
+Debug Message:
+	Rules could not be applied to http://127.0.0.1:1080/WebTours/welcome.pl?signOff=1
+
+Debug Message:
+	Rules could not be applied to http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home
+
+Debug Message:
+	TaskID=55  URL=http://127.0.0.1:1080/WebTours/welcome.pl?signOff=1
+
+Debug Message:
+	TaskID=58  URL=http://127.0.0.1:1080/WebTours/nav.pl?in=home
+
+Debug Message:
+	TaskID=59  URL=http://127.0.0.1:1080/WebTours/home.html
+

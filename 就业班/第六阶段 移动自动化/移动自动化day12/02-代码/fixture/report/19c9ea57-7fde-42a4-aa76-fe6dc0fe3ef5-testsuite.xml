@@ -1,0 +1,64 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1528853746014" stop="1528853746271">
+  <name>test_login</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1528853746014" status="failed" stop="1528853746248">
+      <name>TestLogin.test_login1[1]</name>
+      <failure>
+        <message>AssertionError: assert (1 % 3) == 0</message>
+        <stack-trace>self = &lt;test_login.TestLogin object at 0x10fae83c8&gt;, data = 1
+
+    def test_login1(self, data):
+        print("test_login1")
+&gt;       assert data % 3 == 0
+E       assert (1 % 3) == 0
+
+scripts/test_login.py:19: AssertionError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="4666-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528853746251" status="failed" stop="1528853746264">
+      <name>TestLogin.test_login1[2]</name>
+      <failure>
+        <message>AssertionError: assert (2 % 3) == 0</message>
+        <stack-trace>self = &lt;test_login.TestLogin object at 0x10fae8f28&gt;, data = 2
+
+    def test_login1(self, data):
+        print("test_login1")
+&gt;       assert data % 3 == 0
+E       assert (2 % 3) == 0
+
+scripts/test_login.py:19: AssertionError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="4666-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528853746267" status="passed" stop="1528853746271">
+      <name>TestLogin.test_login1[3]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="4666-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

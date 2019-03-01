@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Shell介绍 | Shell</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../01day/section1.2.html" />
+    
+    
+    <link rel="prev" href="../01day/index.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.1"
+        data-chapter-title="Shell介绍"
+        data-filepath="01day/section1.1.md"
+        data-basepath=".."
+        data-revision="Fri Apr 13 2018 16:49:57 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Shell
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="01day/index.html">
+            
+                
+                    <a href="../01day/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第1章-Shell基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.1" data-path="01day/section1.1.html">
+            
+                
+                    <a href="../01day/section1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Shell介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01day/section1.2.html">
+            
+                
+                    <a href="../01day/section1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Shell脚本规范
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01day/section1.3.html">
+            
+                
+                    <a href="../01day/section1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Shell变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="01day/section1.4.html">
+            
+                
+                    <a href="../01day/section1.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        Shell流程控制语句
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="01day/section1.5.html">
+            
+                
+                    <a href="../01day/section1.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        Shell函数
+                    </a>
+            
+            
+        </li>
+    
+        
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Shell</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="shell&#x4ECB;&#x7ECD;"><center>Shell&#x4ECB;&#x7ECD;</center></h1>
+<hr>
+<h2 id="&#x76EE;&#x6807;">&#x76EE;&#x6807;</h2>
+<pre><code>1. &#x4E86;&#x89E3;&#x4EC0;&#x4E48;&#x662F;shell
+2. &#x4F53;&#x9A8C;shell&#x7F16;&#x5199;&#x4E0E;&#x6267;&#x884C;
+</code></pre><hr>
+<h2 id="1-shell&#x5FEB;&#x901F;&#x5165;&#x95E8;">1. Shell&#x5FEB;&#x901F;&#x5165;&#x95E8;</h2>
+<h3 id="11-&#x4EC0;&#x4E48;&#x662F;shell">1.1 &#x4EC0;&#x4E48;&#x662F;shell</h3>
+<pre><code>1. &#x5728;&#x8BA1;&#x7B97;&#x673A;&#x79D1;&#x5B66;&#x4E2D;&#xFF0C;shell(&#x58F3;)&#x662F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x58F3;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x76F8;&#x5BF9;&#x4E8E;shell&#x6765;&#x8BF4;&#x4E3A;&#x6838;
+2. shell&#x662F;&#x7528;&#x6237;&#x4E0E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E4B;&#x95F4;&#x7684;&#x63A5;&#x53E3;&#x7A0B;&#x5E8F;
+3. shell&#x662F;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#x5668;-shell&#x81EA;&#x5DF1;&#x6709;&#x5185;&#x7F6E;&#x7684;&#x547D;&#x4EE4;&#x96C6;&#xFF0C;shell&#x811A;&#x672C;&#x7F16;&#x7A0B;&#x5C31;&#x662F;&#x64CD;&#x4F5C;&#x8FD9;&#x4E9B;&#x547D;&#x4EE4;
+</code></pre><p><img src="../01img/shell01.jpg" alt="shell&#x4F4D;&#x7F6E;&#x56FE;"></p>
+<h3 id="12-shell&#x6267;&#x884C;&#x539F;&#x7406;">1.2 shell&#x6267;&#x884C;&#x539F;&#x7406;</h3>
+<pre><code>&#x9996;&#x5148;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x4E3A;&#x5185;&#x90E8;&#x547D;&#x4EE4;&#xFF0C;&#x5426;&#x7684;&#x8BDD;&#x5219;&#x5728;&#x6307;&#x5B9A;&#x7684;&#x641C;&#x7D22;&#x8DEF;&#x5F84;&#x4E2D;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x4E3A;&#x53EF;&#x6267;&#x884C;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x5426;
+&#x7684;&#x8BDD;&#x63D0;&#x793A;:&#x672A;&#x627E;&#x5230;&#x547D;&#x4EE4;&#x6216;&#x4E0D;&#x662F;&#x5185;&#x90E8;&#x6216;&#x5916;&#x90E8;&#x547D;&#x4EE4;
+</code></pre><h3 id="13-&#x4E3A;&#x4EC0;&#x4E48;&#x5B66;&#x4E60;shell">1.3 &#x4E3A;&#x4EC0;&#x4E48;&#x5B66;&#x4E60;shell</h3>
+<pre><code>Linux&#x7CFB;&#x7EDF;&#x4E2D;&#x6709;&#x5F88;&#x591A;&#x547D;&#x4EE4;&#xFF0C;shell&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x547D;&#x4EE4;&#x96C6;&#x5408;&#xFF0C;&#x901A;&#x8FC7;&#x6267;&#x884C;shell&#x811A;&#x672C;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x6307;&#x5B9A;&#x7684;&#x9700;&#x6C42;&#x529F;&#x80FD;&#xFF1B;
+</code></pre><h3 id="14-shell&#x5206;&#x7C7B;">1.4 shell&#x5206;&#x7C7B;</h3>
+<pre><code>1. &#x56FE;&#x5F62;&#x754C;&#x9762;shell
+2. &#x547D;&#x4EE4;&#x884C;shell
+</code></pre><h4 id="&#x56FE;&#x5F62;&#x754C;&#x9762;shell&#x3010;&#x4E86;&#x89E3;&#x3011;">&#x56FE;&#x5F62;&#x754C;&#x9762;shell&#x3010;&#x4E86;&#x89E3;&#x3011;</h4>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;
+    &#x901A;&#x8FC7;&#x56FE;&#x5F62;&#x754C;&#x9762;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x6216;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5E38;&#x7528;&#x7684;&#x684C;&#x9762;&#x7CFB;&#x7EDF; 
+&#x5982;&#xFF1A;
+    windows&#x684C;&#x9762;&#x7CFB;&#x7EDF;
+</code></pre><h4 id="&#x547D;&#x4EE4;&#x884C;shell&#x3010;&#x91CD;&#x70B9;&#x3011;">&#x547D;&#x4EE4;&#x884C;shell&#x3010;&#x91CD;&#x70B9;&#x3011;</h4>
+<pre><code>&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x5F62;&#x5F0F;&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x6216;&#x5F15;&#x7528;&#x7A0B;&#x5E8F;&#xFF1B;
+&#x5982;&#xFF1A;
+    windows --&gt;cmd.exe
+    linux --&gt;bash/..&#x3010;&#x672C;&#x9636;&#x6BB5;&#x5B66;&#x4E60;&#x3011;
+&#x63D0;&#x793A;&#xFF1A;
+    1. &#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x5E38;&#x8BF4;&#x7684;shell&#x811A;&#x672C;&#x7F16;&#x7A0B;&#x5C31;&#x662F;&#x6307;linux&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;shell&#x7F16;&#x7A0B;
+    2. linux&#x4E2D;&#x7684;shell&#x6709;&#x5F88;&#x591A;&#x79CD;&#xFF0C;&#x5982;&#xFF1A;sh/csh/ksh/..&#x7B49;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x53EA;&#x5B66;&#x4E60;&#x73B0;&#x9636;&#x6BB5;shell&#x7F16;&#x7A0B;&#x6700;&#x5E38;&#x7528;&#x7684;bash shell
+</code></pre><h4 id="&#x5982;&#x4F55;&#x67E5;&#x770B;linux&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;shell&#x7C7B;&#x578B;&#x548C;&#x652F;&#x6301;&#x7684;shell&#x7C7B;&#x578B;&#xFF1F;">&#x5982;&#x4F55;&#x67E5;&#x770B;Linux&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x7684;shell&#x7C7B;&#x578B;&#x548C;&#x652F;&#x6301;&#x7684;shell&#x7C7B;&#x578B;&#xFF1F;</h4>
+<p><img src="../01img/shell02.png" alt="&#x67E5;&#x770B;shell&#x7C7B;&#x578B;">            </p>
+<pre><code>1. &#x67E5;&#x770B;&#x9ED8;&#x8BA4;shell&#x7C7B;&#x578B;                    
+    &#x6253;&#x5F00;&#x547D;&#x4EE4;&#x884C;&#x6267;&#x884C;&#xFF1A;echo $SHELL
+        1). echo:&#x663E;&#x793A;&#x8F93;&#x51FA;&#x6307;&#x5B9A;&#x5185;&#x5BB9;
+        2). $SHELL:SHELL&#x4E3A;&#x53D8;&#x91CF;&#x540D;&#x79F0;&#xFF0C;$&#x4E3A;&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x7B26;
+        &#x6CE8;&#x610F;&#xFF1A;$SHELL&#xFF1A;&#x4E3A;&#x5927;&#x5199;            
+</code></pre><p><img src="../01img/shell03.png" alt="&#x67E5;&#x770B;shell&#x652F;&#x6301;&#x7C7B;&#x578B;">                </p>
+<pre><code>2. &#x67E5;&#x770B;&#x652F;&#x6301;&#x7684;shell&#x7C7B;&#x578B;
+    &#x6253;&#x5F00;&#x547D;&#x4EE4;&#x884C;&#x6267;&#x884C;&#xFF1A;cat /etc/shells
+        1). cat:&#x67E5;&#x770B;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x547D;&#x4EE4;
+        2).  /etc/shells:&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x53CA;&#x6587;&#x4EF6;&#x540D;
+</code></pre><h3 id="15-shell&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;">1.5 shell&#x7684;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;</h3>
+<pre><code>1. &#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x76F4;&#x63A5;&#x8F93;&#x5165;
+2. &#x901A;&#x8FC7;&#x7F16;&#x8F91;&#x811A;&#x672C;
+</code></pre><h4 id="&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x76F4;&#x63A5;&#x8F93;&#x5165;">&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x76F4;&#x63A5;&#x8F93;&#x5165;</h4>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x6A21;&#x5F0F;&#x8F93;&#x5165;&#x547D;&#x4EE4;&#x5E76;&#x6267;&#x884C;
+&#x5982;&#xFF1A;
+    1). echo hello
+    2). echo 123
+
+&#x63D0;&#x793A;&#xFF1A;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x6A21;&#x5F0F;&#x4E3A;&#x5355;&#x884C;&#x6267;&#x884C;&#xFF0C;&#x65E0;&#x6CD5;&#x4E00;&#x6B21;&#x591A;&#x884C;&#x811A;&#x672C;&#x6267;&#x884C;
+</code></pre><h4 id="&#x901A;&#x8FC7;&#x7F16;&#x8F91;&#x811A;&#x672C;">&#x901A;&#x8FC7;&#x7F16;&#x8F91;&#x811A;&#x672C;</h4>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;&#x901A;&#x8FC7;vi&#x6216;vim&#x6765;&#x7F16;&#x8F91;&#x811A;&#x672C;&#x6587;&#x4EF6;(.sh)(&#x5982;&#x679C;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;&#x5219;&#x5148;&#x521B;&#x5EFA;&#x7A7A;&#x811A;&#x672C;&#x6587;&#x4EF6;&#x5728;&#x7F16;&#x8F91;&#x6587;&#x4EF6;)
+
+&#x63D0;&#x793A;&#xFF1A;
+    1). vi&#xFF1A;&#x7F16;&#x8F91;&#x5668;
+    2). vim:vi&#x7684;&#x5347;&#x7EA7;&#x7248;&#xFF0C;&#x5B8C;&#x5168;&#x517C;&#x5BB9;vi&#xFF0C;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x66F4;&#x9002;&#x5408;&#x7F16;&#x8F91;&#x4EE3;&#x7801;&#x811A;&#x672C;&#xFF0C;vi&#x5219;&#x591A;&#x7528;&#x4E8E;&#x7F16;&#x8F91;&#x6587;&#x672C;&#x3010;&#x63A8;&#x8350; vim&#x3011;
+    3). &#x901A;&#x8FC7;&#x6587;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#xFF0C;&#x53EF;&#x4EE5;&#x4E00;&#x6B21;&#x6267;&#x884C;&#x591A;&#x884C;&#x547D;&#x4EE4;
+</code></pre><h4 id="&#x7EC3;&#x4E60;1">&#x7EC3;&#x4E60;1</h4>
+<pre><code>&#x9700;&#x6C42;&#xFF1A;&#x65B0;&#x5EFA;test01.sh&#x811A;&#x672C;&#x901A;&#x8FC7;&#x811A;&#x672C;&#x7684;&#x65B9;&#x5F0F;&#x5206;&#x522B;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x6307;&#x4EE4;
+    1). echo hello
+    2). echo shell
+</code></pre><h5 id="&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;&#x5206;&#x6790;">&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;&#x5206;&#x6790;</h5>
+<pre><code>1. &#x6253;&#x5F00;/&#x65B0;&#x5EFA;&#x811A;&#x672C;&#x6587;&#x4EF6; --&gt; vim test01.sh
+2. &#x6253;&#x5F00;&#x63D2;&#x5165;&#x6A21;&#x5F0F; &#x5B57;&#x6BCD;a&#x3001;i&#x3001;o
+3. &#x6307;&#x5B9A;&#x811A;&#x672C;&#x7F16;&#x8BD1;&#x5668; --&gt; #!/bin/bash
+4. &#x6267;&#x884C;&#x8BED;&#x53E5; --&gt; echo hello
+5. &#x6267;&#x884C;&#x8BED;&#x53E5; --&gt; echo shell
+6. &#x4FDD;&#x5B58;&#x811A;&#x672C; --&gt; ESC&#x9000;&#x51FA;&#x63D2;&#x5165;&#x6A21;&#x5F0F;--&gt;:wq
+   (:wq--&gt;&#x5192;&#x53F7;&#x4E3A;&#x8FDB;&#x5165;&#x547D;&#x4EE4;&#xFF1B;w:&#x4E3A;&#x4FDD;&#x5B58;&#x811A;&#x672C;&#xFF1B;q&#xFF1A;&#x4E3A;&#x9000;&#x51FA;&#x811A;&#x672C;&#xFF1B;)
+7. &#x6267;&#x884C;&#x811A;&#x672C; bash test01.sh
+</code></pre><h4 id="&#x7EC3;&#x4E60;1-&#x603B;&#x7ED3;">&#x7EC3;&#x4E60;1 &#x603B;&#x7ED3;</h4>
+<pre><code>1. #!/bin/bash&#x4E3A;:&#x6307;&#x5B9A;&#x7F16;&#x8BD1;&#x811A;&#x672C;&#x7684;&#x7F16;&#x8BD1;&#x5668;
+2. bash test01.sh&#x4E3A;&#xFF1A;&#x6267;&#x884C;&#x811A;&#x672C;&#x8BED;&#x53E5;
+</code></pre><hr>
+<h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<pre><code>1. &#x67E5;&#x770B;&#x9ED8;&#x8BA4;shell
+2. &#x67E5;&#x770B;&#x652F;&#x6301;&#x7684;shell
+3. cat&#x547D;&#x4EE4;
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../01day/index.html" class="navigation navigation-prev " aria-label="Previous page: 第1章-Shell基础"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../01day/section1.2.html" class="navigation navigation-next " aria-label="Next page: Shell脚本规范"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

@@ -1,0 +1,72 @@
+
+
+软件安装总结
+解压 tar 作用：解压文件，获取真正的配置文件
+配置 configure 作用：根据默认的配置项或者更改配置项，生成编译配置文件(Makefile)
+编译 make 作用：根据 Makefile 内容，编译生成指定的软件所需要的所有文件
+安装 make install 作用：将编译生成的所有文件，转移到软件指定安装的目录下面
+
+nginx操作
+
+	启动nginx
+	/data/server/nginx/sbin/nginx
+
+	启动后检查
+	netstat -tnulp | grep nginx
+
+
+mysql操作
+
+	启动数据库
+	service mysqld start
+
+	检查数据库启动状态
+	netstat -tnulp|grep mysqld
+
+	客户端连接服务端
+	mysq -uroot
+
+php操作
+
+	启动php
+	/data/server/php/sbin/php-fpm
+
+	关闭php
+	pkill php-fpm
+
+	netstat -tnulp|grep php
+
+
+一个网站运行需要的环境
+
+	一个服务器（linux系统）
+	web服务软件（nginx）
+	php软件
+	数据库（mysql）
+
+网站要正常访问
+
+	nginx，php，mysql都启动
+
+
+linux中的navicat过期后，删除/home/admin下的.navicat64文件夹即可
+
+rm -rf /home/admin/.navicat64
+
+
+
+1、linux中的navicat连接windows中的mysql服务端
+
+	输入ip、端口、用户名、密码
+
+2、windows中的navicat连接linux中的mysql服务器
+
+	设置mysql支持远程连接
+
+		修改一个root用户的host为%
+
+		flush privileges
+
+	输入ip、端口、用户名、密码
+
+

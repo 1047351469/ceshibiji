@@ -1,0 +1,4 @@
+"Status","Name","Duration in ms","Description"
+"passed","test_contact.TestContact.test_login1","4",""
+"passed","test_contact.TestContact.test_login","9",""
+"failed","test_contact.TestContact.test_login2","226",""

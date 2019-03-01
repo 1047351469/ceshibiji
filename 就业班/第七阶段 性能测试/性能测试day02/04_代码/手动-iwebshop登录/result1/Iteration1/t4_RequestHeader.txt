@@ -1,0 +1,9 @@
+GET /iwebshop/index.php?controller=simple&action=logout HTTP/1.1
+Referer: http://localhost/iwebshop/index.php?controller=simple&action=login_act
+User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT)
+Accept-Encoding: gzip, deflate
+Accept: */*
+Connection: Keep-Alive
+Host: localhost
+Cookie: iweb_safecode=80cf5b8e92MDA4OTkxMjgyOTEyNjU4ZzZlYmM%2BMWo0MWU5NTFmOTsxPDBnZGRiZDEwajI5NzJhZmZuMDAxMDE0ZmExOTNlaQ; iweb_user_id=ce583480e0MDQ1MDAwMjY1N2I9aGZvMjAxYTBmMGc5MjhgYzM4bGIy; iweb_username=ce583480e0MDQ1MDAwMjY1N2VsMGQ%2BMjtnYjExY2BtZ2JhZTg6ajRibGppbw; iweb_head_ico=5fe0dada63NTMwNDcxOTcwMGNnYD4%2FPDdjOjxsYzE9Z2U2ZjQzamc; iweb_user_pwd=80cf5b8e92MDA4OTkxMjgyOTk0MGE5NmZkPTEwajtnZjI6ODJibzhiOTBlZGQzOTc5a2E1OWFiYmU9NmMwNDBgMjNgOD4zbQ; PHPSESSID=7lj906i6028jvskqpir6p1ija5
+

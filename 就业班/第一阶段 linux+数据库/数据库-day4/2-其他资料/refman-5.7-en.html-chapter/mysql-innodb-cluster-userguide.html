@@ -1,0 +1,2205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Chapter 20 InnoDB Cluster</title>
+<link rel="stylesheet" href="mvl.css" type="text/css" />
+<meta name="generator" content="DocBook XSL Stylesheets + chunker.py v1.9.2" />
+<link rel="start" href="index.html" title="{book-title}" />
+<link rel="up" href="" title="" />
+<link rel="prev" href="document-store.html" title="Chapter 19 Using MySQL as a Document Store" />
+<link rel="next" href="mysql-cluster.html" title="Chapter 21 MySQL NDB Cluster 7.5 and NDB Cluster 7.6" />
+<script language="javascript" type="text/javascript">
+  function addOnload(theFunc)
+  {
+    var previous = window.onload;
+    if (typeof window.onload != 'function')
+    {
+      window.onload = theFunc;
+    }
+    else
+    {
+      window.onload = function()
+      {
+        previous();
+        theFunc();
+      }
+    }
+  }
+
+  addOnload(function()
+  {
+    var base = new Date(1503633533*1000);
+    var now = new Date();
+    var diff = ((now-base)/1000)/(24*3600);
+
+    if (diff > 90) {
+      var nodes = document.getElementsByClassName('titlepage');
+      nodes[0].innerHTML = '<p style="border: 5px #ff0000 solid; padding: 5px; margin 5px">' +
+        'This copy of the manual is more than 90 days old. We encourage you to download a ' +
+        'new version from <a href="http://dev.mysql.com">dev.mysql.com/doc</a>.</p>' + nodes[0].innerHTML;
+    }
+  });
+</script>
+<noscript></noscript>
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<div class="navheader">
+<table width="100%" summary="Navigation header">
+<tr>
+<th colspan="3" align="center">Chapter 20 InnoDB Cluster</th>
+</tr>
+<tr>
+<td width="20%" align="left"><a accesskey="p" href="document-store.html">Prev</a> </td>
+<th width="60%" align="center"></th>
+<td width="20%" align="right"> <a accesskey="n" href="mysql-cluster.html">Next</a></td>
+</tr>
+</table>
+<hr>
+</div>
+<div class="chapter">
+<div class="titlepage">
+<div>
+<div>
+<h1 class="title"><a name="mysql-innodb-cluster-userguide"></a>Chapter 20 InnoDB Cluster</h1>
+
+</div>
+
+</div>
+
+</div>
+<div class="toc">
+<p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="mysql-innodb-cluster-userguide.html#mysql-innodb-cluster-introduction">20.1 Introducing InnoDB Cluster</a></span></dt><dt><span class="section"><a href="mysql-innodb-cluster-userguide.html#mysql-innodb-cluster-installing">20.2 Installing InnoDB Cluster</a></span></dt><dt><span class="section"><a href="mysql-innodb-cluster-userguide.html#mysql-innodb-cluster-getting-started">20.3 Getting Started with InnoDB Cluster</a></span></dt><dt><span class="section"><a href="mysql-innodb-cluster-userguide.html#mysql-innodb-cluster-working-with-cluster">20.4 Working with InnoDB cluster</a></span></dt><dt><span class="section"><a href="mysql-innodb-cluster-userguide.html#mysql-innodb-cluster-working-with-production-deployment">20.5 Working with a Production Deployment</a></span></dt><dt><span class="section"><a href="mysql-innodb-cluster-userguide.html#mysql-innodb-cluster-working-with-group-replication">20.6 Creating an InnoDB Cluster From an Existing Group Replication Deployment</a></span></dt><dt><span class="section"><a href="mysql-innodb-cluster-userguide.html#mysql-innodb-cluster-securing">20.7 Securing your Cluster</a></span></dt><dt><span class="section"><a href="mysql-innodb-cluster-userguide.html#mysql-innodb-cluster-limitations">20.8 Known Limitations</a></span></dt></dl>
+</div>
+<p>
+    This chapter covers MySQL InnoDB cluster, which combines various
+    MySQL technologies to enable you to create highly available clusters
+    of MySQL instances.
+</p>
+<div class="section">
+
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="mysql-innodb-cluster-introduction"></a>20.1 Introducing InnoDB Cluster</h2>
+</div>
+</div>
+</div>
+<p>
+      MySQL InnoDB cluster is a collection of products that work
+      together to provide a complete High Availability solution for
+      MySQL. A group of MySQL servers can be configured to create a
+      cluster using MySQL Shell. In the default single-primary mode,
+      the cluster of servers has a single read-write primary. Multiple
+      secondary servers are replicas of the primary. Creating a cluster
+      with at least three servers ensures a high availability cluster. A
+      client application is connected to the primary via MySQL Router. If
+      the primary fails, a secondary is automatically promoted to the
+      role of primary, and MySQL Router routes requests to the new primary.
+      Advanced users can also configure a cluster to have
+      multiple-primaries.
+</p>
+<div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Important
+</div>
+<p>
+        InnoDB cluster does not provide support for MySQL NDB Cluster.
+        NDB Cluster depends on the <a class="link" href="mysql-cluster.html" title="Chapter 21 MySQL NDB Cluster 7.5 and NDB Cluster 7.6"><code class="literal">NDB</code></a> storage
+        engine as well as a number of programs specific to NDB Cluster which
+        are not furnished with MySQL Server 5.7;
+        <code class="literal">NDB</code> is available only as part of the MySQL
+        NDB Cluster distribution. In addition, the MySQL server binary
+        (<a class="link" href="programs.html#mysqld" title="4.3.1 mysqld — The MySQL Server"><span class="command"><strong>mysqld</strong></span></a>) that is supplied with MySQL Server
+        5.7 cannot be used with NDB Cluster. For more
+        information about MySQL NDB Cluster, see
+        <a class="xref" href="mysql-cluster.html" title="Chapter 21 MySQL NDB Cluster 7.5 and NDB Cluster 7.6">Chapter 21, <i>MySQL NDB Cluster 7.5 and NDB Cluster 7.6</i></a>.
+        <a class="xref" href="mysql-cluster.html#mysql-cluster-compared" title="21.1.5 MySQL Server Using InnoDB Compared with NDB Cluster">Section 21.1.5, “MySQL Server Using InnoDB Compared with NDB Cluster”</a>, provides information
+        about the differences between the <code class="literal">InnoDB</code> and
+        <code class="literal">NDB</code> storage engines.
+</p>
+</div>
+<p>
+      To provide a highly available database solution, InnoDB cluster
+      uses the following MySQL technologies:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <a class="link" href="mysql-shell.html" title="Chapter 18 MySQL Shell User Guide">MySQL Shell</a> 1.0.9 or
+          higher. Includes the AdminAPI, which enables you to
+          script the creation and administration of an InnoDB cluster,
+          using either JavaScript or Python.
+        </p></li><li class="listitem"><p>
+          <a class="ulink" href="http://dev.mysql.com/doc/mysql-router/2.1/en/" target="_top">MySQL Router</a> 2.1.3 or higher.
+          Caches the metadata of the InnoDB cluster and routes
+          read/write client requests to the current primary. If the
+          primary instance becomes unavailable, MySQL Router automatically
+          routes client requests to a promoted secondary (the new
+          primary).
+        </p></li><li class="listitem"><p>
+          MySQL Server 5.7.17 or higher. This provides the
+          MySQL Group Replication mechanism to allow data to be
+          replicated within the cluster, with built-in failover. For
+          more information on MySQL Group Replication, see
+          <a class="xref" href="group-replication.html" title="Chapter 17 Group Replication">Chapter 17, <i>Group Replication</i></a> which explains the
+          technical details used by InnoDB cluster.
+</p></li></ul>
+</div>
+<p>
+      An overview of how these technologies work together is shown in
+      the following diagram:
+
+</p>
+<div class="figure">
+<a name="innodb-cluster-overview-image"></a><p class="title"><b>Figure 20.1 InnoDB cluster overview</b></p>
+<div class="figure-contents">
+
+<div class="mediaobject">
+<img src="images/innodb_cluster_overview.png" width="600" height="753" alt="InnoDB cluster overview">
+</div>
+
+</div>
+
+</div>
+<p><br class="figure-break">
+    </p><p>
+      For additional information about the AdminAPI available in
+      MySQL Shell, see the
+      <a class="ulink" href="http://dev.mysql.com/doc/dev//mysqlsh-api-javascript/1.0/" target="_top">JavaScript</a>
+      and
+      <a class="ulink" href="http://dev.mysql.com/doc/dev//mysqlsh-api-python/1.0/" target="_top">Python</a>
+      MySQL Shell reference documentation.
+</p>
+</div>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="mysql-innodb-cluster-installing"></a>20.2 Installing InnoDB Cluster</h2>
+
+</div>
+
+</div>
+
+</div>
+<p>
+      Before installing InnoDB cluster, ensure that the server
+      instances you intend to use meet the following requirements.
+</p>
+<div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Important
+</div>
+<p>
+        When using a sandbox deployment the instances are configured to
+        meet these requirements automatically.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="mysql-innodb-cluster-requirements-"></a>InnoDB cluster Requirements</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        InnoDB cluster uses Group Replication and therefore your
+        server instances must meet the same requirements. See
+        <a class="xref" href="group-replication.html#group-replication-requirements" title="17.7.1 Group Replication Requirements">Section 17.7.1, “Group Replication Requirements”</a>.
+      </p><p>
+        In addition, the provisioning scripts that MySQL Shell uses to
+        configure servers for use in InnoDB cluster require access to
+        Python (2.7 and above). On Windows MySQL Shell includes Python
+        and no user configuration is required. On Unix Python must be
+        found as part of the enviroment. To check that your system has
+        Python configured correctly issue:
+      </p><pre class="programlisting">$ <strong class="userinput"><code>/usr/bin/env python</code></strong></pre><p>
+        If a Python interpreter starts, no further action is required.
+        If the previous command fails, create a soft link between
+        <code class="literal">/usr/bin/python</code> and your chosen Python
+        binary.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="mysql-innodb-cluster-methods-installing-"></a>Methods of Installing</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        The following methods of installing InnoDB cluster are
+        available:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Downloading and installing the components using the
+            following documentation:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>
+                MySQL Server 5.7.17 or higher. For details, see
+                <a class="xref" href="installing.html" title="Chapter 2 Installing and Upgrading MySQL">Chapter 2, <i>Installing and Upgrading MySQL</i></a>.
+              </p></li><li class="listitem"><p>
+                MySQL Shell 1.0.9 or higher. For details, see
+                <a class="xref" href="document-store.html#document-store-shell-install" title="19.3.1 Installing MySQL Shell">Section 19.3.1, “Installing MySQL Shell”</a>.
+              </p></li><li class="listitem"><p>
+                MySQL Router 2.1.3 or higher. For details, see
+                <a class="ulink" href="http://dev.mysql.com/doc/mysql-router/2.1/en/mysql-router-installation.html" target="_top">Installation</a>.
+</p></li></ul>
+</div>
+</li><li class="listitem"><p>
+            Using the MySQL Installer for Windows. For details, see
+            <a class="xref" href="installing.html#mysql-installer-workflow-innodb-cluster" title="2.3.3.2.1 InnoDB Cluster Sandbox Test Setup">Section 2.3.3.2.1, “InnoDB Cluster Sandbox Test Setup”</a>.
+</p></li></ul>
+</div>
+
+</div>
+
+</div>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="mysql-innodb-cluster-getting-started"></a>20.3 Getting Started with InnoDB Cluster</h2>
+
+</div>
+
+</div>
+
+</div>
+<p>
+      This section explains how to set up a single-primary
+      InnoDB cluster and configure MySQL Router to achieve high
+      availability. You create and administer your InnoDB clusters using
+      MySQL Shell with the included AdminAPI. Familiarity with
+      MySQL Shell is assumed, see <a class="xref" href="mysql-shell.html" title="Chapter 18 MySQL Shell User Guide">Chapter 18, <i>MySQL Shell User Guide</i></a> for
+      further information.
+    </p><p>
+      This tutorial shows how to use MySQL Shell to create an
+      InnoDB cluster consisting of a MySQL Server instance which
+      provides the seed instance of the InnoDB cluster and holds the
+      initial data set. Two more sandbox MySQL server instances are
+      created and added to the InnoDB cluster. Then MySQL Router is
+      deployed and used to route connections to the InnoDB cluster,
+      and high availability is tested. These are the steps:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-dba-module" title="Using AdminAPI">Using AdminAPI</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-deploy-sandbox-instances" title="Deploying Sandbox Instances">Deploying Sandbox Instances</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-create-innodb-cluster" title="Creating the InnoDB Cluster">Creating the InnoDB Cluster</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-obtain-cluster-instance-variable" title="Obtaining the cluster Instance Variable">Obtaining the <code class="literal">cluster</code> Instance Variable</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-add-instances-innodb-cluster" title="Adding Instances to an InnoDB Cluster">Adding Instances to an InnoDB Cluster</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-deploy-router" title="Deploying MySQL Router">Deploying MySQL Router</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-test-failover" title="Testing Failover">Testing Failover</a></p></li></ul>
+</div>
+
+<div class="simplesect">
+
+<div class="titlepage">
+<div>
+
+<div class="simple">
+<h3 class="title"><a name="idc-dba-module"></a>Using AdminAPI</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        MySQL Shell includes the AdminAPI, which is accessed
+        through the <code class="literal">dba</code> global variable and its
+        associated methods. The <code class="literal">dba</code> variable's
+        methods enable you to administer your cluster, for example you
+        use the <code class="literal">dba.deploySandboxInstance()</code> method to
+        add a sandbox MySQL instance.
+      </p><p>
+        To list all available <code class="literal">dba</code> commands, use the
+        <code class="literal">dba.help()</code> method. You can obtain detailed
+        information for a specific method using the general format
+        <code class="literal">object.help('methodname')</code>. For example:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.help('getCluster')</code></strong>
+
+Retrieves a cluster from the Metadata Store.
+
+SYNTAX
+  &lt;Dba&gt;.getCluster([name])
+
+WHERE
+  name: Parameter to specify the name of the cluster to be returned.
+
+DESCRIPTION
+
+If name is not specified, the default cluster will be returned.
+
+If name is specified, and no cluster with the indicated name is found, an error
+will be raised.
+</pre><p>
+        In addition to this documentation, there is developer
+        documentation for all <code class="literal">dba</code> methods in the
+        <a class="ulink" href="http://dev.mysql.com/doc/dev//mysqlsh-api-javascript/1.0/" target="_top">JavaScript</a>
+        and
+        <a class="ulink" href="http://dev.mysql.com/doc/dev//mysqlsh-api-python/1.0/" target="_top">Python</a>
+        developer documentation.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-deploy-sandbox-instances"></a>Deploying Sandbox Instances</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        Initially deploying and using local sandbox instances of MySQL
+        is a good way to start your exploration of InnoDB cluster. You
+        can fully test out InnoDB cluster locally, prior to deployment
+        on your production servers. MySQL Shell has built in
+        functionality for creating sandbox instances. MySQL Shell
+        creates the sandbox instances correctly configured to work with
+        Group Replication in a locally deployed clustered scenario.
+</p>
+<div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Important
+</div>
+<p>
+          Sandbox instance are only suitable for deploying and running
+          on your local machine. In a production environment the MySQL
+          Server instances would be deployed on various hosts on the
+          network. This is explained later in this guide.
+
+          
+</p>
+</div>
+<p>
+        The <code class="literal">dba</code> module provides several functions for
+        administration of sandbox instances. For this example setup, you
+        create three sandbox instances. The AdminAPI provides a
+        function for that purpose:
+        <code class="literal">dba.deploySandboxInstance()</code>.
+      </p><p>
+        Start MySQL Shell from a command prompt by issuing the
+        command:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>mysqlsh</code></strong>
+</pre><p>
+        MySQL Shell provides two scripting languages: JavaScript and
+        Python. Throughout this guide MySQL Shell is used primarily in
+        JavaScript mode
+
+        
+
+        . When MySQL Shell starts it is in JavaScript mode by default.
+        You switch into JavaScript mode, Python mode and SQL mode using
+        the commands <code class="literal">\js</code>, <code class="literal">\py</code>, and
+        <code class="literal">\sql</code>. Ensure you are in JavaScript mode by
+        issuing the <code class="literal">\js</code> command, then execute:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.deploySandboxInstance(3310)</code></strong>
+</pre>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+          Semi-colons are not required at the end of the line in
+          JavaScript mode.
+</p>
+</div>
+<p>
+        The argument passed to
+        <code class="literal">deploySandboxInstance()</code> is the TCP port
+        number where the MySQL Server instance listens for connections.
+        By default the sandbox is created in a directory named
+        <code class="literal">$HOME/mysql-sandboxes/<em class="replaceable"><code>port</code></em></code>
+        on Unix systems. For Microsoft Windows systems the directory is
+        <code class="literal">%userprofile%\MySQL\mysql-sandboxes\<em class="replaceable"><code>port</code></em></code>.
+      </p><p>
+        The root password for the instance is prompted for.
+</p>
+<div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Important
+</div>
+<p>
+          Each instance has its own password. Defining the same password
+          for all sandboxes in this tutorial makes it easier, but
+          remember to use different passwords for each instance on
+          production systems.
+</p>
+</div>
+<p>
+        To add further server instances, use
+        <code class="literal">deploySandboxInstance()</code>. For this example
+        sandbox cluster add two more instances using different port
+        numbers by issuing:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.deploySandboxInstance(3320)</code></strong>
+mysql-js&gt; <strong class="userinput"><code>dba.deploySandboxInstance(3330)</code></strong>
+</pre><p>
+        You now have three MySQL server sandbox instances running on
+        ports 3310, 3320 and 3330.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-create-innodb-cluster"></a>Creating the InnoDB Cluster</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        The next step is to create the InnoDB cluster while connected
+        to the seed MySQL Server instance. The seed instance is the
+        instance that you are connected to via MySQL Shell and that
+        you want to replicate to the other instances. In this example,
+        the sandbox instances are blank instances, therefore we can
+        choose any instance. In a production set up the seed instance
+        would be the one which contains your existing data set and would
+        be replicated to the other instances in the cluster.
+
+        
+      </p><p>
+        Connect MySQL Shell to the seed instance, in this case the one
+        at port 3310:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>\connect root@localhost:3310</code></strong>
+</pre><p>
+        The syntax <code class="literal">\connect</code> is a shortcut for the
+        MySQL Shell connect method <code class="literal">shell.connect()</code>.
+        Alternatively use the following command:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>shell.connect('root@localhost:3310')</code></strong>
+</pre><p>
+        Use the <code class="literal">createCluster()</code> method to create the
+        InnoDB cluster with the currently connected instance as the
+        seed:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>var cluster = dba.createCluster('testCluster')</code></strong>
+</pre><p>
+        The <code class="literal">createCluster()</code> method returns the
+        created cluster, the above statement assigns this to the
+        <code class="literal">cluster</code> variable. The parameter passed to the
+        <code class="literal">createCluster()</code> method is a symbolic name
+        given to this InnoDB cluster, in this case
+        <code class="literal">testCluster</code>. The resulting InnoDB cluster
+        is assigned to the <code class="literal">cluster</code> variable. This
+        function deploys the metadata to the selected instance,
+        configures it for Group Replication and adds the instance as the
+        seed of the new InnoDB cluster.
+      </p><p>
+        After validating that the instance is properly configured, it is
+        added to the InnoDB cluster as the seed instance and the
+        replication subsystem is started.
+      </p><p>
+        The provided sandbox instances are pre-configured to work with
+        Group Replication, but if you use a pre-existing instance, it is
+        possible that some configuration options might not be set in a
+        compatible way. The <code class="literal">createCluster()</code> command
+        ensures that the settings are correct and if not, it changes
+        their values. If a change requires MySQL Server to be restarted,
+        you are prompted to restart it manually whenever convenient.
+      </p><p>
+        In summary, when <code class="literal">dba.createCluster()</code> is
+        executed, the following steps are carried out:
+</p>
+<div class="orderedlist">
+<ol class="orderedlist" type="1"><li class="listitem"><p>
+            The InnoDB cluster Metadata Schema is created (if it does
+            not already exist) or is updated to the latest version.
+            Schema objects or columns are only added, never removed.
+          </p></li><li class="listitem"><p>
+            The new InnoDB cluster information, including the
+            specified name and password, is inserted into the
+            InnoDB cluster Metadata.
+          </p></li><li class="listitem"><p>
+            The seed instance is added to the InnoDB cluster.
+          </p></li><li class="listitem"><p>
+            The seed instance information is inserted into the
+            InnoDB cluster Metadata.
+</p></li></ol>
+</div>
+
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-obtain-cluster-instance-variable"></a>Obtaining the <code class="literal">cluster</code> Instance Variable</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        Once you have created a cluster, obtain the cluster instance
+        variable using a command such as:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>var cluster = dba.getCluster("testCluster")</code></strong>
+</pre><p>
+        You specify the name of the cluster you wish to obtain the
+        instance variable for. If you do not specify the name of the
+        cluster the default cluster is returned.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-add-instances-innodb-cluster"></a>Adding Instances to an InnoDB Cluster</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        The next step is to add secondary instances to the
+        InnoDB cluster. Any transactions that were executed by the
+        seed instance are re-executed by each secondary instance as it
+        is added. We use the sandbox instances that were created
+        earlier.
+      </p><p>
+        The seed instance in this example was recently created, so it is
+        nearly empty. Therefore, there is little data that needs to be
+        replicated from the seed instance to the secondary instances. In
+        a production environment, where you have an existing database on
+        the seed instance, you could use a tool such as MySQL Enterprise Backup to ensure
+        that the secondaries have matching data before replication
+        starts. This avoids the possibility of lengthy delays while data
+        replicates from the primary to the secondaries. Once the cluster
+        is formed, writes to the primary result in data being replicated
+        to the secondaries.
+      </p><p>
+        Add the second instance to the InnoDB cluster:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.addInstance('root@localhost:3320')</code></strong>
+</pre><p>
+        The root user's password is prompted for.
+      </p><p>
+        Add the third instance:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.addInstance('root@localhost:3330')</code></strong>
+</pre><p>
+        The root user's password is prompted for.
+      </p><p>
+        At this point you have created a cluster with three instances: a
+        primary, and two secondaries.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+          You could have added additional details to the logs when
+          adding an instance to a cluster. Pass in 'verbose' to enable
+          additional logging, so our last example would have looked like
+          this:
+
+          
+
+</p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.addInstance('root@localhost:3330', {verbose: true})</code></strong>
+</pre><p>
+</p>
+</div>
+<p>
+
+        You can only specify <code class="literal">localhost</code> in
+        <code class="literal">addInstance()</code> if the instance is a sandbox
+        instance. This also applies to the implicit
+        <code class="literal">addInstance()</code> after issuing
+        <code class="literal">createCluster()</code>.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-deploy-router"></a>Deploying MySQL Router</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        In order for client applications to handle failover, they need
+        to be aware of the InnoDB cluster topology. They also need to
+        know whether an instance is the <code class="literal">PRIMARY</code> in
+        single-primary mode, or is "R/W" in multi-primary mode. While it
+        is possible for applications to implement that logic, MySQL Router
+        provides this functionality for you and is designed for
+        InnoDB cluster.
+      </p><p>
+        The recommended deployment of MySQL Router is on the same host as
+        the application. In this tutorial, everything is running on a
+        single host, so you deploy MySQL Router to the same host.
+      </p><p>
+        Assuming MySQL Router is already installed (see
+        <a class="ulink" href="http://dev.mysql.com/doc/mysql-router/2.1/en/mysql-router-installation.html" target="_top">Installation</a>), the only required
+        step is to bootstrap it with the location of the
+        InnoDB cluster metadata server. The following does this using
+        all default settings:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>mysqlrouter --bootstrap root@localhost:3310 --user=mysqlrouter </code></strong>
+</pre><p>
+        You are prompted for the instance password and encryption key
+        for MySQL Router to use. This encryption key is used to encrypt the
+        instance password used by MySQL Router to connect to the cluster.
+        The ports you can use to connect to the InnoDB cluster are
+        also displayed.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+          Currently only Classic Protocol connections are supported
+          between MySQL Router and InnoDB cluster.
+</p>
+</div>
+<p>
+        MySQL Router connects to the InnoDB cluster, fetches its metadata
+        and configures itself for use. The generated configuration
+        creates two TCP ports: one for read-write sessions (which
+        redirects connections to "R/W" instances) and one for read-only
+        sessions (which redirects connections to one of the
+        <code class="literal">SECONDARY</code> instances).
+      </p><p>
+        Once bootstrapped and configured, start MySQL Router (or set up a
+        service for it to start automatically when the system boots):
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>mysqlrouter &amp;</code></strong>
+</pre><p>
+        You can now connect a MySQL client, such as MySQL Shell to one
+        of the incoming MySQL Router ports and see how the client gets
+        transparently connected to one of the InnoDB cluster
+        instances. To see which instance you are actually connected to,
+        simply query the <code class="literal">port</code> status variable.
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>mysqlsh --uri root@localhost:6442</code></strong>
+mysql-js&gt; <strong class="userinput"><code>\sql</code></strong>
+Switching to SQL mode... Commands end with ;
+mysql-sql&gt; <strong class="userinput"><code>select @@port;</code></strong>
++--------+
+| @@port |
++--------+
+|   3310 |
++--------+
+1 row in set (0.00 sec)
+</pre>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-test-failover"></a>Testing Failover</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        To test if failover works, simulate an unexpected halt by
+        killing the <code class="literal">PRIMARY</code> instance using the
+        <code class="literal">dba.killSandboxInstance()</code> function and check
+        that one of the other instances takes over automatically.
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.killSandboxInstance(3310)</code></strong>
+</pre><p>
+        Then you can again check which instance you are connected to.
+        The first <code class="literal">SELECT</code> statement fails as the
+        connection to the original <code class="literal">PRIMARY</code> was lost.
+        MySQL Shell automatically reconnects for you and when you
+        issue the command again the new port is confirmed.
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>\sql</code></strong>
+Switching to SQL mode... Commands end with ;
+mysql-sql&gt; <strong class="userinput"><code>SELECT @@port;</code></strong>
+ERROR: 2013 (HY000): Lost connection to MySQL server during query
+The global session got disconnected.
+Attempting to reconnect to 'root@localhost:6446'...
+The global session was successfully reconnected.
+mysql-sql&gt; <strong class="userinput"><code>select @@port;</code></strong>
++--------+
+| @@port |
++--------+
+|   3330 |
++--------+
+1 row in set (0.00 sec)
+</pre><p>
+        This shows that the InnoDB cluster provided us with automatic
+        failover, that MySQL Router has automatically reconnected us to the
+        new <code class="literal">PRIMARY</code> instance, and that we have high
+        availability.
+      </p><p>
+        You can bring the instance that you killed back online.
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.startSandboxInstance(3310)</code></strong>
+mysql-js&gt; <strong class="userinput"><code>cluster.rejoinInstance('root@localhost:3310')</code></strong>
+mysql-js&gt; <strong class="userinput"><code>cluster.status()</code></strong>
+</pre>
+</div>
+
+</div>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="mysql-innodb-cluster-working-with-cluster"></a>20.4 Working with InnoDB cluster</h2>
+
+</div>
+
+</div>
+
+</div>
+<p>
+      This section explains how to work with clusters, and how to handle
+      common administration tasks.
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-check-innodb-cluster-status" title="Checking the InnoDB Cluster Status">Checking the InnoDB Cluster Status</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-describe-structure-innodb-cluster" title="Describing the Structure of the InnoDB Cluster">Describing the Structure of the InnoDB Cluster</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-manage-sandbox-instances" title="Managing Sandbox Instances">Managing Sandbox Instances</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-remove-instances-from-innodb-cluster" title="Removing Instances from the InnoDB Cluster">Removing Instances from the InnoDB Cluster</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-rejoin-cluster" title="Rejoining a Cluster">Rejoining a Cluster</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-router-and-metadata-servers" title="MySQL Router and Metadata Servers">MySQL Router and Metadata Servers</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-dissolve-innodb-cluster" title="Dissolving InnoDB Cluster">Dissolving InnoDB Cluster</a></p></li><li class="listitem"><p><a class="xref" href="mysql-innodb-cluster-userguide.html#idc-use-mysql-shell-execute-script" title="Using MySQL Shell to Execute a Script">Using MySQL Shell to Execute a Script</a></p></li></ul>
+</div>
+
+<div class="simplesect">
+
+<div class="titlepage">
+<div>
+
+<div class="simple">
+<h3 class="title"><a name="idc-check-innodb-cluster-status"></a>Checking the InnoDB Cluster Status</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        Use the <code class="literal">Cluster</code> object's
+        <code class="literal">status()</code> method to check a cluster's status:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.status()</code></strong>
+</pre><p>
+        This retrieves the current InnoDB cluster status which the
+        server instance you are connected to is aware of and outputs a
+        status report. It is important to understand that the instance's
+        state in the cluster influences the information in the status
+        report. A member which has left the cluster would provide a
+        different view of the cluster compared to a instance which
+        belongs to the cluster.
+      </p><p>
+        The instance <span class="emphasis"><em>status</em></span> is one of the
+        following:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <code class="literal">ONLINE</code>: The instance is online and
+            participating in the cluster.
+          </p></li><li class="listitem"><p>
+            <code class="literal">OFFLINE</code>: The instance may have lost
+            connection to the other instances.
+          </p></li><li class="listitem"><p>
+            <code class="literal">RECOVERING</code>: The instance is attempting to
+            synchronize with the cluster by pulling in transactions it
+            needs before it can become an <code class="literal">ONLINE</code>
+            member.
+          </p></li><li class="listitem"><p>
+            <code class="literal">UNREACHABLE</code>: The instance has lost
+            communication with the cluster.
+          </p></li><li class="listitem"><p>
+            <code class="literal">ERROR</code>: The instance has encountered an
+            error during the recovery phase or while applying a
+            transaction.
+          </p></li><li class="listitem"><p>
+            <code class="literal">(MISSING)</code>: The state of an instance which
+            is part of the configured cluster, but is currently
+            unavailable.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+              The <code class="literal">MISSING</code> state is specific to InnoDB
+              cluster, it is not a state generated by Group Replication.
+              MySQL Shell uses this state to indicate instances that
+              are registered in the metadata, but cannot be found in the
+              live cluster view.
+</p>
+</div>
+</li></ul>
+</div>
+<div class="important" style="margin-left: 0.5in; margin-right: 0.5in;">
+<div class="admon-title">
+Important
+</div>
+<p>
+          Once an instance enters <code class="literal">ERROR</code> state, the
+          <a class="link" href="server-administration.html#sysvar_super_read_only"><code class="literal">super_read_only</code></a> option is set
+          to <code class="literal">ON</code>. To leave the
+          <code class="literal">ERROR</code> state you must manually configure the
+          instance with
+          <a class="link" href="server-administration.html#sysvar_super_read_only"><code class="literal">super_read_only=OFF</code></a>.
+</p>
+</div>
+<p>
+        The <span class="emphasis"><em>mode</em></span> indicates either
+        <code class="literal">R/W</code> (read and writable) or
+        <code class="literal">R/O</code> (read only). In single-primary mode, only
+        the instance marked "R/W" can execute transactions that update
+        the database, so it is the PRIMARY. If that instance becomes
+        unreachable for any reason (like an unexpected halt), one of the
+        remaining "R/O" instances automatically takes over its place and
+        becomes the new "R/W" <code class="literal">PRIMARY</code>. In
+        multi-primary mode, multiple instances are marked as "R/W" and
+        there is no elected PRIMARY.
+      </p><p>
+        To check the status of the InnoDB cluster at a later time, you
+        can get a reference to the InnoDB cluster object by connecting
+        to any of its instances. However, if you want to make changes to
+        the InnoDB cluster, you must connect to a "R/W" instance. For
+        information about how the InnoDB cluster is running, use the
+        <code class="literal">status()</code> method:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>var cluster = dba.getCluster()</code></strong>
+mysql-js&gt; <strong class="userinput"><code>cluster.status()</code></strong>
+{
+    "clusterName": "test",
+    "defaultReplicaSet": {
+        "status": "Cluster tolerant to up to ONE failure.",
+        "topology": {
+            "localhost:3310": {
+                "address": "localhost:3310",
+                "status": "ONLINE",
+                "role": "HA",
+                "mode": "R/W",
+                "leaves": {
+                    "localhost:3320": {
+                        "address": "localhost:3320",
+                        "status": "ONLINE",
+                        "role": "HA",
+                        "mode": "R/O",
+                        "leaves": {}
+                    },
+                    "localhost:3330": {
+                        "address": "localhost:3330",
+                        "status": "ONLINE",
+                        "role": "HA",
+                        "mode": "R/O",
+                        "leaves": {}
+                    }
+                }
+            }
+        }
+    }
+}
+</pre><p>
+        As the above output demonstrates, status information includes
+        the InnoDB cluster name, topology, PRIMARY, and more.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-describe-structure-innodb-cluster"></a>Describing the Structure of the InnoDB Cluster</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        To get information about the structure of the InnoDB cluster
+        itself, use the <code class="literal">cluster.describe()</code> function:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.describe();</code></strong>
+{
+    "clusterName": "test",
+    "adminType": "local",
+    "defaultReplicaSet": {
+        "name": "default",
+        "instances": [
+            {
+                "name": "localhost:3310",
+                "host": "localhost:3310",
+                "role": "HA"
+            },
+            {
+                "name": "localhost:3320",
+                "host": "localhost:3320",
+                "role": "HA"
+            },
+            {
+                "name": "localhost:3330",
+                "host": "localhost:3330",
+                "role": "HA"
+            }
+        ]
+    }
+}
+</pre><p>
+        The output from this function shows the structure of the
+        InnoDB cluster including all of its configuration information,
+        and so on.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-manage-sandbox-instances"></a>Managing Sandbox Instances</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        Once a sandbox instance is running, it is possible to change its
+        status at any time using the following:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Stop: <code class="literal">dba.stopSandboxInstance()</code>
+          </p></li><li class="listitem"><p>
+            Start: <code class="literal">dba.startSandboxInstance()</code>
+          </p></li><li class="listitem"><p>
+            Kill: <code class="literal">dba.killSandboxInstance()</code>
+          </p><p>
+            Kills the MySQL Server instance process on the local host,
+            Useful to help simulate an unexpected halt while testing
+            failover.
+          </p></li><li class="listitem"><p>
+            Delete: <code class="literal">dba.deleteSandboxInstance()</code>
+          </p><p>
+            Completely removes the sandbox instance from your file
+            system.
+</p></li></ul>
+</div>
+
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-remove-instances-from-innodb-cluster"></a>Removing Instances from the InnoDB Cluster</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        You can remove an instance from a cluster at any time should you
+        wish to do so. This can be done with the
+        <code class="literal">removeInstance()</code> method, as in the following
+        example:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.removeInstance("192.168.1.1:3306")</code></strong>
+</pre>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-rejoin-cluster"></a>Rejoining a Cluster</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        If an instance leaves the cluster, for example because it lost
+        connection and did not or could not automatically rejoin the
+        cluster, it may be necessary to rejoin it to the cluster at a
+        later stage. Because the Group Replication configuration is not
+        persisted in the instance's local configuration file, restarting
+        an instance causes it to leave the Replication Group, so it must
+        rejoin to add the instance back.
+      </p><p>
+        The command to rejoin an instance to a cluster is
+        <code class="literal">cluster.rejoinInstance()</code>.
+      </p><p>
+        In the case where an instance has been configured using
+        <code class="literal">dba.configureLocalInstance()</code>, its Group
+        Replication information is persisted to the configuration file,
+        and will rejoin the cluster automatically. More information on
+        this can be found in the section
+        <a class="xref" href="mysql-innodb-cluster-userguide.html#configuring-the-instance-id" title="Configuring the Instance">Configuring the Instance</a>.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-router-and-metadata-servers"></a>MySQL Router and Metadata Servers</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        When MySQL Router is bootstrapped it records the bootstrap server
+        addresses in its configuration. These servers contain metadata
+        used my MySQL Router in order to route correctly. If any additional
+        instances are added to the cluster after bootstrapping the
+        MySQL Router, they are automatically detected and used for
+        connection routing. If however, all of the original metadata
+        servers go offline for some reason, MySQL Router would no longer be
+        able to route correctly. Consider the following line in a
+        <code class="literal">mysqlrouter.conf</code> file:
+      </p><pre class="programlisting">
+...
+bootstrap_server_addresses=mysql://192.168.56.101:3310,mysql://192.168.56.101:3320,mysql://192.168.56.101:3330
+...
+</pre><p>
+        There are three original metadata servers specified here. Now if
+        two additional servers (call them D and E) were added, you would
+        have a five instance cluster, and MySQL Router routes to these
+        additional instances as required. If the original metadata
+        instances, A, B and C, stopped unexpectedly and left the
+        cluster, you would be left with only instances D and E running.
+        At this point, instances D and E are still alive and form a
+        quorum. So it should be possible to route calls to them.
+        However, as all original metadata servers are down (instances A,
+        B and C), MySQL Router shuts off all routing. In such a situation
+        you can configure MySQL Router manually.
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            Modify the MySQL Router instance's configuration file to specify
+            the correct metadata servers in the
+            <code class="literal">bootstrap_server_addresses</code> option.
+          </p></li><li class="listitem"><p>
+            Restart the MySQL Router instance, the updated metadata server
+            is detetced and used.
+</p></li></ul>
+</div>
+
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-dissolve-innodb-cluster"></a>Dissolving InnoDB Cluster</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        If you want to remove all information associated with a cluster,
+        you can use the <code class="literal">cluster.dissolve()</code> method.
+        This removes all metadata and configuration associated with the
+        cluster. Once you have dissolved the cluster you need to create
+        it again from scratch, using
+        <code class="literal">dba.createCluster()</code>.
+</p>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+          After calling <code class="literal">cluster.dissolve()</code>, the
+          <code class="literal">cluster</code> object is no longer valid.
+</p>
+</div>
+
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-use-mysql-shell-execute-script"></a>Using MySQL Shell to Execute a Script</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        You can automate cluster configuration with scripts. For
+        example:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>mysqlsh -f <em class="replaceable"><code>setup-innodb-cluster.js</code></em></code></strong>
+</pre>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+          Any command line options specified after the script file name
+          are passed to the script and <span class="emphasis"><em>not</em></span> to
+          MySQL Shell. You can access those options using the
+          <code class="literal">os.argv</code> array in JavaScript, or the
+          <code class="literal">sys.argv</code> array in Python. In both cases,
+          the first option picked up in the array is the script name.
+</p>
+</div>
+<p>
+        The contents for an example script file is shown here:
+      </p><pre class="programlisting">
+  print('MySQL InnoDB cluster sandbox set up\n');
+  print('==================================\n');
+  print('Setting up a MySQL InnoDB cluster with 3 MySQL Server sandbox instances.\n');
+  print('The instances will be installed in ~/mysql-sandboxes.\n');
+  print('They will run on ports 3310, 3320 and 3330.\n\n');
+
+  var dbPass = shell.prompt('Please enter a password for the MySQL root account: ', {type:"password"});
+
+  try {
+     print('\nDeploying the sandbox instances.');
+     dba.deploySandboxInstance(3310, {password: dbPass});
+     print('.');
+     dba.deploySandboxInstance(3320, {password: dbPass});
+     print('.');
+     dba.deploySandboxInstance(3330, {password: dbPass});
+     print('.\nSandbox instances deployed successfully.\n\n');
+
+     print('Setting up InnoDB cluster...\n');
+     shell.connect('root@localhost:3310', dbPass);
+
+     var cluster = dba.createCluster("devCluster");
+
+     print('Adding instances to the cluster.');
+     cluster.addInstance({user: "root", host: "localhost", port: 3320, password: dbPass});
+     print('.');
+     cluster.addInstance({user: "root", host: "localhost", port: 3330, password: dbPass});
+     print('.\nInstances successfully added to the cluster.');
+
+     print('\nInnoDB cluster deployed successfully.\n');
+  } catch(e) {
+     print('\nThe InnoDB cluster could not be created.\n\nError: ' +
+     + e.message + '\n');
+}</pre>
+</div>
+
+</div>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="mysql-innodb-cluster-working-with-production-deployment"></a>20.5 Working with a Production Deployment</h2>
+
+</div>
+
+</div>
+
+</div>
+<p>
+      When working in a production environment, the MySQL Server
+      instances are running on hosts as part of a network rather than on
+      your local machine as described in previous sections.
+    </p><p>
+      The following diagram illustrates the scenario you work with in
+      the following section:
+</p>
+<div class="figure">
+<a name="production-servers-image"></a><p class="title"><b>Figure 20.2 Production Deployment</b></p>
+<div class="figure-contents">
+
+<div class="mediaobject">
+<img src="images/production_servers.png" width="600" height="837" alt="Production Deployment">
+</div>
+
+</div>
+
+</div>
+<br class="figure-break"><p>
+      The user account used to administer an instance does not have to
+      be the root account, however the user needs to be assigned full
+      read and write privileges on the Metadata tables in addition to
+      full MySQL administrator privileges (<code class="literal">SUPER</code>,
+      <code class="literal">GRANT OPTION</code>, <code class="literal">CREATE</code>,
+      <code class="literal">DROP</code> and so on). To give the user
+      <em class="replaceable"><code>your_user</code></em> the privileges needed to
+      administer InnoDB cluster issue:
+    </p><pre class="programlisting">
+GRANT ALL PRIVILEGES ON mysql_innodb_cluster_metadata.* TO <em class="replaceable"><code>your_user@'%'</code></em> WITH GRANT OPTION;
+GRANT RELOAD, SHUTDOWN, PROCESS, FILE, SUPER, REPLICATION SLAVE, REPLICATION CLIENT, CREATE USER ON *.* TO <em class="replaceable"><code>your_user@'%'</code></em> WITH GRANT OPTION;
+GRANT SELECT ON performance_schema.* TO <em class="replaceable"><code>your_user@'%'</code></em> WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE, DELETE ON mysql.* TO <em class="replaceable"><code>your_user@'%'</code></em> WITH GRANT OPTION;
+</pre><p>
+      If only read operations are needed (such as for monitoring
+      purposes), an account with more restricted privileges may be used.
+      To give the user <em class="replaceable"><code>your_user</code></em> the
+      privileges needed to monitor InnoDB cluster issue:
+    </p><pre class="programlisting">
+GRANT SELECT ON mysql_innodb_cluster_metadata.* TO <em class="replaceable"><code>your_user@'%'</code></em>;
+GRANT SELECT ON performance_schema.global_status TO <em class="replaceable"><code>your_user@'%'</code></em>;
+GRANT SELECT ON performance_schema.replication_applier_configuration TO <em class="replaceable"><code>your_user@'%'</code></em>;
+GRANT SELECT ON performance_schema.replication_applier_status TO <em class="replaceable"><code>your_user@'%'</code></em>;
+GRANT SELECT ON performance_schema.replication_applier_status_by_coordinator TO <em class="replaceable"><code>your_user@'%'</code></em>;
+GRANT SELECT ON performance_schema.replication_applier_status_by_worker TO <em class="replaceable"><code>your_user@'%'</code></em>;
+GRANT SELECT ON performance_schema.replication_connection_configuration TO <em class="replaceable"><code>your_user@'%'</code></em>;
+GRANT SELECT ON performance_schema.replication_connection_status TO <em class="replaceable"><code>your_user@'%'</code></em>;
+GRANT SELECT ON performance_schema.replication_group_member_stats TO <em class="replaceable"><code>your_user@'%'</code></em>;
+GRANT SELECT ON performance_schema.replication_group_members TO <em class="replaceable"><code>your_user@'%'</code></em>;
+</pre><p>
+      When working with a production deployment it is a good idea to
+      activate verbose logging for MySQL Shell initially. This is
+      helpful in finding and resolving any issues that may arise when
+      you are preparing the server to work as part of InnoDB cluster.
+      To start MySQL Shell with a verbose logging level type:
+    </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>mysqlsh --log-level=DEBUG3</code></strong>
+</pre><p>
+      The log file is located in
+      <code class="filename">~/.mysqlsh/mysqlsh.log</code> for Unix-based
+      systems. On Microsoft Windows systems it is located in
+      <code class="filename">%APPDATA%\MySQL\mysqlsh\mysqlsh.log</code>. See
+      <a class="xref" href="mysql-shell.html#mysql-shell-application-log" title="18.5 MySQL Shell Application Log">Section 18.5, “MySQL Shell Application Log”</a>.
+</p>
+<div class="simplesect">
+
+<div class="titlepage">
+<div>
+
+<div class="simple">
+<h3 class="title"><a name="idc-check-instance-state"></a>Checking Instance State</h3>
+</div>
+</div>
+</div>
+<p>
+        The <code class="literal">cluster.checkInstanceState()</code> function can
+        be used for the following purposes:
+</p>
+<div class="orderedlist">
+<ol class="orderedlist" type="1"><li class="listitem"><p>
+            To validate if an instance can be added to the cluster.
+          </p></li><li class="listitem"><p>
+            The instance is consistent with the seed instances, meaning
+            that it has not executed any transactions which the cluster
+            has not, and can be recovered to the same state as the rest
+            of the cluster.
+</p></li></ol>
+</div>
+
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-check-instance-configuration"></a>Checking Instance Configuration</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        Before creating a cluster from remote instances you need to
+        check that the servers are suitably configured. This can be done
+        using the <code class="literal">dba.checkInstanceConfiguration()</code>
+        function. For detailed help on this function you can type
+        <code class="literal">dba.help('checkInstanceConfiguration')</code>.
+      </p><p>
+        The <code class="literal">dba.checkInstanceConfiguration()</code> function
+        checks if the server instances are valid for InnoDB cluster
+        usage.
+      </p><p>
+        The following demonstrates this:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.checkInstanceConfiguration('user@139.59.177.10:3306')</code></strong>
+
+Please provide the password for 'user@139.59.177.10:3306':
+Validating instance...
+
+The instance '139.59.177.10:3306' is not valid for Cluster usage.
+
+The following issues were encountered:
+
+- Some configuration options need to be fixed.
+
++----------------------------------+---------------+----------------+--------------------------------------------------+
+| Variable                         | Current Value | Required Value | Note                                             |
++----------------------------------+---------------+----------------+--------------------------------------------------+
+| binlog_checksum                  | CRC32         | NONE           | Update the server variable or restart the server |
+| enforce_gtid_consistency         | OFF           | ON             | Restart the server                               |
+| gtid_mode                        | OFF           | ON             | Restart the server                               |
+| log_bin                          | 0             | 1              | Restart the server                               |
+| log_slave_updates                | 0             | ON             | Restart the server                               |
+| master_info_repository           | FILE          | TABLE          | Restart the server                               |
+| relay_log_info_repository        | FILE          | TABLE          | Restart the server                               |
+| transaction_write_set_extraction | OFF           | XXHASH64       | Restart the server                               |
++----------------------------------+---------------+----------------+--------------------------------------------------+
+
+
+Please fix these issues , restart the server and try again.
+
+{
+  "config_errors": [
+    {
+      "action": "server_update",
+      "current": "CRC32",
+      "option": "binlog_checksum",
+      "required": "NONE"
+    },
+    {
+      "action": "restart",
+      "current": "OFF",
+      "option": "enforce_gtid_consistency",
+      "required": "ON"
+    },
+    {
+      "action": "restart",
+      "current": "OFF",
+      "option": "gtid_mode",
+      "required": "ON"
+    },
+    {
+      "action": "restart",
+      "current": "0",
+      "option": "log_bin",
+      "required": "1"
+    },
+    {
+      "action": "restart",
+      "current": "0",
+      "option": "log_slave_updates",
+      "required": "ON"
+    },
+    {
+      "action": "restart",
+      "current": "FILE",
+      "option": "master_info_repository",
+      "required": "TABLE"
+    },
+    {
+      "action": "restart",
+      "current": "FILE",
+      "option": "relay_log_info_repository",
+      "required": "TABLE"
+    },
+    {
+      "action": "restart",
+      "current": "OFF",
+      "option": "transaction_write_set_extraction",
+      "required": "XXHASH64"
+    }
+  ],
+  "errors": [],
+  "restart_required": true,
+  "status": "error"
+}
+mysql-js&gt;
+</pre><p>
+        The report shows the configuration changes required for that
+        instance before it can be added to the cluster.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="configuring-the-instance-id"></a>Configuring the Instance</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        Once the configuration issues have been identified you can
+        reconfigure your server instance manually. Alternatively, if you
+        can run MySQL Shell directly on the same machine where the
+        instance of MySQL is running, log in to the server and run
+        MySQL Shell on the server. On the server to be configured run:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>mysqlsh --log-level=DEBUG3 --uri=root@localhost</code></strong>
+</pre><p>
+        The function you use to configure a server for InnoDB cluster
+        use is <code class="literal">dba.configureLocalInstance()</code>. This
+        function runs provisioning scripts for you that modify the MySQL
+        server's configuration file.
+      </p><p>
+        The <code class="literal">dba.configureLocalInstance()</code> function can
+        only configure servers connected to locally. If you try to run
+        <code class="literal">dba.configureLocalInstance()</code> remotely you get
+        the following error:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.configureLocalInstance('user@139.59.177.10:3306')</code></strong>
+
+Dba.configureLocalInstance: This function only works with local instances (RuntimeError)
+</pre><p>
+        If MySQL Shell is started locally, then output will be similar
+        to:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.configureLocalInstance('root@localhost:3306')</code></strong>
+
+Please provide the password for 'root@localhost:3306':
+
+Please specify the path to the MySQL configuration file: /etc/mysql/mysql.conf.d/mysqld.cnf
+Validating instance...
+
+The configuration has been updated but it is required to restart the server.
+{
+  "config_errors": [
+    {
+      "action": "restart",
+      "current": "OFF",
+      "option": "enforce_gtid_consistency",
+      "required": "ON"
+    },
+    {
+      "action": "restart",
+      "current": "OFF",
+      "option": "gtid_mode",
+      "required": "ON"
+      },
+    {
+      "action": "restart",
+      "current": "0",
+      "option": "log_bin",
+      "required": "1"
+    },
+    {
+      "action": "restart",
+      "current": "0",
+      "option": "log_slave_updates",
+      "required": "ON"
+    },
+    {
+      "action": "restart",
+      "current": "FILE",
+      "option": "master_info_repository",
+      "required": "TABLE"
+    },
+    {
+      "action": "restart",
+      "current": "FILE",
+      "option": "relay_log_info_repository",
+      "required": "TABLE"
+    },
+    {
+      "action": "restart",
+      "current": "OFF",
+      "option": "transaction_write_set_extraction",
+      "required": "XXHASH64"
+    }
+  ],
+  "errors": [],
+  "restart_required": true,
+  "status": "error"
+}
+mysql-js&gt;
+</pre><p>
+        As with <code class="literal">dba.checkInstanceConfiguration()</code>, the
+        configuration requirements are identified, but this time the
+        entered configuration file is modified. For the changes to take
+        effect you need to restart the MySQL Server. For example:
+      </p><pre class="programlisting">
+shell&gt; <strong class="userinput"><code>sudo service mysql restart</code></strong>
+</pre>
+<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Note
+</div>
+<p>
+          If <code class="literal">dba.configureLocalInstance()</code> is used on
+          a instance that is already a member of a cluster, then its
+          Group Replication configuration information is persisted to
+          the server configuration file and a call to
+          <code class="literal">rejoinInstance()</code> is not required in that
+          case. When restarted, the instance is automatically joined to
+          the cluster. This is illustrated in the following example:
+</p>
+</div>
+<pre class="programlisting">
+shell.connect({host: 'localhost', port: 3333, user: 'root', password: 'somePwd'});
+
+var cluster = dba.createCluster('devCluster');
+
+// Here, configureLocalInstance makes sure the instance is configured for Group Replication
+dba.configureLocalInstance('localhost:3334', {password:'somePwd', mycnfPath:'<em class="replaceable"><code>some path</code></em>'})
+cluster.addInstance('localhost:3334', {password:'somePwd'})
+
+dba.configureLocalInstance('localhost:3335', {password:'somePwd', mycnfPath:'<em class="replaceable"><code>some path</code></em>'})
+cluster.addInstance('localhost:3335', {password:'somePwd'})
+
+// A restart here, would require using rejoin to put the instance back into the cluster
+dba.killSandboxInstance(3335);
+dba.startSandboxInstance(3335);
+cluster.rejoinInstance('localhost:3335', {password:'somePwd'})
+
+<span class="emphasis"><em>// Calling configureLocalInstance again, since the instance is already part of the cluster</em></span>
+<span class="emphasis"><em>// It will persist the Group Replication server variables</em></span>
+dba.configureLocalInstance('localhost:3335', {password:'somePwd', mycnfPath:'<em class="replaceable"><code>some path</code></em>'})
+
+// On a new restart, the instance automatically joins the Cluster (no need to rejoinInstance)
+dba.killSandboxInstance(3335);
+dba.startSandboxInstance(3335);
+</pre><p>
+        Once the server has restarted, you can use MySQL Shell again
+        to check the configuration:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.checkInstanceConfiguration('root@localhost:3306')</code></strong>
+
+Please provide the password for 'root@localhost:3306':
+Validating instance...
+
+The instance 'localhost:3306' is valid for Cluster usage
+{
+  "status": "ok"
+}
+mysql-js&gt;
+</pre>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-create-cluster"></a>Creating the Cluster</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        Log in to the remote instance and use MySQL Shell to configure
+        the instance automatically and ensure the configuration changes
+        are persisted.
+      </p><pre class="programlisting">      
+shell&gt; <strong class="userinput"><code>mysqlsh --uri user@139.59.177.10:3306</code></strong>
+
+Creating a Session to 'user@139.59.177.10:3306'
+Enter password: *********
+Classic Session successfully established. No default schema selected.
+</pre><p>
+        Now create the cluster:
+      </p><pre class="programlisting">      
+mysql-js&gt; <strong class="userinput"><code>var cluster = dba.createCluster('devCluster');</code></strong>
+
+      A new InnoDB cluster will be created on instance 'user@139.59.177.10:3306'.
+
+      Creating InnoDB cluster 'devCluster' on 'user@139.59.177.10:3306'...
+      Adding Seed Instance...
+
+      Cluster successfully created. Use Cluster.addInstance() to add MySQL instances.
+      At least 3 instances are needed for the cluster to be able to withstand up to
+      one server failure.
+</pre><p>
+        First, check the instance configuration:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.checkInstanceConfiguration('user@139.59.177.10:3306')</code></strong>
+  Please provide the password for 'user@139.59.177.10:3306':
+  Validating instance...
+
+  The instance '139.59.177.10:3306' is valid for Cluster usage
+  {
+    "status": "ok"
+  }
+</pre><p>
+        You can also check the instance state:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.checkInstanceState('user@139.59.177.10:3306')</code></strong>
+  Please provide the password for 'user@139.59.177.10:3306':
+  Analyzing the instance replication state...
+
+  The instance '139.59.177.10:3306' is valid for the cluster.
+  The instance is fully recoverable.
+
+  {
+    "reason": "recoverable",
+    "state": "ok"
+  }
+</pre><p>
+        Check the cluster status:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.status()</code></strong>
+  {
+    "clusterName": "devCluster",
+    "defaultReplicaSet": {
+      "name": "default",
+      "status": "Cluster is NOT tolerant to any failures.",
+      "topology": {}
+    }
+  }
+
+</pre><p>
+        You need to add two more instances to the cluster to make it
+        tolerant to a server failure.
+      </p><p>
+        Check the configuration of the next instance to add to the
+        cluster:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>dba.checkInstanceConfiguration('user@139.59.177.11:3306')</code></strong>
+  Please provide the password for 'user@139.59.177.10:3306':
+  Validating instance...
+
+  The instance '139.59.177.11:3306' is valid for Cluster usage
+  {
+    "status": "ok"
+  }
+</pre><p>
+        The instance can now be added into the cluster:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.addInstance("user@139.59.177.11:3306");</code></strong>
+
+  Please provide a password for 'user@139.59.177.11:3306': *****
+
+  A new instance will be added to the InnoDB cluster. Depending on the
+  amount of data on the cluster this might take from a few seconds to
+  several hours.
+
+  Adding instance 139.59.177.11:3306 to the cluster...
+
+  The instance '139.59.177.11:3306' was successfully added to the
+  cluster.
+</pre><p>
+        The next instance can now be added into the cluster:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.addInstance("user@139.59.177.12:3306");</code></strong>
+
+  Please provide a password for 'user@139.59.177.12:3306': *****
+
+  A new instance will be added to the InnoDB cluster. Depending on the
+  amount of data on the cluster this might take from a few seconds to
+  several hours.
+
+  Adding instance 139.59.177.12:3306 to the cluster...
+
+  The instance '139.59.177.12:3306' was successfully added to the
+  cluster.
+</pre><p>
+        Now recheck cluster status.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-create-whitelist-servers"></a>Creating a Whitelist of Servers</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        
+
+        When using the <code class="literal">createCluster()</code>,
+        <code class="literal">addInstance()</code>, and
+        <code class="literal">rejoinInstance()</code> methods you can optionally
+        specify a list of approved servers that belong to the cluster,
+        referred to a whitelist. By specifying the whitelist explicitly
+        in this way you can increase the security of your cluster
+        because only servers in the whitelist can connect to the
+        cluster.
+
+        
+
+        By default, if not specified explicitly, the whitelist is
+        automatically set to the private network addresses that the
+        server has network interfaces on. To configure the whitelist,
+        specify the servers to add with the
+        <code class="literal">ipWhitelist</code> option when using the method. For
+        example:
+      </p><pre class="programlisting">
+mysql-js&gt;<strong class="userinput"><code> c.addInstance("root:guidev!@localhost:3320", {ipWhitelist: "10.157.120.0/24, 192.168.1.110"})</code></strong>
+</pre><p>
+        This configures the instance to only accept connections from
+        servers at addresses <code class="literal">10.157.120.0/24</code> and
+        <code class="literal">192.168.1.110</code>.
+      </p><p>
+        Using the <code class="literal">ipWhitelist</code> option configures the
+        <a class="link" href="group-replication.html#sysvar_group_replication_ip_whitelist"><code class="literal">group_replication_ip_whitelist</code></a>
+        system variable on the instance.
+</p>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-restore-cluster-from-quorum-loss"></a>Restoring a Cluster from Quorum Loss</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        If a instance (or instances) fail, then a cluster can lose its
+        quorum, which is the ability to vote in a new primary. In this
+        case you can re-establish quorum using the method
+        <code class="literal">cluster.forceQuorumUsingPartitionOf()</code>, as
+        shown in the following MySQL Shell example:
+      </p><pre class="programlisting">
+  // open session to a cluster
+
+mysql-js&gt; <strong class="userinput"><code>cluster = dba.getCluster("devCluster")</code></strong>
+
+  // The cluster lost its quorum and its status shows
+  // "status": "NO_QUORUM"
+
+mysql-js&gt; <strong class="userinput"><code>cluster.forceQuorumUsingPartitionOf("localhost:3310")</code></strong>
+
+  Restoring replicaset 'default' from loss of quorum, by using the partition composed of [localhost:3310]
+
+  Please provide the password for 'root@localhost:3310': ******
+  Restoring the InnoDB cluster ...
+
+  The InnoDB cluster was successfully restored using the partition from the instance 'root@localhost:3310'.
+
+  WARNING: To avoid a split-brain scenario, ensure that all other members of the replicaset
+  are removed or joined back to the group that was restored.
+</pre>
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="reboot-outage"></a>Rebooting a Cluster from a Major Outage</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        
+
+        If your cluster suffers from a complete outage, you can ensure
+        it is reconfigured correctly using
+        <code class="literal">dba.rebootClusterFromCompleteOutage()</code>. An
+        example of use is as follows:
+      </p><pre class="programlisting">
+<strong class="userinput"><code>        
+mysql-js&gt; <strong class="userinput"><code>shell.connect('root@localhost:3310');</code></strong>
+mysql-js&gt; <strong class="userinput"><code>var cluster = dba.rebootClusterFromCompleteOutage();</code></strong>
+</code></strong>
+</pre><p>
+        This ensures the cluster is correctly reconfigured after a
+        complete outage. It picks the instance the MySQL Shell is
+        connected to as the new seed instance and recovers the cluster
+        based on the existing metadata of that instance.
+      </p><p>
+        It is also possible to provide the cluster name as an input
+        parameter:
+      </p><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>var cluster = dba.createCluster("devCluster")</code></strong>
+  ...
+  ...
+mysql-js&gt; <strong class="userinput"><code>var cluster = dba.rebootClusterFromCompleteOutage("devCluster");</code></strong>
+</pre><p>
+        If this process fails, and the cluster metadata has become badly
+        corrupted, you may need to drop the metadata and create the
+        cluster again from scratch. You can drop the cluster metadata
+        using <code class="literal">dba.dropMetaDataSchema()</code>.
+</p>
+<div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;">
+
+<div class="admon-title">
+Warning
+</div>
+<p>
+          The <code class="literal">dba.dropMetaDataSchema()</code> method should
+          only be used as a last resort, when it is not possible to
+          restore the cluster. It can not be undone.
+</p>
+</div>
+
+</div>
+<div class="simplesect">
+<div class="titlepage">
+<div>
+<div class="simple">
+<h3 class="title"><a name="idc-rescan-cluster"></a>Rescanning a Cluster</h3>
+
+</div>
+
+</div>
+
+</div>
+<p>
+        If changes to the Group Replication configurations are made
+        without using MySQL Shell you need to rescan your cluster. For
+        example, if you create a cluster with three instances, and then
+        without using MySQL Shell you add a new instance to that Group
+        Replication group, the AdminAPI is not aware of that
+        instance. The same would apply if you removed an instance from a
+        Group Replication group without using MySQL Shell. It is
+        necessary to rescan the cluster with
+        <code class="literal">cluster.rescan()</code> in such scenarios.
+      </p><p>
+        After the command <code class="literal">cluster.rescan()</code> has been
+        run, instances are identified that are newly discovered
+        instances. You are prompted to add each of these newly
+        discovered instances into your cluster as required, or you can
+        choose to ignore them.
+      </p><p>
+        Nodes that no longer belong to the cluster or which are
+        unavailable are also reported. In this case you are prompted to
+        remove the instance, or you can later attempt to add it back
+        into the cluster using a command such as
+        <code class="literal">cluster.rejoin('instancex.example.com:3340')</code>.
+</p>
+</div>
+
+</div>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="mysql-innodb-cluster-working-with-group-replication"></a>20.6 Creating an InnoDB Cluster From an Existing Group Replication Deployment</h2>
+
+</div>
+
+</div>
+
+</div>
+<p>
+      If you have an existing deployment of Group Replication and you
+      want to manage it using the MySQL Shell, the option
+      <code class="literal">adoptFromGR</code> from the
+      <code class="literal">dba.createCluster()</code> function can be used.
+    </p><pre class="programlisting">  
+shell&gt; <strong class="userinput"><code>mysqlsh --uri root@192.168.0.11:3306</code></strong>
+  Creating a Session to 'root@192.168.0.11:3306'
+  Enter password: ****
+  Classic Session successfully established. No default schema selected.
+</pre><p>
+      MySQL Shell JavaScript Code:
+    </p><pre class="programlisting">  
+mysql-js&gt; <strong class="userinput"><code>var cluster = dba.createCluster('prodCluster', {adoptFromGR: true});</code></strong>
+
+  A new InnoDB cluster will be created on instance 'root@192.168.0.11:3306'.
+
+  Creating InnoDB cluster 'prodCluster' on 'root@192.168.0.11:3306'...
+  Adding Seed Instance...
+
+  Cluster successfully created. Use cluster.addInstance() to add MySQL instances.
+  At least 3 instances are needed for the cluster to be able to withstand up to
+  one server failure.
+</pre><pre class="programlisting">
+mysql-js&gt; <strong class="userinput"><code>cluster.describe();</code></strong>
+{
+  "clusterName": "prodCluster",
+  "adminType": "local",
+  "defaultReplicaSet": {
+      "name": "default",
+      "instances": [
+        {
+          "name": "localhost:3306",
+          "host": "localhost:3306",
+          "role": "HA"
+        },
+        {
+          "name": "localhost:3307",
+          "host": "localhost:3307",
+          "role": "HA"
+        },
+        {
+          "name": "localhost:3308",
+          "host": "localhost:3308",
+          "role": "HA"
+        }
+     ]
+  }
+}
+</pre>
+</div>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="mysql-innodb-cluster-securing"></a>20.7 Securing your Cluster</h2>
+
+</div>
+
+</div>
+
+</div>
+<p>
+      Server instances can be configured to use secure connections. For
+      general information on using SSL with MySQL see
+      <a class="xref" href="security.html#encrypted-connections" title="6.4 Using Encrypted Connections">Section 6.4, “Using Encrypted Connections”</a>. This section explains
+      how to configure a cluster to use SSL.
+    </p><p>
+      When using <code class="literal">createCluster()</code> to set up a cluster,
+      if the server instance provides SSL encryption then it is
+      automatically enabled on the seed instance. Pass the
+      <code class="literal">memberSslMode</code> option to the
+      <code class="literal">createCluster()</code> method to specify a different
+      SSL mode. The <code class="literal">memberSslMode</code> option is a string
+      that configures the SSL mode to be used, it defaults to
+      <code class="literal">AUTO</code>. The permitted values are
+      <code class="literal">DISABLED</code>, <code class="literal">REQUIRED</code>, and
+      <code class="literal">AUTO</code>. These modes are defined as:
+
+      
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Setting
+          <code class="literal">createCluster(memberSslMode=DISABLED)</code>
+          ensures SSL encryption is disabled for the seed instance in
+          the cluster.
+        </p></li><li class="listitem"><p>
+          Setting
+          <code class="literal">createCluster(memberSslMode=REQUIRED)</code> then
+          SSL encryption is enabled for the seed instance in the
+          cluster. If it cannot be enabled an error is raised.
+        </p></li><li class="listitem"><p>
+          Setting <code class="literal">createCluster(memberSslMode=AUTO)</code>
+          (the default) then SSL encryption is automatically enabled if
+          the server instance supports it, or disabled if the server
+          does not support it.
+</p></li></ul>
+</div>
+<p>
+      When you issue the <code class="literal">addInstance()</code> and
+      <code class="literal">rejoinInstance()</code> commands, SSL encryption on
+      the instance is enabled or disabled based on the setting found for
+      the seed instance. For more control, the
+      <code class="literal">addInstance()</code>, and
+      <code class="literal">rejoinInstance()</code> commands accept the
+      <code class="literal">memberSslMode</code> option. The behavior of the
+      commands in this case is:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          Setting <code class="literal">memberSslMode=DISABLED</code> ensures SSL
+          encryption is disabled for the instance in the cluster.
+        </p></li><li class="listitem"><p>
+          Setting <code class="literal">memberSslMode=REQUIRED</code> forces SSL
+          encryption to be enabled for the instance in the cluster.
+
+          
+        </p></li><li class="listitem"><p>
+          Setting <code class="literal">memberSslMode=AUTO</code> (the default)
+          then SSL encryption is automatically enabled or disabled based
+          on the setting used by the seed instance (other members of the
+          cluster) and the available SSL support provided by the
+          instance itself.
+</p></li></ul>
+</div>
+<p>
+      When using <code class="literal">createCluster()</code> with the
+      <code class="literal">adoptFromGR</code> option to adopt an existing Group
+      Replication group, no SSL settings are changed on the adopted
+      cluster:
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          <code class="literal">memberSslMode</code> cannot be used with
+          <code class="literal">adoptFromGR</code>.
+        </p></li><li class="listitem"><p>
+          If the SSL settings of the adopted cluster are different from
+          the ones supported by the MySQL Shell, in other words SSL
+          for Group Replication recovery and Group Communication, both
+          settings are not modified. This means you are not be able to
+          add new instances to the cluster, unless you change the
+          settings manually for the adopted cluster.
+</p></li></ul>
+</div>
+<p>
+      MySQL Shell always enables or disables SSL for the cluster for
+      both Group Replication recovery and Group Communication. A
+      verification is performed and an error issued in case those
+      settings are different for the seed instance (for example as the
+      result of a <code class="literal">createCluster()</code> using
+      <code class="literal">adoptFromGR</code>) when adding a new instance to the
+      cluster. SSL encryption must be enabled or disabled for all
+      instances in the cluster. Verifications are performed to ensure
+      that this invariant holds when adding a new instance to the
+      cluster.
+
+      
+    </p><p>
+      The <code class="literal">deploySandboxInstance()</code> command attempts to
+      deploy sandbox instances with SSL encryption support by default.
+      If it is not possible, the server instance is deployed without SSL
+      support. Use the <code class="literal">ignoreSslError</code> option set to
+      false to ensure that sandbox instances are deployed with SSL
+      support, issuing an error if SSL support cannot be provided. When
+      <code class="literal">ignoreSslError</code> is true, which is the default,
+      no error is issued during the operation if the SSL support cannot
+      be provided and the server instance is deployed without SSL
+      support.
+</p>
+</div>
+<div class="section">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both"><a name="mysql-innodb-cluster-limitations"></a>20.8 Known Limitations</h2>
+
+</div>
+
+</div>
+
+</div>
+<p>
+      This section describes the known limitations of InnoDB cluster.
+      As InnoDB cluster uses Group Replication, you should also be
+      aware of its limitations - see
+      <a class="xref" href="group-replication.html#group-replication-limitations" title="17.7.2 Group Replication Limitations">Section 17.7.2, “Group Replication Limitations”</a>.
+</p>
+<div class="itemizedlist">
+<ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+          
+
+
+
+          
+
+          The formatting of results which contain multi-byte characters
+          sometimes do not have correctly aligned columns. Similarly,
+          non-standard character sets are being corrupted in results.
+        </p></li><li class="listitem"><p>
+          
+
+          AdminAPI does not support Unix socket connections.
+          MySQL Shell currently does not prevent you from attempting
+          to use socket connections to a cluster, and attempting to use
+          a socket connection to a cluster can cause unexpected results.
+        </p></li><li class="listitem"><p>
+          
+
+          The MySQL Shell help describes an invalid URI:
+
+</p><pre class="programlisting">USER[:PASS]@::SOCKET[/DB].</pre><p>
+
+          This is invalid because the <code class="literal">@</code> symbol can
+          not be present if no user information is provided.
+        </p></li><li class="listitem"><p>
+          
+
+          If a session type is not specified when creating the global
+          session, MySQL Shell provides automatic protocol detection
+          which attempts to first create a NodeSession and if that fails
+          it tries to create a ClassicSession. With an InnoDB cluster
+          that consists of three server instances, where there is one
+          read-write port and two read-only ports, this can cause
+          MySQL Shell to only connect to one of the read-only
+          instances. Therefore it is recommended to always specify the
+          session type when creating the global session.
+        </p></li><li class="listitem"><p>
+          
+
+          When adding non-sandbox server instances (instances which you
+          have configured manually rather than using
+          <code class="literal">dba.deploySandboxInstance()</code> ) to a cluster,
+          MySQL Shell is not able to persist any configuration changes
+          in the instance's configuration file. This leads to one or
+          both of the following scenarios:
+</p>
+<div class="orderedlist">
+<ol class="orderedlist" type="1"><li class="listitem"><p>
+              The Group Replication configuration is not persisted in
+              the instance's configuration file and upon restart the
+              instance does not rejoin the cluster.
+            </p></li><li class="listitem"><p>
+              The instance is not valid for cluster usage. Although the
+              instance can be verified with
+              <code class="literal">dba.checkInstanceConfiguration()</code>, and
+              MySQL Shell makes the required configuration changes in
+              order to make the instance ready for cluster usage, those
+              changes are not persisted in the configuration file and so
+              are lost once a restart happens.
+</p></li></ol>
+</div>
+<p>
+          If only <code class="literal">1</code> happens, the instance does not
+          rejoin the cluster after a restart.
+        </p><p>
+          If <code class="literal">2</code> also happens, and you observe that the
+          instance did not rejoin the cluster after a restart, you
+          cannot use the recommended
+          <code class="literal">dba.rebootClusterFromCompleteOutage()</code> in
+          this situation to get the cluster back online. This is because
+          the instance loses any configuration changes made by
+          MySQL Shell, and because they were not persisted, the
+          instance reverts to the previous state before being configured
+          for the cluster. This causes Group Replication to stop
+          responding, and eventually the command times out.
+        </p><p>
+          To avoid this problem it is strongly recommended to use
+          <code class="literal">dba.configureLocalInstance()</code> before adding
+          instances to a cluster in order to persist the configuration
+          changes.
+        </p></li><li class="listitem"><p>
+          
+
+          Using MySQL server instances configured with the
+          validate_password plugin and password policy set to
+          <code class="literal">STRONG</code> causes InnoDB cluster
+          <code class="literal">createCluster()</code> and MySQL Router bootstrap
+          operations to fail. This is because the internal user required
+          for access to the server instance can not be validated.
+        </p></li><li class="listitem"><p>
+          
+
+          The MySQL Router <code class="option">--bootstrap</code> command line option
+          does not accept IPv6 addresses.
+        </p></li><li class="listitem"><p>
+          
+
+          The commercial version of MySQL Router does not have the correct
+          setting for AppArmor. A work around is to edit the AppArmor
+          profile configuration file
+          <code class="filename">/etc/apparmor.d/usr.sbin.mysqlrouter</code> and
+          modify the line containing <code class="literal">/usr/sbin/mysqld</code>
+          to use the path to MySQL Router, for example
+          <code class="literal">/usr/sbin/mysqlrouter</code>.
+</p></li></ul>
+</div>
+
+</div>
+
+</div>
+<div class="copyright-footer">
+
+</div>
+<div class="navfooter">
+<hr>
+<table width="100%" summary="Navigation footer">
+<tr>
+<td width="40%" align="left"><a accesskey="p" href="document-store.html">Prev</a></td>
+<td width="20%" align="center"><a accesskey="u" href="">Up</a></td>
+<td width="40%" align="right"> <a accesskey="n" href="mysql-cluster.html">Next</a></td>
+</tr>
+<tr>
+<td width="40%" align="left" valign="top">Chapter 19 Using MySQL as a Document Store</td>
+<td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+<td width="40%" align="right" valign="top">Chapter 21 MySQL NDB Cluster 7.5 and NDB Cluster 7.6</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+一、元素操作方法
+	1. clear()            清除文本
+	2. send_keys()        模拟输入
+	3. click()            单击元素
+二、WebDriver操作浏览器常用方法
+	1. maximize_window()  
+	2. back()                             后退 --> 模拟浏览器后退按钮
+	3. forward()                         前进 --> 模拟浏览器前进按钮
+	4. refresh()                         刷新 --> 模拟浏览器F5刷新
+	5. close()                            关闭 --> 模拟浏览器关闭按钮(关闭单个窗口)
+	6. quit()                            关闭 --> 关闭所有WebDriver启动的窗口
+三、WebDriver其他常用方法【掌握】
+	1. text                 获取元素的文本
+	2. title                 获取页面title
+	3. current_url            获取当前页面URL
+	4. get_attribute("xxx") 获取属性值;xxx：要获取的属性
+	
+四、鼠标操作方法
+	1.move_to_element():为鼠标悬停方法【建议掌握】
+	2.perform() 执行鼠标事件
+五、键盘操作
+	1.方法：send_keys(Keys.ss,"a")
+	2.导包：from selenium.webdriver.common.keys import Keys
+六、隐式等待
+	driver.implicitly_wait(10) 【重点-掌握】
+	提示：一般超时时长默认为30秒

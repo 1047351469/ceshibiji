@@ -1,0 +1,53 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1528275419333" stop="1528275419577">
+  <name>test_contact</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1528275419333" status="passed" stop="1528275419342">
+      <name>TestContact.test_login</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="12869-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528275419345" status="passed" stop="1528275419349">
+      <name>TestContact.test_login1</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="12869-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528275419351" status="failed" stop="1528275419577">
+      <name>TestContact.test_login2</name>
+      <failure>
+        <message>AssertionError: assert 0</message>
+        <stack-trace>self = &lt;test_contact.TestContact object at 0x10faf0160&gt;
+
+    def test_login2(self):
+        print("123")
+&gt;       assert 0
+E       assert 0
+
+scripts/test_contact.py:17: AssertionError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="12869-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

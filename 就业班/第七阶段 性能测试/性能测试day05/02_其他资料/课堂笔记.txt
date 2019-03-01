@@ -1,0 +1,40 @@
+一、为什么要学习负载生成器
+	提示：负载生成器俗称负载机
+	说明：
+		1). 性能测试就要面临模拟大量的虚拟用户并发请求，单台负载机就面临自身硬件性能瓶颈问题，需要扩展多台
+			负载机上运行达到减压不减虚拟用户的目的；
+			
+	1.1 什么是负载机？
+	说明：在LR中运行场景内脚本的机器被称为负载机
+	提示：
+		1). 负载机需要安装LR或者Load Generator
+		2). Linux系统直接安装Load Generator 下载相关文件 loadrunner-11-load-generator.iso
+	
+	1.2 注意事项
+		1. 网络-负载机与控制机网路通畅
+		2. 代理服务程序-负载机必须启动LoadRunner Agent Process 代理服务程序；
+		   (位置：开始程序->HP LoadRunenr->Advanced Settings->LoadRunner Agent Process)
+		3. 防火墙-负载机上的防火墙为关闭状态
+		4. 权限配置-负载机运行设置工具内输入负载机本机登录用户名和密码，目的解决LR控制机远程连接负载机权限问题
+		   (位置：开始程序->HP LoadRunner->Tools->LoadRunner Agent Runtime Settings Configuration)
+二、服务器 性能资源指标
+	1.为什么要监控服务器资源性能指标？
+		说明：资源性能指标就是预期结果，性能测试的目的和功能测试一样，观察实际结果是否与预期结果相否；
+	2.监控Windows资源 注意事项
+		1. 确保lR控制机与需要监控的pc机网络通畅(ping 192.168.X.X )
+		1. Remote Procedure Call (RPC)、RemoteRegistry两个服务要启动，默认为启动；
+		2. 本地账户共享和安全模型-经典-对本地用户进行身份验证不改变其本来身份【win7旗舰版默认】
+		   (gpedit.msc windowns设置-安全设置-本地策略-安全选项-本地账户共享和安全模型)
+三、什么是SLA？
+	说明：Service Level Agreement(SLA) 是在场景执行之前定义的相应负载测试目标，在场景运行之后Analysis
+		  将运行时收集的指标值和SLA设定的进行对比，然后确定本次测试是成功还是失败。
+四、IP Wizard(IP 欺骗)
+	1.1 为什么使用IP欺骗？
+		说明：应用服务器限制一个IP地址只能使用应用指定功能一次操作，如：投票系统；
+	1.2 什么是IP欺骗
+		说明：LoadRunner系统的 IP Wizard工具可以模拟出多个不同的IP地址，每个虚拟用户都可以使用不同的IP地址
+		  完成类似投票系统真实场景的业务操作；
+	1.3 使用IP Wizard 注意事项
+		1. 使用IP Wizard必须确保IP地址为静态IP，不能为动态(DHCP)IP
+		2. 负载机必须启用LoadRunner Agent Process程序
+		3. 运行场景时，启用Enabled IP Spoofer 选项

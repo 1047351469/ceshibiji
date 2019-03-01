@@ -1,0 +1,72 @@
+一、回顾
+	1. 下拉框
+		1）.Select类--->定位select标签
+		2）.方法：
+				1. select_by_index(下标)
+				2. select_by_value(元素value属性值)
+				3. select_by_visible_text(元素的显示文本)
+	2. 滚动条
+		1）.js脚本--> js="window.scrollTo(0,10000)"
+		2) .调用执行js方法 execute_script(js脚本)
+	3. 验证码
+		1). 去掉验证码--->		（测试环境）
+		2). 设置万能验证码--->	 (生产环境)
+		3). 使用cookie
+				1. add_cookie(字典)
+				
+	4. TestCase（测试用例）
+		1). 新建测试类并集成unittest.TestCase
+		2)  方法必须以test开头
+		
+二、UnitTest
+	1. TestCase
+		说明：测试用例
+		1.新建类并集成unittest.TestCase
+	2. TestSuite
+		说明：测试套件(多条用例)
+		方法：	
+			1. 实例化 suite=unittest.TestSuite()
+			2. 添加：
+					方式1---->suite.addTest(类名("指定的方法名称"))
+					方式2---> suite.addTest(unittest.makeSuite(类名))
+					方法3---> suite=unittest.defaultTestLoader.discover(".",pattern="test*.py")【重点】
+							  说明：返回搜索指定目录下指定开头的py文件内test开头的方法， --->其实返回的是测试套件
+					
+	3. TextTestRunner
+		说明：执行测试套件
+		方法：
+			1. 实例化 runner=unittest.TextTestRunner()
+			2. 调用：runner.run(测试套件)
+	4. Fixture
+		说明：两个函数（setUp、tearDown）
+		作用：
+			1. setUp:（首先会被执行，一般做初始化工作）
+			2. tearDown:（最后被执行，一般做结束工作）
+			
+三、断言
+	掌握：
+		1. 	assertEqual(arg1, arg2)	验证arg1=arg2，不等则fail 【掌握】
+		2.  assertIn(arg1, arg2)	验证arg1是arg2的子串，不是则fail【掌握】
+	注意：断言捕获异常，必须为：AssertionError
+	
+	扩展：
+		添加时间戳：nowtime=time.strftime("%Y_%m_%d %H_%M_%S")
+		添加错误信息：sys.exc_info()[1]---->注意：except AssertionError：内捕获错误信息
+四、生成HTML报告
+	1. 复制HTMLTestRunner.py文件到项目文件夹
+	2. 导入HTMLTestRunner、UnitTest包    
+	3. discover加载要执行的用例
+		  (discover=unittest.defaultTestLoader.discover(test_dir,pattern="test*.py"))
+	4. 设置报告生成路径和文件名
+	   (file_name=file_dir+nowtime+"Report.html")
+	5. 打开报告 with open(file_name,'wb') as f:
+	6. 实例化HTMLTestRunner对象：runner=HTMLTestRunner(stream=f,[title],[description])
+		参数说明：
+				   (stream：文件流，打开写入报告的名称及写入编码格式)
+				   (
+						   []，为可选；
+						   title为报告标题，如XXX自动化测试报告
+						   description：为说明；比如操作系统、浏览器等版本
+				   )
+	7. 执行：runner.run(discover)
+		

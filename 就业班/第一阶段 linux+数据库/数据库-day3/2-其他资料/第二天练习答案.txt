@@ -1,0 +1,82 @@
+
+查询练习题
+1、查询学生"百里守约"的基本信息
+select * from students where name='百里守约'
+
+
+2、查询学生"百里守约"或”百里玄策”的基本信息
+select * from students where name='百里守约' or name='百里玄策'
+
+
+3、查询姓"张"学生的姓名，年龄，班级
+select name,age,class from students where name like '张%'
+
+
+4、查询姓名中含有"约"字的学生的基本信息
+select * from students where name like '%约%'
+
+
+5、查询姓名长度为三个字，姓“孙”的学生的学号，姓名，年龄，班级，身份证号
+select studentNo,name,age,class,card from students where name like '孙__' 
+
+
+6、查询姓"百"或者姓”孙”的学生的基本信息
+select * from students where name like '百%' or name like '孙%'
+
+
+7、查询姓"百"并且家乡是"山西"的学生信息
+select * from students where name like '百%' and hometown='山西'
+
+
+8、查询家乡是"北京"、”新疆”、”山东”或者"上海"的学生的信息
+select * from students where hometown in('北京','新疆','山东','上海')
+
+
+9、查询姓"孙"，但是家乡不是"河北"的学生信息
+select * from students where name like '孙%' and hometown!='河北'
+
+
+10、查询家乡不是"北京"、"新疆"、"山东"、"上海"的学生的信息
+select * from students where hometown not in('北京','新疆','山东','上海')
+
+
+11、查询全部学生信息，并按照“性别”排序
+select * from students order by sex
+
+
+12、查询现有学生都来自于哪些不同的省份
+select hometown from students group by hometown
+
+
+13、查询所有男生，并按年龄升序排序
+select * from students where sex='男' order by age
+
+
+14、统计共有多少个学生
+select count(*) from students
+
+
+15、统计年龄大于20岁的学生有多少个
+select count(*) from students where age>20
+
+
+16、统计男生的平均年龄
+select avg(age) from students where sex='男'
+
+
+17、查询1班学生中的最大年龄是多少
+select max(age) from students where class='1班'
+
+
+18、统计2班男女生各有多少人
+select class,sex,count(*) from students where class='2班' group by sex
+
+
+19、统计每个班级中每种性别的学生人数，并按照班级升序排序
+select class,sex,count(*) from students group by class,sex order by class
+
+
+20、查询年龄最小的学生的全部信息
+select * from students order by age limit 1
+
+

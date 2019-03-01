@@ -1,0 +1,50 @@
+  # 平台的名称
+  desired_caps['platformName'] = 'Android' 
+  # 系统版本号
+  desired_caps['platformVersion'] = '5.1'  
+  # 安卓随便写 但是不能是空字符串
+  desired_caps['deviceName'] = '192.168.56.101:5555' 
+  # 需要打开的程序
+  desired_caps['appPackage'] = 'com.android.settings'
+  # 需要打开的页面
+  desired_caps['appActivity'] = '.Settings'
+
+  # 以上我们自己称为前置代码，缺一不可。
+
+  知道如何解决中文无法输入的问题
+  desired_caps['unicodeKeyboard'] = True
+  desired_caps['resetKeyboard'] = True
+
+  # 获取包名启动名
+  current_xxxx
+
+  # 启动其他应用
+  start_activity(package_name, activity_name)
+
+  # 置于后台
+  background_app(秒)
+
+  # 定位元素
+  find_element
+  find_elements
+  又分别分为 id，class，xpath
+  其中，element获取到的是一个元素，如果有相同的特征，获取到的是第一个
+  其中，elements获取到的是一个列表，如果想用其中的元素，需要通过下标的形式
+
+  # 显示等待
+  目标：会用！！！！！
+  WebDriverWait(driver, 超时时间, 频率).until(匿名函数)
+  这个函数，如果找到元素则返回，如果没有回报超时的错误
+
+  # 元素操作
+  以下操作都是使用 元素调用某个函数/属性 （不是driver）
+  点击 = click
+  输入文字 = send_keys
+  清空 = clear
+  获取元素的文本的内容 = 元素.text
+  获取元素的属性值 = 元素.attr
+  获取元素的坐标 = 元素.location (元素左上角到屏幕左上角的距离)
+
+  # appium卡到code 0, signal null的bug
+  # 见视频
+  # 将 手机中 (需要adb shell 进入) /data/local/tmp中的那个 jar文件重新命名 为 “AppiumBootStrap.jar”

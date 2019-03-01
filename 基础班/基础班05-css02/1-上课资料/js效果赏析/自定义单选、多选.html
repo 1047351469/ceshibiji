@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+	* { margin: 0; padding: 0; list-style: none; }
+    ul { }
+    .dan li { background: url(images/radio.gif) no-repeat left top; padding-left: 20px; cursor: pointer; }
+    .dan li.current { background-position: left bottom; }
+    .duo li { background: url(images/duo1.png) no-repeat left center; padding-left: 30px; cursor: pointer; height: 30px; line-height:  30px; }
+    .duo li.current { background-image: url(images/duo2.png); }
+
+
+</style>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+        $('.dan li').click(function(event) {
+            $(this).addClass('current').siblings().removeClass('current');
+        });
+        $('.duo li').click(function(event) {
+            $(this).toggleClass('current');
+        });
+	})
+</script>
+</head>
+
+<body>
+    <h2>单选</h2>
+    <input type="radio" name="sex" />
+    <input type="radio" name="sex" />
+    <ul class="dan">
+        <li class="current">我虽然是li 但我可以变为单选按钮</li>
+        <li>我虽然是li 但我可以变为单选按钮</li>
+        <li>我虽然是li 但我可以变为单选按钮</li>
+    </ul>
+    <br />
+    <br />
+    <br />
+
+
+
+    <h2>多选</h2>
+    <input type="checkbox" />
+    <input type="checkbox" />
+    <input type="checkbox" />
+    <ul class="duo">
+        <li class="current">我虽然是li 但我可以变为单选按钮</li>
+        <li>我虽然是li 但我可以变为单选按钮</li>
+        <li>我虽然是li 但我可以变为单选按钮</li>
+    </ul>
+</body>
+</html>

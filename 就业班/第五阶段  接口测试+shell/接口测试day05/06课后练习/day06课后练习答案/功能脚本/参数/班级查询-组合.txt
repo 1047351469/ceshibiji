@@ -1,0 +1,4 @@
+T01,2018级Test学院T01班,Master,slogan
+
+
+depid,clsname,mastername,slogan

@@ -1,0 +1,6 @@
+{
+  "scripts/test_login.py::TestLogin::()::test_login[test_login_001]": true,
+  "scripts/test_login.py::TestLogin::()::test_login[test_login_002]": true,
+  "scripts/test_login.py::TestLogin::()::test_sign_up[test_sign_up_001]": true,
+  "scripts/test_login.py::TestLogin::()::test_sign_up[test_sign_up_002]": true
+}

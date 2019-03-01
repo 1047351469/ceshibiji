@@ -1,0 +1,93 @@
+一、查询
+    1.1班级-查询所有
+        请求方法：GET
+        请求地址：http://127.0.0.1:8000/api/departments/T01/classes/
+        （注：T01：为班级ID）
+    1.2班级-查询指定
+        请求方法：GET
+        请求地址：http://127.0.0.1:8000/api/departments/T01/classes/2017T01C02/
+        （注：TO1：为班级ID；2017T01C02为班级ID；）
+    1.3班级-List-$cls_id_list查询
+        请求方法：GET
+        请求地址：http://127.0.0.1:8000/api/departments/T01/classes/?$cls_id_list=2017T01C03,2017T01C04
+        (注：T01:为班级ID；$cls_id_list：为参数名称;2017T01C03,2017T01C04为:班级ID;)
+    1.4班级-List-$master_name_list查询
+        请求方法：GET
+        请求地址：http://127.0.0.1:8000/api/departments/T02/classes/?$master_name_list=Master15,Master16
+        (注：T02：为班级ID；$master_name_list：为参数名称;Master15,Master16为:班主任名称;)
+    1.5班级-List-$cls_name_list查询
+        请求方法：GET
+        请求地址：http://127.0.0.1:8000/api/departments/T01/classes/?$cls_name_list=2017级Test学院T01班,2017级Test学院T02班
+        (注：T01：为班级ID;$cls_name_list：为参数名称;2017级Test班级T01班,2017级Test班级T02班为:班级名称;)
+    1.6班级-List-$slogan_list查询
+        请求方法：GET
+        请求地址：http://127.0.0.1:8000/api/departments/T02/classes/?$slogan_list=slogan15,slogan16
+        (注：T02：为班级ID;$slogan_list：为参数名称;slogan15,slogan16为:班级口号;)
+    1.7班级-组合
+        请求方法：GET
+        请求地址：http://127.0.0.1:8000/api/departments/T01/classes/?cls_name=2018级Test学院T01班&master_name=Master&slogan=sloganSlogan&dep_name=Test班级
+        (注:T01：学院ID；cls_name,master_name,dep_name：为参数名称；)
+
+        1.以上方法是否有遗漏？
+        答：
+
+        2.以上请求资源格式和参数格式是否正确？
+        答：
+二、新增
+    2.1班级-新增
+        1) 请求方法：POST
+        2) 请求地址：http://127.0.0.1:8000/api/departments/T02/classes/
+                    (T02:为学院ID)
+        3) 请求JOSN报文：
+        4) 调用传入的json串如下（可新增多条，之间用,隔开）：
+             {
+                "data": [
+                            {
+                                "cls_id": "2018T01C015",
+                                "cls_name": "2018级Test学院T10班",
+                                "master_name": "Master15",
+                                "slogan": "slogan15"
+                            }
+                        ]
+              }
+
+
+        1.以上请求新增资源URI是否正确？
+        答：
+
+        2.以上JSON报文格式是否正确？
+        答：
+三、更新
+    3.1班级-更新
+    1). 请求方法：PUT
+    2). 请求地址：http://127.0.0.1:8000/api/departments/T01/classes/2017T01C05/
+        (注：T01：学院ID；2017T01C05：为班级ID)
+    3). 请求JOSN报文：
+             {
+                "data": [
+                            {
+                              "cls_id":"2017T01C05",
+                              "dep_id":"T01",
+                              "cls_name":"2018级Test学院T01班",
+                              "master_name":"Master",
+                              "slogan":"slogan"
+                            }
+                        ]
+              }
+
+
+    1.以上更新资源URI是否正确？
+    答：
+
+    2.以上更新JSON报文格式和属性是否正确？
+    答：
+
+四、删除
+    4.1班级-删除单个
+    请求方法：DELETE
+    请求地址：http://127.0.0.1:8000/api/departments/T01/classes/2018T01C08/
+    (注:T01：为学院ID；2018T01C08：为班级ID)
+    4.2班级-删除多个
+    请求方法：DELETE
+    请求地址：http://127.0.0.1:8000/api/departments/T01/classes/?$cls_id_list=2018T01C010,2018T01C011
+    (注:T01：学院Id；cls_id_list:为参数名称；2018T01C010,2018T01C011：为班级ID)

@@ -1,0 +1,16 @@
+test_login:
+  test_login_001:
+    username: "章三"
+    password: "zhangsan"
+  test_login_002:
+    username: "李四"
+    password: "lisi"
+test_sign_up:
+  test_sign_up_001:
+    username: "王五"
+    password: "wangwu"
+    number: "185030303030"
+  test_sign_up_002:
+    username: "周六"
+    password: "zhouliu"
+    number: "13788888888"

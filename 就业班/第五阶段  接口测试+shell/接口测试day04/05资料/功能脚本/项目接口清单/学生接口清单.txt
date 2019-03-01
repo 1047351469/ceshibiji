@@ -1,0 +1,93 @@
+一、学生资源-查询
+	1.1 学生查询-所有
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{2017T01C01}/students/
+		(T01:学院ID；2017T01C01:班级ID；)
+	1.2 学生查询-指定
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{2017T01C01}/students/{1001}
+		(T01:学院ID；2017T01C01:班级ID；1001：为学生学号)
+	1.3 学生查询-$stu_id_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{2017T01C01}/students/?$stu_id_list={1001},{1002}
+		(T01:学院ID；2017T01C01:班级ID；1001,1002：为学生学号)
+	1.4 学生查询-$stu_name_list
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{2017T01C01}/students/?$stu_name_list={stuname1},{stuname2}
+		(T01:学院ID；2017T01C01:班级ID；stuname1,stuname2：为学生姓名)
+	1.5 学生查询-条件stu_name
+		请求方法：GET
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{2017T01C01}/students/?stu_name={name1}
+		(T01:学院ID；2017T01C01:班级ID；name1：为学生姓名)
+		
+	1.以上请求方法是否有遗漏？
+	
+	2.以上请求地址是否正确？
+	
+二、学生资源-新增
+	2.1 学生-新增
+		请求方法：POST
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{2017T01C01}/students/
+		(T01:学院ID；2017T01C01:班级ID；)（新增多条之间使用逗号隔开）
+		请求JSON报文：
+		{
+			"data": [
+					  {
+						"dep_id":"T01",
+						"cls_id":"1001",
+						"stu_id": "2017T01C01001",
+						"stu_name": "学生姓名",
+						"gender": "true",
+						"birthday": "2018-01-01",
+						"native": "北京",
+						"phone_number": "",
+						"address": "",
+						"zipcode": "",
+						"email": "",
+						"note": ""
+					   }
+			        ]
+		}
+		
+	1.以上请求方法是否有遗漏？
+	
+	2.以上请求地址是否正确？
+	
+三、学生资源-更新
+	3.1 学生-更新
+		请求方法：PUT
+		请求地址：http://127.0.0.1:8000/api/departments/{T01}/classes/{2017T01C01}/students/{1001}
+		(T01:学院ID；2017T01C01:班级ID；1001：为学生学号)
+		请求JSON报文：
+		{
+			"data": [
+					  {
+						"dep_id":"T01",
+						"cls_id":"1001",
+						"stu_id": "2017T01C01001",
+						"stu_name": "学生姓名",
+						"gender": "true",
+						"birthday": "2018-01-01",
+						"native": "北京",
+						"phone_number": "",
+						"address": "",
+						"zipcode": "",
+						"email": "",
+						"note": ""
+					   }
+			        ]
+		}
+		
+	1.以上请求方法是否有遗漏？
+	
+	2.以上请求地址是否正确？
+	
+四、学生资源-删除
+	4.1 学生-删除
+		请求方法：DELETE
+		请求地址:http://127.0.0.1:8000/api/departments/{T01}/classes/{2017T01C01}/students/{1001}
+		(T01:学院ID；2017T01C01:班级ID；1001：为学生学号)
+		
+	1.以上请求方法是否有遗漏？
+	
+	2.以上请求地址是否正确？

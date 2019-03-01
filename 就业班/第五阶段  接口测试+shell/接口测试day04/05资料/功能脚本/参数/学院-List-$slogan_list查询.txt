@@ -1,0 +1,7 @@
+Here is Slogan,auto_slogn136,----为正常数据
+Here is Slogan,,----1个为正常，1个为空
+Here is Slogan,auto_slogn136222,----1个为正常，1个为不存在
+,,----两个都为空
+Here igan,au136,----两个为不存在
+ Here is Slogan ,auto_slogn136,----前后含空格
+Here is Slogan, auto_slogn136 ,----前后含空格

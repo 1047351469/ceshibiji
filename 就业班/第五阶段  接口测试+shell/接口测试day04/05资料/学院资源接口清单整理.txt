@@ -1,0 +1,149 @@
+一、学院资源查询
+	1.查询学院-所有
+		1.请求方法：GET
+		2.请求地址： http://127.0.0.1:8000/api/departments/
+		
+	2.查询学院-指定
+		1.请求方法：GET
+		2.请求地址： http://127.0.0.1:8000/api/departments/{T03}/
+		(T03：为学院id)
+		
+	3.查询学院-$dep_id_list
+		1.请求方法：GET
+		2.请求地址：http://127.0.0.1:8000/api/departments/?$dep_id_list={T03},{T04}
+		(T03，T04:为学院ID；$dep_id_list:为条件名称)
+		
+	4.查询学院-$dep_name_list
+		1.请求方法：GET
+		2.请求地址：http://127.0.0.1:8000/api/departments/?$dep_name_list={name1},{name2}
+		(name1,name2:为学院名称；$dep_name_list:为条件名称)
+		
+	5.查询学院-$master_name_list
+		1.请求方法：GET
+		2.请求地址：http://127.0.0.1:8000/api/departments/?$master_name_list={mastername1},{mastername2}
+		(masternamel,mastername2:为院长name；$master_name_list:为条件名称)
+		
+	6.查询学院-$Slogan_list
+		1.请求方法：GET
+		2.请求地址：http://127.0.0.1:8000/api/departments/?$Slogan_list={slogan1},{slogan2}
+		(slogan1,slogan2:为口号；$Slogan_list:为条件名称)
+		
+	7.查询学院-组合查询
+		1.请求方法：GET
+		2.请求地址：http://127.0.0.1:8000/api/departments/?master_name={name1}&dep_name={name1}&slogan={slogan1}
+		(以上参数条件，可以单独使用也可以随意组合)
+		
+	
+	8.查询学院-模糊查询
+		1.请求方法：GET
+		2.请求地址：http://127.0.0.1:8000/api/departments/?slogan={slogan1}&blur=1
+		(slogan:为参数名称;slogan1:口号；blur=1：为模糊开启)
+		
+	9.查询学院-分页查询（演示，无此接口）
+		1.请求方法：GET
+		2.请求地址：http://127.0.0.1:8000/api/departments/?skip={skip1}&top={top2}
+		(skip:为参数名称;skip1:为要跳过的条数；top:为参数名称;top2:为要返回的条数)
+		
+	
+		
+	1. 以上接口是否有遗漏？
+	
+		答：
+	
+	2. 以上接口请求地址和方法是否正确？
+	
+		答：
+
+	3. 以上参数名称是否正确？
+	
+		答：
+
+二、学院新增
+	1.请求方法：POST
+	2.请求地址：http://127.0.0.1:8000/api/departments/
+	3.JSON报文：
+	 {
+		"data": [
+					  {
+						"dep_id": "T01",
+						"dep_name": "Test学院",
+						"master_name": "Test-Master",
+						"slogan": "Here is Slogan"
+					  },
+					  {
+						"dep_id": "T01",
+						"dep_name": "Test学院",
+						"master_name": "Test-Master",
+						"slogan": "Here is Slogan"
+					  }
+				]
+	}
+	(备注：可新增多条，每条之间用逗号隔开)
+
+	1. 请求调用方法是否正确？
+		
+		答：
+		
+	2. 请求路径是否正确？
+	
+		答：
+		
+	3. 请求JSON报文格式和参数是否正确
+		答：
+三、学院更新
+	1.请求方法：PUT
+	2.请求地址：http://127.0.0.1:8000/api/departments/{T03}/
+	(T03:为学院ID)
+	3.JSON报文：
+	 {
+		"data": [
+					  {
+						"dep_id": "T01",
+						"dep_name": "Test学院",
+						"master_name": "Test-Master",
+						"slogan": "Here is Slogan"
+					  },
+					  {
+						"dep_id": "T01",
+						"dep_name": "Test学院",
+						"master_name": "Test-Master",
+						"slogan": "Here is Slogan"
+					  }
+				]
+	}
+	(备注：可新增多条，每条之间用逗号隔开)
+
+	1. 请求调用方法是否正确？
+		
+		答：
+		
+	2. 请求路径是否正确？
+	
+		答：
+		
+	3. 请求JSON报文格式和参数是否正确
+	
+		答：
+		
+四、学院删除
+
+	1.请求方法：DELETE
+	2.请求地址：http://127.0.0.1:8000/api/departments/{T03}/
+	(T03：为学院ID)
+	
+四-1、删除科普(不做接口使用)
+	1.请求方法：DELETE
+	2.请求地址：http://127.0.0.1:8000/api/departments/?$dep_id_list={T03},{T04}
+	($dep_id_list：为参数名称；T03、T04：为学院ID)
+	
+	1. 请求调用方法是否正确？
+		
+		答：
+		
+	2. 请求路径是否正确？
+	
+		答：
+		
+	3. 请求JSON报文格式和参数是否正确
+	
+		答：

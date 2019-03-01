@@ -1,0 +1,54 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1528535766263" stop="1528535766284">
+  <name>test_login</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1528535766263" status="passed" stop="1528535766269">
+      <name>TestLogin.test_login[args0]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528535766271" status="passed" stop="1528535766276">
+      <name>TestLogin.test_login[args1]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528535766278" status="passed" stop="1528535766282">
+      <name>TestLogin.test_sign_up[args0]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+    <test-case start="1528535766283" status="passed" stop="1528535766284">
+      <name>TestLogin.test_sign_up[args1]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="17747-MainThread"/>
+        <label name="host" value="HaoYosondeMacBook-Pro.local"/>
+        <label name="framework" value="pytest"/>
+        <label name="language" value="cpython3"/>
+      </labels>
+      <steps/>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>

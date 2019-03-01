@@ -1,0 +1,60 @@
+Virtual User Script started at : 2018-06-21 15:20:41
+Starting action vuser_init.
+Web Turbo Replay of LoadRunner 11.0.0 for Windows 7; build 8859 (Aug 18 2010 20:14:31)  	[MsgId: MMSG-27143]
+Run Mode: HTML  	[MsgId: MMSG-26000]
+Run-Time Settings file: "E:\¿ÎÌÃ\ÉÏº£Ò»ÆÚ\ÐÔÄÜ²âÊÔ\Day04\04_´úÂë\Code\¹ºÆ±\\default.cfg"  	[MsgId: MMSG-27141]
+Ending action vuser_init.
+Running Vuser...
+Starting iteration 1.
+Starting action Action.
+Action.c(4): Notify: Transaction "¶©Æ±-Ô¤¶¨»úÆ±×Ü" started.
+Action.c(5): Registering web_reg_save_param was successful  	[MsgId: MMSG-26390]
+Action.c(9): Detected non-resource "http://127.0.0.1:1080/WebTours/header.html" in "http://127.0.0.1:1080/WebTours/"  	[MsgId: MMSG-26574]
+Action.c(9): Detected non-resource "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true" in "http://127.0.0.1:1080/WebTours/"  	[MsgId: MMSG-26574]
+Action.c(9): Found resource "http://127.0.0.1:1080/WebTours/images/hp_logo.png" in HTML "http://127.0.0.1:1080/WebTours/header.html"  	[MsgId: MMSG-26659]
+Action.c(9): Found resource "http://127.0.0.1:1080/WebTours/images/webtours.png" in HTML "http://127.0.0.1:1080/WebTours/header.html"  	[MsgId: MMSG-26659]
+Action.c(9): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?in=home" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true"  	[MsgId: MMSG-26574]
+Action.c(9): Detected non-resource "http://127.0.0.1:1080/WebTours/home.html" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true"  	[MsgId: MMSG-26574]
+Action.c(9): Found resource "http://127.0.0.1:1080/WebTours/JSFormSubmit.js" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?in=home"  	[MsgId: MMSG-26659]
+Action.c(9): Found resource "http://127.0.0.1:1080/WebTours/images/mer_login.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?in=home"  	[MsgId: MMSG-26659]
+Action.c(9): web_url("´ò¿ªÊ×Ò³") was successful, 6871 body bytes, 1808 header bytes  	[MsgId: MMSG-26386]
+Action.c(10): Notify: Transaction "¶©Æ±-µÇÂ¼" started.
+Action.c(12): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home" in "http://127.0.0.1:1080/WebTours/login.pl"  	[MsgId: MMSG-26574]
+Action.c(12): Detected non-resource "http://127.0.0.1:1080/WebTours/login.pl?intro=true" in "http://127.0.0.1:1080/WebTours/login.pl"  	[MsgId: MMSG-26574]
+Action.c(12): Found resource "http://127.0.0.1:1080/WebTours/images/flights.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home"  	[MsgId: MMSG-26659]
+Action.c(12): Found resource "http://127.0.0.1:1080/WebTours/images/itinerary.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home"  	[MsgId: MMSG-26659]
+Action.c(12): Found resource "http://127.0.0.1:1080/WebTours/images/in_home.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home"  	[MsgId: MMSG-26659]
+Action.c(12): Found resource "http://127.0.0.1:1080/WebTours/images/signoff.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home"  	[MsgId: MMSG-26659]
+Action.c(12): web_submit_data("µÇÂ¼") was successful, 5693 body bytes, 1538 header bytes  	[MsgId: MMSG-26386]
+Action.c(23): Notify: Transaction "¶©Æ±-µÇÂ¼" ended with "Pass" status (Duration: 0.5489 Wasted Time: 0.0064).
+Action.c(24): Notify: Transaction "¶©Æ±-Ô¤¶¨»úÆ±" started.
+Action.c(25): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=flights" in "http://127.0.0.1:1080/WebTours/welcome.pl?page=search"  	[MsgId: MMSG-26574]
+Action.c(25): Detected non-resource "http://127.0.0.1:1080/WebTours/reservations.pl?page=welcome" in "http://127.0.0.1:1080/WebTours/welcome.pl?page=search"  	[MsgId: MMSG-26574]
+Action.c(25): Found resource "http://127.0.0.1:1080/WebTours/images/button_next.gif" in HTML "http://127.0.0.1:1080/WebTours/reservations.pl?page=welcome"  	[MsgId: MMSG-26659]
+Action.c(25): Found resource "http://127.0.0.1:1080/WebTours/images/in_flights.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=flights"  	[MsgId: MMSG-26659]
+Action.c(25): Resource "http://127.0.0.1:1080/WebTours/images/itinerary.gif" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(25): Found resource "http://127.0.0.1:1080/WebTours/images/home.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=flights"  	[MsgId: MMSG-26659]
+Action.c(25): Resource "http://127.0.0.1:1080/WebTours/images/signoff.gif" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(25): web_url("º½°à") was successful, 8360 body bytes, 1173 header bytes  	[MsgId: MMSG-26386]
+Action.c(27): Resource "http://127.0.0.1:1080/WebTours/images/button_next.gif" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(27): web_submit_data("web_submit_data") was successful, 2352 body bytes, 253 header bytes  	[MsgId: MMSG-26386]
+Action.c(49): Resource "http://127.0.0.1:1080/WebTours/images/button_next.gif" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(49): web_submit_data("²éÕÒº½°à") was successful, 2723 body bytes, 253 header bytes  	[MsgId: MMSG-26386]
+Action.c(65): Found resource "http://127.0.0.1:1080/WebTours/images/bookanother.gif" in HTML "http://127.0.0.1:1080/WebTours/reservations.pl"  	[MsgId: MMSG-26659]
+Action.c(65): web_submit_data("web_submit_data") was successful, 3212 body bytes, 572 header bytes  	[MsgId: MMSG-26386]
+Action.c(93): Notify: Transaction "¶©Æ±-Ô¤¶¨»úÆ±" ended with "Pass" status (Duration: 1.3509 Wasted Time: 0.0118).
+Action.c(95): Notify: Transaction "¶©Æ±-ÍË³öµÇÂ¼" started.
+Action.c(97): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?in=home" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=1"  	[MsgId: MMSG-26574]
+Action.c(97): Detected non-resource "http://127.0.0.1:1080/WebTours/home.html" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=1"  	[MsgId: MMSG-26574]
+Action.c(97): Retrieving data from cache for "http://127.0.0.1:1080/WebTours/home.html"  	[MsgId: MMSG-26558]
+Action.c(97): Resource "http://127.0.0.1:1080/WebTours/JSFormSubmit.js" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(97): Resource "http://127.0.0.1:1080/WebTours/images/mer_login.gif" is in the cache already and will not be downloaded again  	[MsgId: MMSG-26655]
+Action.c(97): web_url("ÍË³öµÇÂ¼") was successful, 2160 body bytes, 644 header bytes  	[MsgId: MMSG-26386]
+Action.c(104): Notify: Transaction "¶©Æ±-ÍË³öµÇÂ¼" ended with "Pass" status (Duration: 0.4733 Wasted Time: 0.0026).
+Action.c(106): Notify: Transaction "¶©Æ±-Ô¤¶¨»úÆ±×Ü" ended with "Pass" status (Duration: 3.3891 Wasted Time: 0.4440).
+Ending action Action.
+Ending iteration 1.
+Ending Vuser...
+Starting action vuser_end.
+Ending action vuser_end.
+Vuser Terminated.

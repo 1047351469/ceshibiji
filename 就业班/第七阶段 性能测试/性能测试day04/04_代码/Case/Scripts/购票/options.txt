@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IE:\课堂\上海一期\性能测试\Day04\04_代码\Code\购票
+-IC:\lr11.0\include
+-ee:\课堂\上海一期\性能测试\day04\04_代码\code\购票\\logfile.log
+e:\课堂\上海一期\性能测试\day04\04_代码\code\购票\\combined_购票.c
+e:\课堂\上海一期\性能测试\day04\04_代码\code\购票\\pre_cci.c

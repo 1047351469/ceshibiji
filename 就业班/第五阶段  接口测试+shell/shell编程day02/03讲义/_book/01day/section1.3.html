@@ -1,0 +1,432 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Shell变量 | Shell</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../01day/section1.4.html" />
+    
+    
+    <link rel="prev" href="../01day/section1.2.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.3"
+        data-chapter-title="Shell变量"
+        data-filepath="01day/section1.3.md"
+        data-basepath=".."
+        data-revision="Fri Apr 13 2018 16:49:57 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Shell
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="01day/index.html">
+            
+                
+                    <a href="../01day/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第1章-Shell基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="01day/section1.1.html">
+            
+                
+                    <a href="../01day/section1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Shell介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01day/section1.2.html">
+            
+                
+                    <a href="../01day/section1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Shell脚本规范
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="01day/section1.3.html">
+            
+                
+                    <a href="../01day/section1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Shell变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="01day/section1.4.html">
+            
+                
+                    <a href="../01day/section1.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        Shell流程控制语句
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="01day/section1.5.html">
+            
+                
+                    <a href="../01day/section1.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        Shell函数
+                    </a>
+            
+            
+        </li>
+    
+       
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Shell</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="shell&#x53D8;&#x91CF;"><center>Shell&#x53D8;&#x91CF;</center></h1>
+<hr>
+<h2 id="&#x76EE;&#x6807;">&#x76EE;&#x6807;</h2>
+<pre><code>1. &#x638C;&#x63E1;shell&#x53D8;&#x91CF;&#x7684;&#x5206;&#x7C7B;
+</code></pre><hr>
+<h2 id="1-shell&#x53D8;&#x91CF;">1. shell&#x53D8;&#x91CF;</h2>
+<h3 id="11-&#x4EC0;&#x4E48;&#x662F;&#x53D8;&#x91CF;">1.1 &#x4EC0;&#x4E48;&#x662F;&#x53D8;&#x91CF;</h3>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;&#x628A;&#x6307;&#x5B9A;&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x8D4B;&#x503C;&#x7ED9;&#x4E00;&#x4E2A;&#x540D;&#x79F0;&#xFF0C;&#x5F15;&#x7528;&#x8BE5;&#x540D;&#x79F0;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x503C;&#xFF0C;&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x503C;&#x53EF;&#x6839;&#x636E;&#x9700;&#x6C42;
+      &#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x800C;&#x5F15;&#x7528;&#x540D;&#x79F0;&#x4E0D;&#x53D8;&#xFF1B;(&#x5F15;&#x7528;&#x540D;&#x79F0;&#xFF1A;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x8BF4;&#x7684;&#x53D8;&#x91CF;)
+</code></pre><h3 id="12-&#x4EC0;&#x4E48;&#x662F;shell&#x53D8;&#x91CF;">1.2 &#x4EC0;&#x4E48;&#x662F;shell&#x53D8;&#x91CF;</h3>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;&#x5728;shell&#x811A;&#x672C;&#x4E2D;&#x7684;&#x5F15;&#x7528;&#x53D8;&#x91CF;&#xFF1B;&#x5982;&#x679C;&#x53D8;&#x91CF;&#x4E3A;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x90A3;&#x4E48;&#x81EA;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x9700;&#x8981;&#x7B26;&#x5408;shell&#x53D8;&#x91CF;&#x547D;&#x540D;&#x89C4;&#x8303;&#xFF1B;    
+</code></pre><h4 id="&#x601D;&#x8003;&#xFF1A;">&#x601D;&#x8003;&#xFF1A;</h4>
+<pre><code>&#x5728;shell&#x811A;&#x672C;&#x4E2D;&#x81EA;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x65F6;&#x6709;&#x54EA;&#x4E9B;&#x89C4;&#x8303;&#xFF1F;
+</code></pre><h3 id="13-shell&#x53D8;&#x91CF;&#x89C4;&#x8303;">1.3 shell&#x53D8;&#x91CF;&#x89C4;&#x8303;</h3>
+<pre><code>1. &#x53D8;&#x91CF;&#x540D;&#x4EE5;&#x82F1;&#x6587;&#x5B57;&#x6BCD;&#x6216;&#x8005;&#x4E0B;&#x5212;&#x7EBF;&#x5F00;&#x5934;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x4EE5;&#x6570;&#x5B57;&#x5F00;&#x5934;
+   (name=&quot;xiaoming&quot; &#x6B63;&#x786E;&#xFF1B;_age=18 &#x6B63;&#x786E;&#xFF1B;1a=&quot;error&quot; &#x9519;&#x8BEF;&#xFF1B;)
+2. &#x53D8;&#x91CF;&#x540D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199; 
+   (&#x5982;&#xFF1A;name=&quot;zhangsan&quot;&#x4E0E;NAME=&quot;&#x674E;&#x56DB;&quot;&#x4E0D;&#x540C;)
+3. &#x53D8;&#x91CF;&#x540D;&#x4E0E;&#x7B49;&#x53F7;&#x4E4B;&#x95F4;&#xFF0C;&#x7B49;&#x53F7;&#x4E0E;&#x53D8;&#x91CF;&#x503C;&#x4E4B;&#x95F4;&#x4E0D;&#x8981;&#x6709;&#x7A7A;&#x683C;    
+   (&#x5982;: name=&quot;zhangsan&quot;)
+4. &#x4F7F;&#x7528;$&#x52A0;&#x53D8;&#x91CF;&#x540D;&#x6765;&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x7684;&#x503C;    
+   (&#x5982;&#xFF1A;echo $name)
+5. &#x5F15;&#x7528;&#x53D8;&#x91CF;&#x540D;&#x4E0E;&#x5B57;&#x7B26;&#x4E32;&#x76F8;&#x8FDE;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x7A7A;&#x683C;&#x505A;&#x5206;&#x9694;&#xFF0C;&#x6216;&#x8005;&#x53D8;&#x91CF;&#x540D;&#x52A0;{}&#x4FEE;&#x9970;
+   (&#x5982;&#xFF1A;echo $name hello&#xFF1B;echo ${name}hello&#xFF1B;)
+
+&#x63D0;&#x793A;&#xFF1A;&#x4EE5;&#x4E0A;&#x4E3A;&#x81EA;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x540D;&#x79F0;&#x548C;&#x5F15;&#x7528;&#x65F6;&#x7684;&#x89C4;&#x8303;&#xFF0C;&#x9664;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x5916;shell&#x811A;&#x672C;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x53D8;&#x91CF;    
+</code></pre><h2 id="2-shell&#x53D8;&#x91CF;&#x7C7B;&#x578B;">2. shell&#x53D8;&#x91CF;&#x7C7B;&#x578B;</h2>
+<pre><code>1. &#x672C;&#x5730;&#x53D8;&#x91CF;&#x3010;&#x638C;&#x63E1;&#x3011;
+2. &#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3010;&#x4E86;&#x89E3;&#x3011;
+3. &#x5185;&#x7F6E;&#x53D8;&#x91CF;&#x3010;&#x719F;&#x6089;&#x3011;
+</code></pre><h3 id="21-&#x4EC0;&#x4E48;&#x662F;&#x672C;&#x5730;&#x53D8;&#x91CF;">2.1 &#x4EC0;&#x4E48;&#x662F;&#x672C;&#x5730;&#x53D8;&#x91CF;</h3>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;
+    1). &#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#x53EA;&#x80FD;&#x5728;&#x7CFB;&#x7EDF;&#x7684;&#x5C40;&#x90E8;&#x73AF;&#x5883;&#x4E0B;&#x751F;&#x6548;&#xFF1B;&#x4F5C;&#x7528;&#x8303;&#x56F4;&#x5C0F;
+    2). &#x672C;&#x5730;&#x53D8;&#x91CF;&#x7EC6;&#x5206;&#x53C8;&#x5206;&#x666E;&#x901A;&#x53D8;&#x91CF;&#x548C;&#x547D;&#x4EE4;&#x53D8;&#x91CF;
+</code></pre><h4 id="&#x666E;&#x901A;&#x53D8;&#x91CF;&#x3010;&#x638C;&#x63E1;&#x3011;">&#x666E;&#x901A;&#x53D8;&#x91CF;&#x3010;&#x638C;&#x63E1;&#x3011;</h4>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x53D8;&#x91CF;&#x503C;&#x4E00;&#x822C;&#x4E3A;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x6216;&#x8005;&#x8FD0;&#x7B97;&#x7ED3;&#x679C;&#xFF1B;&#x53D8;&#x91CF;&#x7684;&#x8D4B;&#x503C;&#x6709;&#x4EE5;&#x4E0B;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;
+1. &#x53D8;&#x91CF;&#x540D;=&#x53D8;&#x91CF;&#x503C;    --&gt; name=zhangsan
+   (&#x53D8;&#x91CF;&#x503C;&#x5FC5;&#x987B;&#x662F;&#x4E00;&#x4E2A;&#x6574;&#x4F53;&#xFF0C;&#x4E2D;&#x95F4;&#x4E0D;&#x80FD;&#x6709;&#x7A7A;&#x683C;&#xFF1B;&#x5982;&#xFF1A;name=zhang san)
+2. &#x53D8;&#x91CF;&#x540D;=&apos;&#x53D8;&#x91CF;&#x503C;&apos;    --&gt; name=&apos;zhang san&apos;
+   (&#x503C;&#x5168;&#x90E8;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;)
+3. &#x53D8;&#x91CF;&#x540D;=&quot;&#x53D8;&#x91CF;&#x503C;&quot;    --&gt; name=&quot;zhang san $age&quot;(age&#x4E3A;&#xFF1A;&#x53D8;&#x91CF;&#x540D;)
+   (&#x503C;&#x4E3A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5982;&#x679C;&#x503C;&#x5185;&#x6709;&#x5176;&#x4ED6;&#x53D8;&#x91CF;&#xFF0C;&#x5219;&#x89E3;&#x6790;&#x53D8;&#x91CF;&#xFF0C;&#x5E76;&#x5C06;&#x53D8;&#x91CF;&#x503C;&#x4F5C;&#x4E3A;&#x8F93;&#x51FA;&#x6570;&#x636E;)
+
+&#x63D0;&#x793A;&#xFF1A;
+    1). &#x53D8;&#x91CF;&#x503C;&apos;&apos;&#x548C;&quot;&quot;&#x533A;&#x522B;:&apos;&apos;&#x4E0D;&#x80FD;&#x89E3;&#x6790;&#x5176;&#x5185;&#x53D8;&#x91CF;&#xFF0C;&quot;&quot;&#x53EF;&#x4EE5;&#x89E3;&#x6790;&#x5176;&#x5185;&#x53D8;&#x91CF;
+    2). &#x53D8;&#x91CF;&#x503C;&#x4E3A;&#x6570;&#x5B57;&#xFF0C;&#x4E0D;&#x52A0;&#x5F15;&#x53F7;&#xFF0C;&#x5176;&#x4ED6;&#x9ED8;&#x8BA4;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x3010;&quot;&quot;&#x3011; 
+</code></pre><h4 id="&#x547D;&#x4EE4;&#x53D8;&#x91CF;&#x3010;&#x638C;&#x63E1;&#x3011;">&#x547D;&#x4EE4;&#x53D8;&#x91CF;&#x3010;&#x638C;&#x63E1;&#x3011;</h4>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x53D8;&#x91CF;&#x503C;&#x4E3A;shell&#x547D;&#x4EE4;&#xFF1B;&#x53D8;&#x91CF;&#x7684;&#x8D4B;&#x503C;&#x6709;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;
+1. &#x53D8;&#x91CF;&#x540D;=`&#x547D;&#x4EE4;`    --&gt; list=&apos;ls&apos;
+   (``:&#x4E3A;&#x53CD;&#x5F15;&#x53F7; Tab&#x952E;&#x4E0E;Esc&#x952E;&#x4E2D;&#x95F4;&#x6CE2;&#x6D6A;&#x7EBF;&#x952E;&#xFF1B;&#x8F93;&#x5165;&#x6CD5;&#x4E3A;&#x82F1;&#x6587;&#x72B6;&#x6001;&#x4E0B;)
+2. &#x53D8;&#x91CF;&#x540D;=$(&#x547D;&#x4EE4;)    --&gt; list=$(ls)
+   (&#x6267;&#x884C;&#x62EC;&#x53F7;&#x5185;&#x547D;&#x4EE4;&#xFF0C;&#x5C06;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x8D4B;&#x503C;&#x7ED9;&#x53D8;&#x91CF;&#x540D;)
+&#x63D0;&#x793A;&#xFF1A;
+    1). ``&#x79FB;&#x690D;&#x6027;&#x9AD8;&#xFF1B;&#x5982;&#x679C;&#x547D;&#x4EE4;&#x4E4B;&#x95F4;&#x6709;&#x5C42;&#x7EA7;&#x5173;&#x7CFB;&#xFF0C;$()&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x76F4;&#x89C2;&#x7684;&#x70B9;&#xFF1B;
+    2). ``&#x548C;$()&#x5404;&#x6709;&#x4F18;&#x7F3A;&#x70B9;&#xFF0C;&#x5BF9;&#x4E8E;shell&#x5165;&#x95E8;&#x6765;&#x8BF4;&#x4E24;&#x79CD;&#x90FD;&#x4E00;&#x6837;&#xFF0C;&#x90A3;&#x79CD;&#x597D;&#x8BB0;&#x4F7F;&#x7528;&#x90A3;&#x79CD;;
+</code></pre><h5 id="&#x7EC3;&#x4E60;1">&#x7EC3;&#x4E60;1</h5>
+<pre><code>&#x7F16;&#x5199;shell&#x811A;&#x672C;&#xFF0C;&#x8FD0;&#x884C;shell&#x811A;&#x672C;&#x540E;&#xFF0C;&#x663E;&#x793A;&#x5F53;&#x524D;&#x8DEF;&#x5F84;&#x4E0B;&#x6587;&#x4EF6;
+</code></pre><h4 id="&#x601D;&#x8003;">&#x601D;&#x8003;</h4>
+<pre><code>&#x8DEF;&#x5F84;&#x80FD;&#x4E0D;&#x80FD;&#x52A8;&#x6001;&#x8F93;&#x5165;&#xFF1F;--&gt; &#x5728;&#x8FD0;&#x884C;&#x811A;&#x672C;&#x7684;&#x65F6;&#x5019;&#x8F93;&#x5165;&#x8DEF;&#x5F84;
+</code></pre><h5 id="read-&#x547D;&#x4EE4;">read &#x547D;&#x4EE4;</h5>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;&#x83B7;&#x53D6;&#x952E;&#x76D8;&#x8F93;&#x5165;&#x7684;&#x5185;&#x5BB9;&#x8D4B;&#x7ED9;&#x6307;&#x5B9A;&#x7684;&#x53D8;&#x91CF;
+&#x683C;&#x5F0F;&#xFF1A;
+    1). read &#x53D8;&#x91CF;&#x540D;
+    2). read &#x53D8;&#x91CF;&#x540D; &#x53D8;&#x91CF;&#x540D;
+&#x53C2;&#x6570;&#xFF1A;
+    -p     &#x6DFB;&#x52A0;&#x63D0;&#x793A;&#x4FE1;&#x606F;     --&gt; &#x5982;&#xFF1A;read -p &quot;&#x8BF7;&#x8F93;&#x5165;&#x8981;&#x7EDF;&#x8BA1;&#x7684;&#x76EE;&#x5F55;:&quot; str
+</code></pre><h5 id="&#x7EC3;&#x4E60;2">&#x7EC3;&#x4E60;2</h5>
+<pre><code>&#x7F16;&#x5199;shell&#x811A;&#x672C;&#xFF0C;&#x52A8;&#x6001;&#x83B7;&#x53D6;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#xFF0C;&#x8FD4;&#x56DE;&#x8BE5;&#x76EE;&#x5F55;&#x4E2D;&#x6587;&#x4EF6;&#x7684;&#x6570;&#x91CF;
+</code></pre><h5 id="&#x7EC3;&#x4E60;2&#x91CD;&#x70B9;&#x5206;&#x6790;">&#x7EC3;&#x4E60;2&#x91CD;&#x70B9;&#x5206;&#x6790;</h5>
+<pre><code>1. &#x83B7;&#x53D6;&#x6587;&#x4EF6;&#x6570;&#x91CF; ls-l |wc -l
+   (ls -l&#xFF1A;&#x4EE5;&#x5217;&#x8868;(&#x884C;)&#x7684;&#x5F62;&#x5F0F;&#x663E;&#x793A;&#xFF1B;|&#xFF1A;&#x7BA1;&#x9053;&#x7B26;&#xFF1B;wc -l&#xFF1A;&#x7EDF;&#x8BA1;&#x884C;&#x6570;)
+</code></pre><h5 id="&#x7EC3;&#x4E60;2-&#x4EE3;&#x7801;&#x793A;&#x4F8B;">&#x7EC3;&#x4E60;2 &#x4EE3;&#x7801;&#x793A;&#x4F8B;</h5>
+<pre><code>#!/bin/bash
+# &#x7EDF;&#x8BA1;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#x6587;&#x4EF6;&#x4E2A;&#x6570;
+read -p &quot;&#x8BF7;&#x8F93;&#x5165;&#x8981;&#x7EDF;&#x8BA1;&#x7684;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#xFF1A;&quot; str
+num=$(ls -l $str |wc -l)
+num=$(($num-1))
+echo &quot;/etc&#x76EE;&#x5F55;&#x4E0B;&#x5171;&#x6709;:${num}&#x4E2A;&#x6587;&#x4EF6;&quot;
+</code></pre><h3 id="22-&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3010;&#x4E86;&#x89E3;&#x3011;">2.2 &#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3010;&#x4E86;&#x89E3;&#x3011;</h3>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x53C8;&#x79F0;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x4F5C;&#x7528;&#x57DF;&#x53EF;&#x4EE5;&#x4E3A;&#x5F53;&#x524D;shell&#x3001;&#x5F53;&#x524D;&#x7528;&#x6237;&#x3001;&#x6240;&#x6709;&#x7528;&#x6237;&#xFF1B;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x6765;&#x67E5;&#x770B;&#x548C;&#x8BBE;&#x7F6E;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF1B;
+
+1. &#x67E5;&#x770B;&#x5168;&#x5C40;&#x53D8;&#x91CF;
+    env --&gt; &#x67E5;&#x770B;&#x7CFB;&#x7EDF;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;
+2. &#x5B9A;&#x4E49;&#x5168;&#x5C40;&#x53D8;&#x91CF;
+    export &#x53D8;&#x91CF;=&#x503C;
+&#x63D0;&#x793A;&#xFF1A;
+    1). &#x5168;&#x5C40;&#x53D8;&#x91CF;&#x547D;&#x540D;&#x5EFA;&#x8BAE;&#x4E3A;&#x5927;&#x5199;
+</code></pre><h4 id="&#x601D;&#x8003;">&#x601D;&#x8003;</h4>
+<pre><code>&#x7EC3;&#x4E60;2 &#x901A;&#x8FC7;read&#x547D;&#x4EE4;&#x6765;&#x52A8;&#x6001;&#x83B7;&#x53D6;&#x53C2;&#x6570;,&#x5FC5;&#x987B;&#x5148;&#x6267;&#x884C;&#x811A;&#x672C;&#x624D;&#x80FD;&#x8FD0;&#x884C;(bash script03.sh),
+&#x80FD;&#x4E0D;&#x80FD;&#x5728;&#x6267;&#x884C;&#x811A;&#x672C;&#x7684;&#x65F6;&#x5019;&#x76F4;&#x63A5;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x5462;&#xFF1F;(bash script03.sh /etc)
+</code></pre><h3 id="23-&#x5185;&#x7F6E;&#x53D8;&#x91CF;&#x3010;&#x719F;&#x6089;&#x3011;">2.3 &#x5185;&#x7F6E;&#x53D8;&#x91CF;&#x3010;&#x719F;&#x6089;&#x3011;</h3>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;bash&#x4E2D;&#x7279;&#x6B8A;&#x7684;&#x53D8;&#x91CF;(&#x5411;&#x811A;&#x672C;&#x4F20;&#x9012;&#x53C2;&#x6570;) 
+</code></pre><table>
+<thead>
+<tr>
+<th>&#x5E8F;&#x53F7;</th>
+<th>&#x53D8;&#x91CF;</th>
+<th>&#x542B;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>$0</td>
+<td>&#x811A;&#x672C;&#x540D;&#x3010;&#x638C;&#x63E1;&#x3011;</td>
+</tr>
+<tr>
+<td>02</td>
+<td>$1-$9</td>
+<td>&#x53C2;&#x6570;&#x4F4D;&#x7F6E;1-9&#x3010;&#x638C;&#x63E1;&#x3011;</td>
+</tr>
+<tr>
+<td>03</td>
+<td>$#</td>
+<td>&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x7684;&#x4E2A;&#x6570;&#x3010;&#x638C;&#x63E1;&#x3011;</td>
+</tr>
+<tr>
+<td>04</td>
+<td>&quot;$*&quot;</td>
+<td>&#x6240;&#x6709;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;(&#x4F5C;&#x4E3A;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;)&#x201C;$1 $2 $3&quot; --&gt; &#x4F20;&#x9012;&#x4E86;&#x4E00;&#x4E2A;&#x53C2;&#x6570;</td>
+</tr>
+<tr>
+<td>05</td>
+<td>$?</td>
+<td>&#x8FD4;&#x56DE;&#x503C;&#x3010;&#x638C;&#x63E1;&#x3011; 0&#x4E3A;&#x6267;&#x884C;&#x6210;&#x529F; &#x5982;&#xFF1A;echo $?</td>
+</tr>
+</tbody>
+</table>
+<pre><code>&#x4F20;&#x53C2;&#x683C;&#x5F0F;&#xFF1A;
+    1). bash &#x811A;&#x672C;&#x540D; &#x53C2;&#x6570;
+    2). bash &#x811A;&#x672C;&#x540D; &#x53C2;&#x6570; &#x53C2;&#x6570;    
+&#x8C03;&#x7528;&#x683C;&#x5F0F;&#xFF1A;
+    1). $1-$9
+    2). $#
+</code></pre><h3 id="3-&#x53D8;&#x91CF;&#x67E5;&#x770B;&#x65B9;&#x5F0F;">3. &#x53D8;&#x91CF;&#x67E5;&#x770B;&#x65B9;&#x5F0F;</h3>
+<pre><code>1. echo $&#x53D8;&#x91CF;&#x540D;        &#x5982;&#xFF1A;echo $name       &#x3010;&#x4E86;&#x89E3;&#x3011;
+2. echo &quot;$&#x53D8;&#x91CF;&#x540D;&quot;    &#x5982;&#xFF1A;echo &quot;$name&quot;  &#x3010;&#x4E86;&#x89E3;&#x3011;
+3. echo ${&#x53D8;&#x91CF;&#x540D;}     &#x5982;&#xFF1A;echo ${name}  &#x3010;&#x638C;&#x63E1;&#x3011;
+   (&#x88AB;&#x5F15;&#x7528;&#x65F6;&#x4F7F;&#x7528;&#xFF0C;&#x5982;&#xFF1A;str=&quot;hello ${name}&quot;;&#x5916;&#x4FA7;&#x5DF2;&#x6709;&#x5F15;&#x53F7;)
+4. echo &quot;${&#x53D8;&#x91CF;&#x540D;}&quot; &#x5982;&#xFF1A;echo &quot;${name}&quot;&#x3010;&#x63A8;&#x8350;&#x3011;
+
+&#x63D0;&#x793A;&#xFF1A;
+    &#x4E24;&#x79CD;&#x683C;&#x5F0F;4&#x4E2D;&#x5199;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x503C;&#x5185;&#x5F15;&#x7528;&#x5219;&#x65E0;&#x5F15;&#x53F7;
+</code></pre><h3 id="4-&#x53D6;&#x6D88;&#x53D8;&#x91CF;">4. &#x53D6;&#x6D88;&#x53D8;&#x91CF;</h3>
+<pre><code>&#x5BF9;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x4F7F;&#x7528;&#x65F6;&#x8981;&#x53CA;&#x65F6;&#x8FDB;&#x884C;&#x53D6;&#x6D88;&#xFF0C;&#x91CA;&#x653E;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;
+&#x683C;&#x5F0F;&#xFF1A;
+    unset &#x53D8;&#x91CF;&#x540D;    --&gt; unset name
+    (unset&#xFF1A;&#x5185;&#x5EFA;shell&#x547D;&#x4EE4;&#xFF0C;&#x4F5C;&#x7528;&#x53D6;&#x6D88;&#x53D8;&#x91CF;&#x6216;&#x51FD;&#x6570;&#xFF1B;name&#xFF1A;&#x53D8;&#x91CF;&#x540D;&#x79F0;(&#x65E0;$) )
+</code></pre><h3 id="&#x601D;&#x8003;">&#x601D;&#x8003;</h3>
+<pre><code>&#x5982;&#x679C;&#x628A;&#x811A;&#x672C;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x6216;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5230;&#x6307;&#x5B9A;&#x6587;&#x4EF6;&#x4E2D;&#xFF1F;
+</code></pre><h3 id="5-&#x5C0F;&#x77E5;&#x8BC6;&#x6269;&#x5C55;&#x3010;&#x91CD;&#x5B9A;&#x5411;&#x3011;">5. &#x5C0F;&#x77E5;&#x8BC6;-&#x6269;&#x5C55;&#x3010;&#x91CD;&#x5B9A;&#x5411;&#x3011;</h3>
+<pre><code>&#x8BF4;&#x660E;&#xFF1A;&#x628A;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x4FDD;&#x5B58;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x6587;&#x4EF6;&#x4E2D;,&#x6B63;&#x786E;&#x7684;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x4F7F;&#x7528;&#x6570;&#x5B57;1&#xFF0C;&#x9519;&#x8BEF;&#x7684;&#x547D;&#x4EE4;&#x4F7F;&#x7528;&#x6570;&#x5B57;2
+
+&#x683C;&#x5F0F;&#xFF1A;
+    1) &#x547D;&#x4EE4; [&#x811A;&#x672C;] 1&gt;result.txt &#x6216; &#x547D;&#x4EE4; [&#x811A;&#x672C;] 1&gt;&gt;result.txt
+    2) &#x547D;&#x4EE4; [&#x811A;&#x672C;] 2&gt;result.txt &#x6216; &#x547D;&#x4EE4; [&#x811A;&#x672C;] 2&gt;&gt;result.txt
+
+&#x63D0;&#x793A;&#xFF1A;
+    &gt;&#xFF1A; &#x8986;&#x76D6;-&#x65B0;&#x7684;&#x5185;&#x5BB9;&#x8986;&#x76D6;&#x4E4B;&#x524D;&#x8001;&#x7684;&#x5185;&#x5BB9;
+    &gt;&gt;&#xFF1A;&#x8FFD;&#x52A0;-&#x5728;&#x8001;&#x7684;&#x5185;&#x5BB9;&#x540E;&#x9762;&#x8FFD;&#x52A0;&#x65B0;&#x7684;&#x5185;&#x5BB9;
+</code></pre><h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
+<pre><code>1. &#x53D8;&#x91CF;&#x89C4;&#x8303;
+2. &apos;&apos;&#x4E0E;&quot;&quot;&#x533A;&#x522B;
+3. &#x547D;&#x4EE4;&#x53D8;&#x91CF;&#x683C;&#x5F0F;
+4. read -p
+5. &#x5185;&#x7F6E;&#x53D8;&#x91CF; $0&#x3001;$#&#x3001;$?&#x3001;$*&#x3001;$1-$9
+6. &#x53D8;&#x91CF;&#x7684;&#x67E5;&#x770B;&#x65B9;&#x5F0F;
+7. &#x53D6;&#x6D88;&#x53D8;&#x91CF;
+8. &#x91CD;&#x5B9A;&#x5411;
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../01day/section1.2.html" class="navigation navigation-prev " aria-label="Previous page: Shell脚本规范"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../01day/section1.4.html" class="navigation navigation-next " aria-label="Next page: Shell流程控制语句"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

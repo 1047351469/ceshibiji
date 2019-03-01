@@ -1,0 +1,35 @@
+Virtual User Script started at : 2018-06-19 22:17:46
+Starting action vuser_init.
+Web Turbo Replay of LoadRunner 11.0.0 for Windows 7; build 8859 (Aug 18 2010 20:14:31)  	[MsgId: MMSG-27143]
+Run Mode: HTML  	[MsgId: MMSG-26000]
+Run-Time Settings file: "C:\Users\Administrator\AppData\Local\Temp\noname47\\default.cfg"  	[MsgId: MMSG-27141]
+Ending action vuser_init.
+Running Vuser...
+Starting iteration 1.
+Starting action Action.
+Action.c(4): Notify: Transaction "µÇÂ¼" started.
+Action.c(7): Registering web_reg_save_param was successful  	[MsgId: MMSG-26390]
+Action.c(15): Detected non-resource "http://127.0.0.1:1080/WebTours/header.html" in "http://127.0.0.1:1080/WebTours/?"  	[MsgId: MMSG-26574]
+Action.c(15): Detected non-resource "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true" in "http://127.0.0.1:1080/WebTours/?"  	[MsgId: MMSG-26574]
+Action.c(15): Found resource "http://127.0.0.1:1080/WebTours/images/hp_logo.png" in HTML "http://127.0.0.1:1080/WebTours/header.html"  	[MsgId: MMSG-26659]
+Action.c(15): Found resource "http://127.0.0.1:1080/WebTours/images/webtours.png" in HTML "http://127.0.0.1:1080/WebTours/header.html"  	[MsgId: MMSG-26659]
+Action.c(15): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?in=home" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true"  	[MsgId: MMSG-26574]
+Action.c(15): Detected non-resource "http://127.0.0.1:1080/WebTours/home.html" in "http://127.0.0.1:1080/WebTours/welcome.pl?signOff=true"  	[MsgId: MMSG-26574]
+Action.c(15): Found resource "http://127.0.0.1:1080/WebTours/images/mer_login.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?in=home"  	[MsgId: MMSG-26659]
+Action.c(15): web_submit_data("web_submit_data") was successful, 6449 body bytes, 1608 header bytes  	[MsgId: MMSG-26386]
+Action.c(28): Registering web_reg_save_param was successful  	[MsgId: MMSG-26390]
+Action.c(36): Detected non-resource "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home" in "http://127.0.0.1:1080/WebTours/login.pl"  	[MsgId: MMSG-26574]
+Action.c(36): Detected non-resource "http://127.0.0.1:1080/WebTours/login.pl?intro=true" in "http://127.0.0.1:1080/WebTours/login.pl"  	[MsgId: MMSG-26574]
+Action.c(36): Found resource "http://127.0.0.1:1080/WebTours/images/flights.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home"  	[MsgId: MMSG-26659]
+Action.c(36): Found resource "http://127.0.0.1:1080/WebTours/images/itinerary.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home"  	[MsgId: MMSG-26659]
+Action.c(36): Found resource "http://127.0.0.1:1080/WebTours/images/in_home.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home"  	[MsgId: MMSG-26659]
+Action.c(36): Found resource "http://127.0.0.1:1080/WebTours/images/signoff.gif" in HTML "http://127.0.0.1:1080/WebTours/nav.pl?page=menu&in=home"  	[MsgId: MMSG-26659]
+Action.c(36): web_submit_data("µÇÂ¼") was successful, 5693 body bytes, 1538 header bytes  	[MsgId: MMSG-26386]
+Action.c(58): Notify: Transaction "µÇÂ¼" ended with "Fail" status (Duration: 1.5497 Wasted Time: 0.4229).
+Action.c(59): ½á¹ûÎª£º-1,´íÎóÀ²£¡
+Ending action Action.
+Ending iteration 1.
+Ending Vuser...
+Starting action vuser_end.
+Ending action vuser_end.
+Vuser Terminated.

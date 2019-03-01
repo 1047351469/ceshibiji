@@ -1,0 +1,4 @@
+{
+  "scripts/test_contact.py::TestContact::()::test_login2": true,
+  "scripts/test_contact.py::TestContact::()::test_new_content": true
+}

@@ -1,0 +1,21 @@
+﻿一、参数化
+	概念：根据需求动态获取数据并进行赋值的过程
+	1.2. 参数化-方式
+		1. XML格式（1）
+			导包：from xml.dom import minidom
+			读取方式：parse()
+			格式：
+				1. 必须有XML声明语句：<?xml version="1.0" encoding="UTF-8"?>
+				2. 必须要有一个根元素，如：<book>
+				3. 不能以字符 “xml”（或者 XML、Xml）开始
+				4. 随意命名（注意：命名允许重复）
+				5. 标签必须成对出现
+		3. CSV格式（2）
+			导包：import csv
+			读取方式；reader()
+		2. JSON串 （3）
+			导包：import json
+			读取方法 load()
+		4. TXT文本（4）
+			导包：不需要
+			读取方法：readlines()

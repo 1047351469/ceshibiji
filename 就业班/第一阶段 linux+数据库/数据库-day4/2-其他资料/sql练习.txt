@@ -1,0 +1,27 @@
+表关系如下：
+   - 部门表dept：部门标号（DEPTNO），部门名称（DNAME），所在位置（LOC）
+   - 雇员表emp：员工标号（Empno），员工名称（Emname），员工工位（Job），经理（Mgr），雇佣日期（Hiredate），薪水（Sal），部门编号（Deptno）
+
+
+   写出sql语句：
+   - 找出部门名称为ACCOUNTING的部门下的所有员工名称？
+	select emname from emp where deptno=(select deptno from dept where dname=‘ACCOUNTING’)
+
+   - 找出部门名称为SALES的部门下每月需要发出的薪水总额？
+	select sum(sal) from emp where deptno=(select deptno from dept where dname=‘SALES’)
+
+   - 找出部门名称为SALES的部门的部门经理？
+
+	select * from emp where deptno=(select deptno from dept where dname=‘SALES’) 
+
+	select jingli.emname from emp as jingli
+	inner join emp as yuangong on jingli.emname= yuangong.mgr
+	where jingli.deptno=(select deptno from dept where dname=‘SALES’)
+	
+	
+   - 找出部门名称为RESEARCH的部门下雇佣日期为1980-12-17的员工？
+
+	select * from emp where deptno=(select deptno from dept where dname=‘RESEARCH’) and diredate=‘1980-12-17’
+
+
+	

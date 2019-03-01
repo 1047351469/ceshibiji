@@ -1,0 +1,473 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>附件-参考自动化部署 | Shell</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    
+    <link rel="prev" href="../01day/section1.5.html" />
+    
+
+        
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="1.6"
+        data-chapter-title="附件-参考自动化部署"
+        data-filepath="01day/section1.6.md"
+        data-basepath=".."
+        data-revision="Fri Apr 13 2018 16:49:57 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Shell
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="01day/index.html">
+            
+                
+                    <a href="../01day/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        第1章-Shell基础
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="01day/section1.1.html">
+            
+                
+                    <a href="../01day/section1.1.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        Shell介绍
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="01day/section1.2.html">
+            
+                
+                    <a href="../01day/section1.2.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        Shell脚本规范
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="01day/section1.3.html">
+            
+                
+                    <a href="../01day/section1.3.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        Shell变量
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="01day/section1.4.html">
+            
+                
+                    <a href="../01day/section1.4.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        Shell流程控制语句
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="01day/section1.5.html">
+            
+                
+                    <a href="../01day/section1.5.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        Shell函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="01day/section1.6.html">
+            
+                
+                    <a href="../01day/section1.6.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        附件-参考自动化部署
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Shell</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="shell&#x81EA;&#x52A8;&#x5316;&#x90E8;&#x7F72;"><center>Shell&#x81EA;&#x52A8;&#x5316;&#x90E8;&#x7F72;</center></h1>
+<hr>
+<h2 id="&#x76EE;&#x6807;">&#x76EE;&#x6807;</h2>
+<pre><code>1. &#x4E86;&#x89E3;&#x4F7F;&#x7528;shell&#x811A;&#x672C;&#x90E8;&#x7F72;oracle&#x6570;&#x636E;&#x5E93;
+</code></pre><hr>
+<h2 id="11-&#x81EA;&#x52A8;&#x5316;&#x90E8;&#x7F72;oracle">1.1 &#x81EA;&#x52A8;&#x5316;&#x90E8;&#x7F72;oracle</h2>
+<h3 id="11-&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x81EA;&#x52A8;&#x5316;&#x90E8;&#x7F72;&#xFF1F;">1.1 &#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x81EA;&#x52A8;&#x5316;&#x90E8;&#x7F72;&#xFF1F;</h3>
+<pre><code>1. linux&#x7CFB;&#x7EDF;&#x57FA;&#x672C;&#x90FD;&#x547D;&#x4EE4;&#x64CD;&#x4F5C;[&#x7528;&#x6237;&#x7EC4;&#x3001;&#x6743;&#x9650;&#x7EC4;&#x3001;&#x7B49;]
+2. &#x590D;&#x7528;&#x6027;[&#x591A;&#x53F0;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x90E8;&#x7F72;]
+</code></pre><h3 id="12-&#x90E8;&#x7F72;&#x73AF;&#x5883;&#x51C6;&#x5907;">1.2 &#x90E8;&#x7F72;&#x73AF;&#x5883;&#x51C6;&#x5907;</h3>
+<pre><code>1. &#x64CD;&#x4F5C;&#x7CFB;&#x7EDF; linux-Red
+2. &#x786C;&#x76D8;&#x53EF;&#x7528;&#x7A7A;&#x95F4;1.5G&#x4EE5;&#x4E0A;(oracle&#x6570;&#x636E;&#x5E93;1.2G)
+3. &#x7535;&#x8111;&#x7269;&#x7406;&#x5185;&#x5B58;1G&#x4EE5;&#x4E0A;
+</code></pre><h3 id="13-&#x5B89;&#x88C5;&#x524D;&#x914D;&#x7F6E;">1.3 &#x5B89;&#x88C5;&#x524D;&#x914D;&#x7F6E;</h3>
+<p><img src="../01img/auto00.png" alt="&#x5B89;&#x88C5;&#x524D;&#x914D;&#x7F6E;">            </p>
+<pre><code>1. &#x786E;&#x5B9A;&#x5F53;&#x524D;&#x767B;&#x5F55;&#x7684;&#x662F;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458; root &#x7528;&#x6237;&#xFF1B;
+2. &#x521B;&#x5EFA;&#x7EC4;&#x51FD;&#x6570;(&#x521B;&#x5EFA;&#x7BA1;&#x7406;&#x7EC4;&#x3001;&#x521B;&#x5EFA;&#x5B89;&#x88C5;&#x7EC4;)
+3. &#x521B;&#x5EFA;&#x7528;&#x6237;&#x51FD;&#x6570;(&#x521B;&#x5EFA;&#x7528;&#x6237;&#x3001;&#x4FEE;&#x6539;&#x5BC6;&#x7801;)
+4. &#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x51FD;&#x6570;(&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x3001;&#x4FEE;&#x6539;&#x76EE;&#x5F55;&#x6240;&#x5C5E;&#x7EC4;&#x53CA;&#x7FA4;&#x7EC4;&#x3001;&#x4FEE;&#x6539;&#x76EE;&#x5F55;&#x5B89;&#x88C5;&#x6743;&#x9650;&#x3001;&#x8C03;&#x7528;&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x51FD;&#x6570;)
+5. &#x521B;&#x5EFA;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x51FD;&#x6570;
+6. &#x521B;&#x5EFA;&#x5B89;&#x88C5;&#x51FD;&#x6570;
+</code></pre><h4 id="1-&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x767B;&#x9646;&#x7528;&#x6237;&#x4E3A;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;">1). &#x5982;&#x4F55;&#x786E;&#x5B9A;&#x767B;&#x9646;&#x7528;&#x6237;&#x4E3A;&#x8D85;&#x7EA7;&#x7BA1;&#x7406;&#x5458;</h4>
+<p><img src="../01img/auto01.png" alt="&#x5B89;&#x88C5;&#x524D;&#x914D;&#x7F6E;">    </p>
+<pre><code>1. $USER &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7528;&#x6237;
+
+&#x793A;&#x4F8B;&#xFF1A;
+    # &#x5224;&#x65AD;&#x5F53;&#x524D;&#x7528;&#x6237;&#x662F;&#x5426;&#x4E3A;root
+    if [ &quot;${USER}&quot; == &quot;root&quot; ]
+    then
+        echo &quot;&#x5F53;&#x524D;&#x7528;&#x6237;&#x662F;root&quot;
+        # &#x8C03;&#x7528;&#x521B;&#x5EFA;&#x7EC4;&#x51FD;&#x6570;
+        createGrp
+    else
+        echo &quot;&#x5F53;&#x524D;&#x7528;&#x6237;&#x4E0D;&#x662F;root,&#x800C;&#x662F;$USER&quot;
+    fi
+</code></pre><h4 id="2-&#x521B;&#x5EFA;&#x7EC4;&#x51FD;&#x6570;-creategrp">2) &#x521B;&#x5EFA;&#x7EC4;&#x51FD;&#x6570; (createGrp)</h4>
+<p><img src="../01img/auto02.png" alt="&#x5B89;&#x88C5;&#x524D;&#x914D;&#x7F6E;">            </p>
+<pre><code>&#x96BE;&#x70B9;&#xFF1A;
+    1. &#x83B7;&#x53D6;&#x521B;&#x5EFA;&#x7684;&#x7EC4;    --&gt;grep dba /etc/group|cut -d &quot;:&quot; -f 1
+       (cut:&#x83B7;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#xFF1B;-d &#xFF1A;&#x81EA;&#x5B9A;&#x4E49;&#x5206;&#x9694;&#x7B26;&#xFF1B;-f&#xFF1A;&#x83B7;&#x53D6;&#x5206;&#x5272;&#x540E;&#x7B2C;&#x51E0;&#x4E2A;&#x503C;)
+
+&#x793A;&#x4F8B;&#xFF1A;
+     # &#x521B;&#x5EFA;&#x7EC4;&#x51FD;&#x6570;
+     createGrp(){
+             # &#x6267;&#x884C;&#x521B;&#x5EFA;&#x7EC4;&#x547D;&#x4EE4;
+             groupadd dba
+             # &#x83B7;&#x53D6;&#x521B;&#x5EFA;&#x7684;&#x7EC4;
+             str=`grep dba /etc/group|cut -d &quot;:&quot; -f 1`
+             # &#x5224;&#x65AD;&#x662F;&#x5426;&#x521B;&#x5EFA;&#x6210;&#x529F;
+             if [ &quot;${str}&quot; == &quot;dba&quot; ]
+             then
+                    # &#x63D0;&#x793A;&#x521B;&#x5EFA;&#x6210;&#x529F;
+                    echo &quot;&#x7528;&#x6237;&#x7EC4;&#x521B;&#x5EFA;&#x6210;&#x529F;&#xFF01;&quot;
+                    # &#x521B;&#x5EFA;&#x5B89;&#x88C5;&#x7EC4;
+                    groupadd  oinstall
+                    # &#x83B7;&#x53D6;&#x521B;&#x5EFA;&#x7684; oinstall
+                    oinstall=`grep oinstall /etc/group|cut -d &quot;:&quot; -f 1`
+                    # &#x5224;&#x65AD;&#x662F;&#x5426;&#x521B;&#x5EFA;&#x6210;&#x529F;
+                    if [ &quot;${oinstall}&quot; == &quot;oinstall&quot; ]
+                    then
+                        echo &quot;oinstall&#x7EC4;&#x521B;&#x5EFA;&#x6210;&#x529F;&#xFF01;&quot;
+                        # &#x8C03;&#x7528;&#x521B;&#x5EFA;&#x7528;&#x6237;&#x51FD;&#x6570;
+                        createUser
+                    else
+                        echo &quot;oinstall&#x7EC4;&#x521B;&#x5EFA;&#x5931;&#x8D25;&#xFF01;&quot;
+                    fi    
+             else
+                    echo &quot;&#x7BA1;&#x7406;&#x7EC4;&#x521B;&#x5EFA;&#x5931;&#x8D25;&#xFF01;&quot;
+             fi
+     }
+</code></pre><h4 id="3-&#x521B;&#x5EFA;&#x7528;&#x6237;&#x51FD;&#x6570;createuser">3) &#x521B;&#x5EFA;&#x7528;&#x6237;&#x51FD;&#x6570;(createUser)</h4>
+<p><img src="../01img/auto03.png" alt="&#x5B89;&#x88C5;&#x524D;&#x914D;&#x7F6E;">        </p>
+<pre><code>&#x96BE;&#x70B9;&#xFF1A;
+    1. &#x521B;&#x5EFA;&#x7528;&#x6237;     --&gt; useradd  tester  -g  oinstall  -G  dba
+                        (-g&#xFF1A;&#x7528;&#x6237;&#x6240;&#x5C5E;&#x7EC4;&#x3010;&#x5FC5;&#x987B;&#x6307;&#x5B9A;&#x3011;&#xFF1B;-G&#xFF1A;&#x9644;&#x52A0;&#x7EC4;-&#x540C;&#x65F6;&#x5C5E;&#x4E8E;&#x54EA;&#x4E2A;&#x7EC4;)
+    2. &#x83B7;&#x53D6;&#x521B;&#x5EFA;&#x7528;&#x6237; --&gt; grep tester /etc/passwd|cut -d &quot;:&quot; -f 1
+                        (&#x7528;&#x6237;&#x521B;&#x5EFA;&#x6210;&#x529F;&#x5728;/etc/passwd&#x76EE;&#x5F55;&#x5185;)
+
+&#x793A;&#x4F8B;&#xFF1A;
+     # &#x521B;&#x5EFA;&#x7528;&#x6237;&#x51FD;&#x6570;
+     createUser(){
+        # &#x6267;&#x884C;&#x521B;&#x5EFA;&#x7528;&#x6237;&#x6307;&#x4EE4;
+        useradd  tester  -g  oinstall  -G  dba
+        # &#x83B7;&#x53D6;&#x521B;&#x5EFA;&#x7528;&#x6237;
+        tester=`grep tester /etc/passwd|cut -d &quot;:&quot; -f 1`
+        # &#x5224;&#x65AD;&#x662F;&#x5426;&#x521B;&#x5EFA;&#x6210;&#x529F;
+        if [ &quot;${tester}&quot; == &quot;tester&quot; ]
+        then
+            echo &quot;&#x7528;&#x6237;&#x521B;&#x5EFA;&#x6210;&#x529F;&#xFF01;&quot;
+            # &#x4FEE;&#x6539;tester&#x7528;&#x6237;&#x5BC6;&#x7801;
+            passwd tester
+            # &#x8C03;&#x7528;&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x51FD;&#x6570;
+            createDir
+        else
+            echo &quot;&#x7528;&#x6237;&#x521B;&#x5EFA;&#x5931;&#x8D25;&#xFF01;&quot;
+        fi
+     }
+</code></pre><h4 id="4-&#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x51FD;&#x6570;">4) &#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x51FD;&#x6570;</h4>
+<p><img src="../01img/auto04.png" alt="&#x5B89;&#x88C5;&#x524D;&#x914D;&#x7F6E;">                </p>
+<pre><code>&#x96BE;&#x70B9;&#xFF1A;
+    1. &#x521B;&#x5EFA;&#x76EE;&#x5F55;             --&gt; mkdir -p /oracle/product/10.2.0/db_1
+    2. &#x4FEE;&#x6539;&#x76EE;&#x5F55;&#x6240;&#x5C5E;&#x7EC4;&#x53CA;&#x7FA4;&#x7EC4; --&gt; chown  -R  tester.oinstall  /oracle
+       (chown&#xFF1A;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x62E5;&#x6709;&#x8005;&#xFF1B;-R : &#x5BF9;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x4E0E;&#x5B50;&#x76EE;&#x5F55;&#x8FDB;&#x884C;&#x76F8;&#x540C;&#x7684;&#x62E5;&#x6709;&#x8005;&#x53D8;&#x66F4;)
+    3. &#x4FEE;&#x6539;&#x76EE;&#x5F55;&#x5B89;&#x88C5;&#x6743;&#x9650;        --&gt; chmod  755  -R  /oracle
+       ( 
+         1. chmod&#xFF1A;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x6743;&#x9650;-&#x53EF;&#x8BFB;[r]:4;&#x53EF;&#x5199;[w]:2;&#x6267;&#x884C;[x]:1;
+         2. Linux&#x6863;&#x6848;&#x5B58;&#x53D6;&#x6743;&#x9650;&#x5206;&#x4E3A;&#x4E09;&#x7EA7;&#xFF1A;&#x6863;&#x6848;&#x62E5;&#x6709;&#x8005;(User)&#x3001;&#x7FA4;&#x7EC4;(Group)&#x3001;&#x5176;&#x4ED6;(Other)
+         3. 775&#xFF1A;7(User-rwx)5(Group-rwx)5(Other-r-x)
+       )
+
+&#x793A;&#x4F8B;&#xFF1A;
+     # &#x521B;&#x5EFA;&#x76EE;&#x5F55;&#x51FD;&#x6570;
+     createDir(){
+        # &#x628A;&#x76EE;&#x5F55;&#x5B9A;&#x4E49;&#x6210;&#x5B57;&#x7B26;&#x4E32;&#x65B9;&#x4FBF;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9648;&#x5BAB;
+        dir=&quot;/oracle/product/10.2.0/db_1&quot;
+        mkdir -p &quot;${dir}&quot;
+        # &#x5224;&#x65AD;&#x76EE;&#x5F55;&#x662F;&#x5426;&#x521B;&#x5EFA;&#x6210;&#x529F;
+        if [ -d &quot;${dir}&quot; ]
+        then
+            echo &quot;&#x76EE;&#x5F55;&#x521B;&#x5EFA;&#x6210;&#x529F;&#xFF01;&quot;
+            # &#x4FEE;&#x6539;oracle&#x76EE;&#x5F55;&#x6240;&#x5C5E;&#x7EC4;
+            chown  -R  tester.oinstall  /oracle
+            # &#x4FEE;&#x6539; oracle &#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x64CD;&#x4F5C;&#x6743;&#x9650; 
+            chmod  755  -R  /oracle
+            # &#x8C03;&#x7528;&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x51FD;&#x6570;
+            editPath
+        else
+            echo &quot;&#x76EE;&#x5F55;&#x521B;&#x5EFA;&#x5931;&#x8D25;&#xFF01;&quot;
+        fi
+     }
+</code></pre><h4 id="5-&#x521B;&#x5EFA;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x51FD;&#x6570;">5) &#x521B;&#x5EFA;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x51FD;&#x6570;</h4>
+<p><img src="../01img/auto05.png" alt="&#x73AF;&#x5883;&#x53D8;&#x91CF;"></p>
+<pre><code>&#x96BE;&#x70B9;&#xFF1A;
+    1). &#x5411; .bash_profile&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5185;&#x63D2;&#x5165;&#x5185;&#x5BB9;     --&gt; sed -i &quot;&#x884C;&#x53F7;[a&#x547D;&#x4EE4;]&#x5185;&#x5BB9;&quot; &#x6587;&#x4EF6;
+                                (sed&#xFF1A;&#x7F16;&#x8F91;&#x5668;&#xFF1B;-i&#xFF1A;&#x63D2;&#x5165;&#x547D;&#x4EE4;&#xFF1B;a&#xFF1A;&#x8FFD;&#x52A0;&#x5F53;&#x524D;&#x884C;&#xFF1B;)
+    2). &#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;     --&gt;     source  ./.bash_profile
+    3). &#x5224;&#x65AD;&#x662F;&#x5426;&#x914D;&#x7F6E;&#x6210;&#x529F;     --&gt;     if [ &quot;$ORACLE_BASE&quot; == &quot;/oracle&quot; ]
+
+&#x793A;&#x4F8B;&#xFF1A;
+     # &#x521B;&#x5EFA;&#x8C03;&#x7528;&#x4FEE;&#x6539;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x51FD;&#x6570;
+     editPath(){
+         # &#x8FDB;&#x5165;/home/tester&#x6839;&#x76EE;&#x5F55;
+        cd /home/tester
+        # &#x5411;&#x6587;&#x4EF6;&#x4E2D;&#x63D2;&#x5165;&#x5185;&#x5BB9;
+        sed -i &quot;10aORACLE_BASE=/oracle&quot; .bash_profile
+        sed -i &apos;11aORACLE_HOME=$ORACLE_BASE/product/10.2.0/db_1&apos;
+        sed -i &quot;12aORACLE_SID=orcl&quot;
+        sed -i &apos;13aPATH=$PATH:$HOME/bin:$ORACLE_HOME/bin&apos;
+        sed -i &apos;14aLD_LIBRARY_PATH=$ORACLE_HOME/lib:/usr/lib&apos;
+        sed -i &quot;15aexport ORACLE_BASE&quot;
+        sed -i &quot;16aexport ORACLE_HOME&quot;
+        sed -i &quot;17aexport ORACLE_SID&quot;
+        sed -i &quot;18aexport PATH&quot;
+        sed -i &quot;19aexport LD_LIBRARY_PATH&quot;
+        # &#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x6587;&#x4EF6;
+        source  ./.bash_profile
+        # &#x5224;&#x65AD;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x914D;&#x7F6E;&#x6210;&#x529F;
+        if [ &quot;$ORACLE_BASE&quot; == &quot;/oracle&quot; ]
+        then
+            echo &quot;&#x914D;&#x7F6E;&#x6210;&#x529F;&#xFF01;&quot;
+        else
+            echo &quot;&#x914D;&#x7F6E;&#x5931;&#x8D25;&#xFF01;&quot;
+        fi
+</code></pre><h4 id="6-&#x521B;&#x5EFA;&#x5B89;&#x88C5;&#x51FD;&#x6570;">6) &#x521B;&#x5EFA;&#x5B89;&#x88C5;&#x51FD;&#x6570;</h4>
+<pre><code>&#x96BE;&#x70B9;&#xFF1A;
+    1. &#x89E3;&#x538B;oracle&#x5B89;&#x88C5;&#x5305;  --&gt;     unzip oracle_10201_database_linux32.zip
+&#x793A;&#x4F8B;&#xFF1A;
+    #!/bin/bash
+    instal(){
+            echo &quot;instal&#x51FD;&#x6570;&#x6B63;&#x5728;&#x88AB;&#x6267;&#x884C;...&quot;
+            cd /tmp
+            myfile=&quot;oracle_10201_database_linux32.zip&quot;
+            if [ -f  &quot;$myfile&quot; ]
+            then
+                    echo &quot;&#x6587;&#x4EF6;&#x5B58;&#x5728;...&quot;
+                    echo &quot;&#x6B63;&#x5728;&#x89E3;&#x538B;&#x6587;&#x4EF6;...&quot;
+            else
+                    echo &quot;&#x6587;&#x4EF6;&#x4E0D;&#x5B58;&#x5728;...&quot;
+                    filename=&quot;/mnt/hgfs/vmwareShare/oracle_10201_database_linux32.zip&quot;
+                    echo &quot;&#x6B63;&#x5728;&#x590D;&#x5236;&#x6587;&#x4EF6;&quot;
+                    cp &quot;$filename&quot; /tmp
+            fi
+            unzip oracle_10201_database_linux32.zip
+            dir=&quot;database&quot;
+            if [ -d &quot;$dir&quot; ]
+            then
+                    echo &quot;&#x6587;&#x4EF6;&#x5DF2;&#x89E3;&#x538B;,&#x6B63;&#x5728;&#x6267;&#x884C;..&quot;
+                    cd &quot;$dir&quot;
+                    ./runInstaller
+            else
+                            echo &quot;&#x89E3;&#x538B;&#x5931;&#x8D25;!&quot;
+            fi
+    }
+    if [ &quot;$USER&quot; == &quot;tester&quot; ]
+    then
+            echo &quot;&#x5F53;&#x524D;&#x7528;&#x6237;&#x662F;tester..&quot;
+            # &#x8C03;&#x7528;instal&#x51FD;&#x6570;
+            instal
+    else
+            echo &quot;&#x5F53;&#x524D;&#x7528;&#x6237;&#x975E;tester,&#x800C;&#x662F;$USER&quot;
+    fi
+</code></pre>
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../01day/section1.5.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Shell函数"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
